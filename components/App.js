@@ -1,7 +1,7 @@
-import React, { Component } from 'react'
-import TestForm from './TestForm'
+import React from 'react'
+import NavBar from './NavBar'
 
-class App extends Component {
+class App extends React.Component {
 
 	constructor(props) {
 		super(props)
@@ -10,8 +10,8 @@ class App extends Component {
 	render() {
 		return (
 			<div id="wrapper">
-				<h1>Welcome to {this.props.name}</h1>
-				<TestForm />
+				<NavBar />
+				<Dashboard />
 			</div>
 		)
 	}
