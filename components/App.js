@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import TestForm from './TestForm'
-import Cart from './Cart'
 
 class App extends Component {
 
