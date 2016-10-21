@@ -13,11 +13,13 @@ class CoffeeCounter extends Component {
 handleProp (prop) {
   return e => {
       if (prop === 'increment') {
-        this.setState({count: this.state.count+1})
-        console.log(this.props.coffeeName, 'incremented to', this.state.count)
+        this.setState({count: this.state.count+1}, function () {
+          console.log(this.props.coffeeName, 'incremented to', this.state.count)
+        })
       } else if (prop === 'decrement' && this.state.count >= 1) {
-        this.setState({count: this.state.count-1})
-        console.log(this.props.coffeeName, 'decremented to', this.state.count)
+        this.setState({count: this.state.count-1}, function () {
+          console.log(this.props.coffeeName, 'decremented to', this.state.count)
+        })
       }
   }
 }
