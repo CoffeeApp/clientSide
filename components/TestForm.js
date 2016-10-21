@@ -1,18 +1,7 @@
 import React, { Component } from 'react'
-const feathers = require('feathers-client')
-const io = require('socket.io-client')
+import { orderService } from '../lib/api'
 
-const socket = io('http://192.168.1.8.3030')
-
-var app = feathers()
-  .configure(feathers.hooks())
-  .configure(feathers.socketio(socket))
-
-var orderService = app.service('dumb-orders')
-
-orderService.on('created', function(order) {
-  console.log('someone created an order', order)
-})
+console.log(orderService)
 
 class TestForm extends Component {
 
@@ -23,7 +12,7 @@ class TestForm extends Component {
       userNumber: ''
     }
     this.handleProp = this.handleProp.bind(this)
-    // this.handleSubmit = this.handleSubmit.bind(this)
+    this.handleSubmit = this.handleSubmit.bind(this)
     // this.Caller = this.Caller.bind(this)
   }
 
@@ -36,21 +25,23 @@ class TestForm extends Component {
     }
   }
 
-  // handleSubmit (e) {
-  // let userName = this.state.userName
-  // let userNumber = this.state.userNumber
-  // e.preventDefault()
-  // this.props.Caller(userName, userNumber)
-  // }
-  //
-  // Caller (userName, userNumber) {
-  // }
+  handleSubmit (e) {
+  let userName = this.state.userName
+  let userNumber = this.state.userNumber
+  let comment = this.state.comment
+  e.preventDefault()
+  orderService.create({ userName, userNumber, comment })
+    .then(function(result){
+      console.log('result', result)
+    })
+  }
 
   render () {
     return (
       <form onSubmit={this.handleSubmit}>
         <input type="text" id="user-name" onChange={this.handleProp('userName')} placeholder="Name" />
         <input type="text" id="user-phone" onChange={this.handleProp('userNumber')} placeholder="Phone Number" />
+        <input type="text" id="user-phone" onChange={this.handleProp('comment')} placeholder="Notes" />
         <button type="submit" >Submit</button>
       </form>
     )
