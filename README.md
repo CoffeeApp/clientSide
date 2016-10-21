@@ -31,3 +31,13 @@ npm test
 ```
 npm run deploy
 ```
+
+### important deploy notes!
+
+don't forget to append
+
+```
+-g uglifyify
+```
+
+to the deployment script in package.json before production!
