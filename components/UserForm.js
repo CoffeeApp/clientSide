@@ -33,7 +33,7 @@ class UserForm extends Component {
   orderService.create({ name, phone, comment })
     .then(function(result){
       console.log('result', result)
-    })]
+    })
   }
 
   render () {

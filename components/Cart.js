@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import UserForm from './UserForm'
-
+import CoffeeCounter from './CoffeeCounter'
 class Cart extends Component {
 
   constructor (props) {
@@ -19,13 +19,7 @@ class Cart extends Component {
                 <a className="itemlink">
                   <div className="itemtitle">Americano</div>
                 </a>
-                <div className="row">
-                  <div className="itemquantity">1</div>
-                  <a className="itemlink"><img className="quantity" src="images/plus.png"/>
-                  </a>
-                  <a className="itemlink"><img className="quantity" src="images/minus.png"/>
-                  </a>
-                </div>
+                  <CoffeeCounter coffeeName="Americano" />
               </div>
             </div>
             <div className="itemform">
@@ -55,13 +49,10 @@ class Cart extends Component {
                 <a className="itemlink">
                   <div className="itemtitle">Flat White</div>
                 </a>
-                <div className="row">
-                  <div className="itemquantity">2</div>
-                  <a className="itemlink"><img className="quantity" src="images/plus.png"/>
-                  </a>
-                  <a className="itemlink"><img className="quantity" src="images/minus.png"/>
-                  </a>
-                </div>
+                {/*############ COFFEE COUNTER COMPONENT #########*/}
+                <CoffeeCounter coffeeName="Flat White" />
+                {/*###############################################*/}
+
               </div>
             </div>
             <div className="itemform">
@@ -85,7 +76,9 @@ class Cart extends Component {
           </div>
         </div>
         <div className="cartheader">
+          {/*################ USER FORM COMPONENT ##########*/}
           <UserForm />
+          {/*###############################################*/}
         </div>
       </div>
     )
