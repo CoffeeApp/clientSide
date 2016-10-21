@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import TestForm from './TestForm'
+import Cart from './Cart'
 
 class App extends Component {
 
@@ -12,6 +13,7 @@ class App extends Component {
       <div id="wrapper">
         <h1>Welcome to {this.props.name}</h1>
         <TestForm />
+        <Cart />
       </div>
     )
   }
