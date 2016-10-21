@@ -13,7 +13,6 @@ class TestForm extends Component {
     }
     this.handleProp = this.handleProp.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
-    // this.Caller = this.Caller.bind(this)
   }
 
   handleProp (prop) {
@@ -35,7 +34,6 @@ class TestForm extends Component {
       console.log('result', result)
     })
   }
-
 
   render () {
     return (
