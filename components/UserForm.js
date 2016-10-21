@@ -33,15 +33,15 @@ class UserForm extends Component {
   orderService.create({ name, phone, comment })
     .then(function(result){
       console.log('result', result)
-    })
+    })]
   }
 
   render () {
     return (
       <form onSubmit={this.handleSubmit}>
-        <input className="iteminput" type="text" onChange={this.handleProp('userName')} placeholder="Name" />
-        <input className="iteminput" type="text" onChange={this.handleProp('userNumber')} placeholder="Phone Number" />
-        <input className="iteminput" type="text" onChange={this.handleProp('comment')} placeholder="Notes" />
+        <input className="iteminput" type="text" onChange={this.handleProp('userName')} placeholder="Your name"/>
+        <input className="iteminput" type="text" onChange={this.handleProp('userNumber')} placeholder="Your phone number"/>
+        <input className="iteminput" type="text" onChange={this.handleProp('comment')} placeholder="Notes"/>
         <button className="button next" type="submit" >Next</button>
       </form>
     )

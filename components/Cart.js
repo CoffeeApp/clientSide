@@ -21,23 +21,23 @@ class Cart extends Component {
                 </a>
                 <div className="row">
                   <div className="itemquantity">1</div>
-                  <a className="itemlink" href="#"><img className="quantity" src="images/plus.png"/>
+                  <a className="itemlink"><img className="quantity" src="images/plus.png"/>
                   </a>
-                  <a className="itemlink" href="#"><img className="quantity" src="images/minus.png"/>
+                  <a className="itemlink"><img className="quantity" src="images/minus.png"/>
                   </a>
                 </div>
               </div>
             </div>
             <div className="itemform">
-              <form className="itemform" dataName="Email Form 3" id="email-form-3" name="email-form-3">
-                <select className="iteminput" dataName="Milk" id="Milk" name="Milk">
+              <form className="itemform">
+                <select className="iteminput">
                   <option value="">Select milk...</option>
                   <option value="none">None</option>
                   <option value="whole milk">Whole milk</option>
                   <option value="trim milk">Trim milk</option>
                   <option value="soy milk">Soy milk</option>
                 </select>
-                <select className="iteminput" dataName="Sugar" id="Sugar" name="Sugar">
+                <select className="iteminput">
                   <option value="">Add sugar...</option>
                   <option value="none">None</option>
                   <option value="1">1</option>
@@ -49,7 +49,7 @@ class Cart extends Component {
           </div>
           <div className="item">
             <div className="itemoverview">
-              <a className="itemlink"><img className="itemimage" sizes="60px" src="images/flat-white.jpg" srcset="images/flat-white-p-500x500.jpeg 500w, images/flat-white-p-800x800.jpeg 800w, images/flat-white-p-1080x1080.jpeg 1080w, images/flat-white-p-1600x1600.jpeg 1600w, images/flat-white.jpg 1708w"/>
+              <a className="itemlink"><img className="itemimage" sizes="60px" src="images/flat-white.jpg" srcSet="images/flat-white-p-500x500.jpeg 500w, images/flat-white-p-800x800.jpeg 800w, images/flat-white-p-1080x1080.jpeg 1080w, images/flat-white-p-1600x1600.jpeg 1600w, images/flat-white.jpg 1708w"/>
               </a>
               <div className="itemdetails">
                 <a className="itemlink">
@@ -59,21 +59,21 @@ class Cart extends Component {
                   <div className="itemquantity">2</div>
                   <a className="itemlink"><img className="quantity" src="images/plus.png"/>
                   </a>
-                  <a className="itemlink" href="#"><img className="quantity" src="images/minus.png"/>
+                  <a className="itemlink"><img className="quantity" src="images/minus.png"/>
                   </a>
                 </div>
               </div>
             </div>
             <div className="itemform">
-              <form className="itemform" dataName="Email Form 3" id="email-form-3" name="email-form-3">
-                <select className="iteminput" dataName="Milk 2" id="Milk-2" name="Milk-2">
+              <form className="itemform">
+                <select className="iteminput">
                   <option value="">Select milk...</option>
                   <option value="none">None</option>
                   <option value="whole milk">Whole milk</option>
                   <option value="trim milk">Trim milk</option>
                   <option value="soy milk">Soy milk</option>
                 </select>
-                <select className="iteminput" dataName="Sugar 2" id="Sugar-2" name="Sugar-2">
+                <select className="iteminput">
                   <option value="">Add sugar...</option>
                   <option value="none">None</option>
                   <option value="1">1</option>
