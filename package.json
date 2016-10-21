@@ -24,7 +24,10 @@
     "url": "https://github.com/hikurangi/clientSide/issues"
   },
   "homepage": "https://github.com/hikurangi/clientSide",
-  "dependencies": {},
+  "dependencies": {
+    "socket.io-client": "*",
+    "feathers-client": "*"
+  },
   "devDependencies": {
     "babel-preset-es2015": "^6.5.0",
     "babel-preset-react": "^6.5.0",

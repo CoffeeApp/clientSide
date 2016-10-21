@@ -1,4 +1,18 @@
 import React, { Component } from 'react'
+const feathers = require('feathers-client')
+const io = require('socket.io-client')
+
+const socket = io('http://192.168.1.8.3030')
+
+var app = feathers()
+  .configure(feathers.hooks())
+  .configure(feathers.socketio(socket))
+
+var orderService = app.service('dumb-orders')
+
+orderService.on('created', function(order) {
+  console.log('someone created an order', order)
+})
 
 class TestForm extends Component {
 
@@ -8,41 +22,29 @@ class TestForm extends Component {
       userName: '',
       userNumber: ''
     }
-    this.handleSubmit = this.handleSubmit.bind(this)
-    this.handleName = this.handleName.bind(this)
-    this.handleUsrNum = this.handleUsrNum.bind(this)
-    this.Caller = this.Caller.bind(this)
+    this.handleProp = this.handleProp.bind(this)
+    // this.handleSubmit = this.handleSubmit.bind(this)
+    // this.Caller = this.Caller.bind(this)
   }
 
-  handleProperty (prop) {
+  handleProp (prop) {
     return e => {
     //   var state = {}
     //   state[prop] = e.target.value
       this.setState({[prop]:e.target.value})
+      console.log('input logged: ', this.state)
     }
   }
 
-  // handleName (e) {
-  //   // grabs the name as written so far using onChange
-  //   this.setState({userName: e.target.value})
-  //   console.log('logged username', this.state.userName)
+  // handleSubmit (e) {
+  // let userName = this.state.userName
+  // let userNumber = this.state.userNumber
+  // e.preventDefault()
+  // this.props.Caller(userName, userNumber)
   // }
   //
-  // handleUsrNum (e) {
-  //   // grabs the phone number as written so far using onChange
-  //   this.setState({userNumber: e.target.value})
-  //   console.log('logged userNumber', this.state.userNumber)
+  // Caller (userName, userNumber) {
   // }
-
-  handleSubmit (e) {
-  let userName = this.state.userName
-  let userNumber = this.state.userNumber
-  e.preventDefault()
-  this.props.Caller(userName, userNumber)
-  }
-
-  Caller (userName, userNumber) {
-  }
 
   render () {
     return (
