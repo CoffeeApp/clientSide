@@ -67,9 +67,7 @@ var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
-var _caller = require('../lib/caller');
-
-var _caller2 = _interopRequireDefault(_caller);
+var _api = require('../lib/api');
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -80,6 +78,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+console.log(_api.orderService);
 
 var TestForm = function (_Component) {
   _inherits(TestForm, _Component);
@@ -94,7 +94,7 @@ var TestForm = function (_Component) {
       userNumber: ''
     };
     _this.handleProp = _this.handleProp.bind(_this);
-    // this.handleSubmit = this.handleSubmit.bind(this)
+    _this.handleSubmit = _this.handleSubmit.bind(_this);
     // this.Caller = this.Caller.bind(this)
     return _this;
   }
@@ -108,16 +108,19 @@ var TestForm = function (_Component) {
         //   var state = {}
         //   state[prop] = e.target.value
         _this2.setState(_defineProperty({}, prop, e.target.value));
-        console.log('input logged: ', _this2.state);
+        console.log('input logged:', _this2.state);
       };
     }
   }, {
     key: 'handleSubmit',
     value: function handleSubmit(e) {
-      var userName = this.state.userName;
-      var userNumber = this.state.userNumber;
+      var name = this.state.userName;
+      var phone = this.state.userNumber;
+      var comment = this.state.comment;
       e.preventDefault();
-      (0, _caller2.default)(userName, userNumber);
+      _api.orderService.create({ name: name, phone: phone, comment: comment }).then(function (result) {
+        console.log('result', result);
+      });
     }
   }, {
     key: 'render',
@@ -127,6 +130,7 @@ var TestForm = function (_Component) {
         { onSubmit: this.handleSubmit },
         _react2.default.createElement('input', { type: 'text', id: 'user-name', onChange: this.handleProp('userName'), placeholder: 'Name' }),
         _react2.default.createElement('input', { type: 'text', id: 'user-phone', onChange: this.handleProp('userNumber'), placeholder: 'Phone Number' }),
+        _react2.default.createElement('input', { type: 'text', id: 'user-phone', onChange: this.handleProp('comment'), placeholder: 'Notes' }),
         _react2.default.createElement(
           'button',
           { type: 'submit' },
@@ -141,7 +145,7 @@ var TestForm = function (_Component) {
 
 exports.default = TestForm;
 
-},{"../lib/caller":3,"react":249}],3:[function(require,module,exports){
+},{"../lib/api":3,"react":249}],3:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -149,7 +153,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 var feathers = require('feathers-client');
 var io = require('socket.io-client');
-var socket = io('http://192.168.1.8.3030');
+var socket = io('http://192.168.1.8:3030');
 
 var app = feathers().configure(feathers.hooks()).configure(feathers.socketio(socket));
 
