@@ -3,13 +3,14 @@ import { orderService } from '../lib/api'
 
 console.log(orderService)
 
-class TestForm extends Component {
+class UserForm extends Component {
 
   constructor (props) {
     super(props)
     this.state = {
       userName: '',
-      userNumber: ''
+      userNumber: '',
+      comment: ''
     }
     this.handleProp = this.handleProp.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
@@ -38,13 +39,13 @@ class TestForm extends Component {
   render () {
     return (
       <form onSubmit={this.handleSubmit}>
-        <input type="text" id="user-name" onChange={this.handleProp('userName')} placeholder="Name" />
-        <input type="text" id="user-phone" onChange={this.handleProp('userNumber')} placeholder="Phone Number" />
-        <input type="text" id="user-phone" onChange={this.handleProp('comment')} placeholder="Notes" />
-        <button type="submit" >Submit</button>
+        <input className="iteminput" type="text" onChange={this.handleProp('userName')} placeholder="Name" />
+        <input className="iteminput" type="text" onChange={this.handleProp('userNumber')} placeholder="Phone Number" />
+        <input className="iteminput" type="text" onChange={this.handleProp('comment')} placeholder="Notes" />
+        <button className="button next" type="submit" >Next</button>
       </form>
     )
   }
 }
 
-export default TestForm
+export default UserForm

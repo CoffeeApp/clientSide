@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import UserForm from './UserForm'
 
 class Cart extends Component {
 
@@ -84,13 +85,7 @@ class Cart extends Component {
           </div>
         </div>
         <div className="cartheader">
-          <div>
-            <form dataName="Email Form 4" id="email-form-4" name="email-form-4">
-              <input className="itemdescription" dataName="Name" id="Name" maxlength="256" name="Name" placeholder="Your name" required="required" type="email"/>
-              <input className="itemdescription" dataName="Phone" id="Phone" maxlength="256" name="Phone" placeholder="Phone number" required="required" type="email"/>
-            </form>
-          </div>
-          <div className="button next">Next</div>
+          <UserForm />
         </div>
       </div>
     )
