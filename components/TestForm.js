@@ -26,11 +26,11 @@ class TestForm extends Component {
   }
 
   handleSubmit (e) {
-  let userName = this.state.userName
-  let userNumber = this.state.userNumber
+  let name = this.state.userName
+  let phone = this.state.userNumber
   let comment = this.state.comment
   e.preventDefault()
-  orderService.create({ userName, userNumber, comment })
+  orderService.create({ name, phone, comment })
     .then(function(result){
       console.log('result', result)
     })
