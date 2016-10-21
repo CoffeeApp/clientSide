@@ -9,9 +9,13 @@ class Coffee extends React.Component {
 	render() {
 		const { store } = this.props
 		return (
-			<div className="item">
-				<Coffee />
-			</div>
+			<a className="item">
+				<img alt="coffee image" className="itemimage" />
+				<div className="itemdetails">
+					<div className="itemtitle">Coffee title</div>
+					<div className="itemdescription">Description</div>
+				</div>
+			</a>
 		)
 	}
 }

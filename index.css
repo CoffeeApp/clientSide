@@ -11,7 +11,7 @@ body {
   top: 0px;
   right: 0px;
   bottom: 0px;
-  display: block;
+  display: none;
   width: 300px;
   height: 100%;
   float: right;
@@ -52,6 +52,7 @@ body {
 }
 
 .item {
+  width: 100%;
   padding: 10px;
   border-bottom: 1px solid #eee;
 }
@@ -101,19 +102,6 @@ body {
   background-color: #3f0000;
 }
 
-.navmenubutton {
-  float: left;
-}
-
-.navlink {
-  padding: 20px;
-  font-family: 'Open Sans', sans-serif;
-  color: #fff;
-  font-size: 16px;
-  line-height: 20px;
-  font-weight: 300;
-}
-
 .searchbar {
   width: 100%;
   height: 20px;
@@ -132,10 +120,6 @@ body {
   font-weight: 300;
 }
 
-.navmenu {
-  float: right;
-}
-
 .navform {
   display: block;
   width: 50%;
@@ -150,7 +134,7 @@ body {
   right: 0px;
   bottom: 0px;
   height: auto;
-  margin-top: 115px;
+  margin-top: 90px;
 }
 
 .logo {
@@ -173,7 +157,7 @@ body {
 }
 
 .selectcoffee {
-  display: none;
+  display: block;
 }
 
 .itemdescription {
@@ -212,6 +196,7 @@ body {
 }
 
 .quantity {
+  display: none;
   width: 25px;
   height: 25px;
   margin: 10px;
@@ -274,15 +259,6 @@ body {
 }
 
 @media (max-width: 991px) {
-  .navmenubutton.w--open {
-    background-color: #3f0000;
-  }
-  .navicon {
-    color: #fff;
-  }
-  .navmenu {
-    background-color: #3f0000;
-  }
   .navform {
     width: 80%;
   }
