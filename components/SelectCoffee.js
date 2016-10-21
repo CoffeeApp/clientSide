@@ -13,6 +13,7 @@ class SelectCoffee extends React.Component {
 			<div className="selectcoffee">
 				<div className="itemscontainer">
 					<Coffee />
+					<Coffee />
 				</div>
 			</div>
 		)

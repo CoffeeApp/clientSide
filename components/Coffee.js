@@ -9,11 +9,17 @@ class Coffee extends React.Component {
 	render() {
 		const { store } = this.props
 		return (
-			<a className="item">
-				<img alt="coffee image" className="itemimage" />
-				<div className="itemdetails">
-					<div className="itemtitle">Coffee title</div>
-					<div className="itemdescription">Description</div>
+			<a className="itemcontainer">
+				<div className="item">
+					<img
+						alt="coffee image"
+						className="itemimage"
+						src="/images/espresso.png"
+					/>
+					<div className="itemdetails">
+						<div className="itemtitle">Coffee title</div>
+						<div className="itemdescription">Description</div>
+					</div>
 				</div>
 			</a>
 		)

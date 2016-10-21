@@ -52,6 +52,7 @@ body {
 }
 
 .item {
+  overflow: auto;
   width: 100%;
   padding: 10px;
   border-bottom: 1px solid #eee;
@@ -103,6 +104,7 @@ body {
 }
 
 .searchbar {
+  display: block;
   width: 100%;
   height: 20px;
   margin-top: 10px;
@@ -120,13 +122,6 @@ body {
   font-weight: 300;
 }
 
-.navform {
-  display: block;
-  width: 50%;
-  margin-right: auto;
-  margin-left: auto;
-}
-
 .dashboard {
   position: absolute;
   left: 0px;
@@ -134,7 +129,7 @@ body {
   right: 0px;
   bottom: 0px;
   height: auto;
-  margin-top: 90px;
+  margin-top: 110px;
 }
 
 .logo {
@@ -259,10 +254,20 @@ body {
   text-transform: uppercase;
 }
 
+.searchbarcontainer {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  padding-right: 150px;
+  padding-left: 150px;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+}
+
 @media (max-width: 991px) {
-  .navform {
-    width: 80%;
-  }
   .dashboard {
     margin-top: 110px;
   }
@@ -282,7 +287,15 @@ body {
     font-size: 18px;
   }
   .searchbar {
+    width: auto;
+    min-width: 300px;
+    margin-right: auto;
+    margin-bottom: 10px;
+    margin-left: auto;
     font-size: 12px;
+  }
+  .dashboard {
+    margin-top: 100px;
   }
   .itemdescription {
     color: #aaa;
@@ -290,12 +303,13 @@ body {
     line-height: 13px;
     font-weight: 300;
   }
+  .searchbarcontainer {
+    padding-right: 0px;
+    padding-left: 0px;
+  }
 }
 
 @media (max-width: 479px) {
-  .navform {
-    width: 90%;
-  }
   .itemdetails {
     max-width: 170px;
   }

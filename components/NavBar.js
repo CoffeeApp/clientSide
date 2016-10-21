@@ -7,7 +7,7 @@ const NavBar = () => {
 				<span className="logo">Coffee App</span>
 			</div>
 			<div className="row">
-				<form className="navform">
+				<form className="searchbarcontainer">
 					<input
 						className="searchbar"
 						placeholder="What coffee would you like to order?"
