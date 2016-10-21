@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import TestForm from './TestForm'
 
 class App extends Component {
 
@@ -7,9 +8,13 @@ class App extends Component {
   }
 
   render () {
-    return <h1>Welcome to {this.props.name}</h1>
+    return (
+      <div id="wrapper">
+        <h1>Welcome to {this.props.name}</h1>
+        <TestForm />
+      </div>
+    )
   }
-
 }
 
 export default App
