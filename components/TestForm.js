@@ -11,20 +11,28 @@ class TestForm extends Component {
     this.handleSubmit = this.handleSubmit.bind(this)
     this.handleName = this.handleName.bind(this)
     this.handleUsrNum = this.handleUsrNum.bind(this)
-    this.Caller = this.Calller.bind(this)
+    this.Caller = this.Caller.bind(this)
   }
 
-  handleName (e) {
-    // grabs the name as written so far using onChange
-    this.setState({userName: e.target.value})
-    console.log('logged username', this.state.userName)
+  handleProperty (prop) {
+    return e => {
+    //   var state = {}
+    //   state[prop] = e.target.value
+      this.setState({[prop]:e.target.value})
+    }
   }
 
-  handleUsrNum (e) {
-    // grabs the phone number as written so far using onChange
-    this.setState({userNumber: e.target.value})
-    console.log('logged userNumber', this.state.userNumber)
-  }
+  // handleName (e) {
+  //   // grabs the name as written so far using onChange
+  //   this.setState({userName: e.target.value})
+  //   console.log('logged username', this.state.userName)
+  // }
+  //
+  // handleUsrNum (e) {
+  //   // grabs the phone number as written so far using onChange
+  //   this.setState({userNumber: e.target.value})
+  //   console.log('logged userNumber', this.state.userNumber)
+  // }
 
   handleSubmit (e) {
   let userName = this.state.userName
@@ -39,8 +47,8 @@ class TestForm extends Component {
   render () {
     return (
       <form onSubmit={this.handleSubmit}>
-        <input type="text" id="user-name" onChange={this.handleName} placeholder="Name" />
-        <input type="text" id="user-phone" onChange={this.handleUsrNum} placeholder="Phone Number" />
+        <input type="text" id="user-name" onChange={this.handleProp('userName')} placeholder="Name" />
+        <input type="text" id="user-phone" onChange={this.handleProp('userNumber')} placeholder="Phone Number" />
         <button type="submit" >Submit</button>
       </form>
     )

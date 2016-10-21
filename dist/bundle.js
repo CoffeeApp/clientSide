@@ -85,34 +85,48 @@ var TestForm = function (_Component) {
 
     _this.state = {
       userName: '',
-      phoneNumber: ''
+      userNumber: ''
     };
-    // this.handleSubmit = this.handleSubmit.bind(this)
+    _this.handleSubmit = _this.handleSubmit.bind(_this);
     _this.handleName = _this.handleName.bind(_this);
-    _this.handlePhNum = _this.handlePhNum.bind(_this);
+    _this.handleUsrNum = _this.handleUsrNum.bind(_this);
+    _this.Caller = _this.Calller.bind(_this);
     return _this;
   }
 
   _createClass(TestForm, [{
     key: 'handleName',
     value: function handleName(e) {
+      // grabs the name as written so far using onChange
       this.setState({ userName: e.target.value });
       console.log('logged username', this.state.userName);
     }
   }, {
-    key: 'handlePhNum',
-    value: function handlePhNum(e) {
-      this.setState({ phoneNumber: e.target.value });
-      console.log('logged phoneNumber', this.state.phoneNumber);
+    key: 'handleUsrNum',
+    value: function handleUsrNum(e) {
+      // grabs the phone number as written so far using onChange
+      this.setState({ userNumber: e.target.value });
+      console.log('logged userNumber', this.state.userNumber);
     }
+  }, {
+    key: 'handleSubmit',
+    value: function handleSubmit(e) {
+      var userName = this.state.userName;
+      var userNumber = this.state.userNumber;
+      e.preventDefault();
+      this.props.Caller(userName, userNumber);
+    }
+  }, {
+    key: 'Caller',
+    value: function Caller(userName, userNumber) {}
   }, {
     key: 'render',
     value: function render() {
       return _react2.default.createElement(
         'form',
-        null,
+        { onSubmit: this.handleSubmit },
         _react2.default.createElement('input', { type: 'text', id: 'user-name', onChange: this.handleName, placeholder: 'Name' }),
-        _react2.default.createElement('input', { type: 'text', id: 'user-phone', onChange: this.handlePhNum, placeholder: 'Phone Number' }),
+        _react2.default.createElement('input', { type: 'text', id: 'user-phone', onChange: this.handleUsrNum, placeholder: 'Phone Number' }),
         _react2.default.createElement(
           'button',
           { type: 'submit' },
