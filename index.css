@@ -11,7 +11,7 @@ body {
   top: 0px;
   right: 0px;
   bottom: 0px;
-  display: none;
+  display: block;
   width: 300px;
   height: 100%;
   float: right;
@@ -188,6 +188,7 @@ body {
   height: 40px;
   margin-top: 5px;
   margin-bottom: 5px;
+  padding: 8px 12px;
   float: left;
   border: 1px solid #ddd;
   border-radius: 3px;
