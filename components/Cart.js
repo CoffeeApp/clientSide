@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import CartItem from './CartItem'
 import UserForm from './UserForm'
-import { getCoffeeImage } from '../actioncreators'
 
 class Cart extends Component {
 
@@ -14,8 +13,6 @@ class Cart extends Component {
 		return (
 			<div className="cart">
 				{coffees.map((coffee, index) => {
-					const coffeeImage = this.props.store.dispatch(getCoffeeImage(coffee.type))
-					console.log(coffeeImage)
 					return (
 						<CartItem
 							key={index}
@@ -23,7 +20,6 @@ class Cart extends Component {
 							coffeeQty={coffee.qty}
 							coffeeMilk={coffee.milk}
 							coffeeSugar={coffee.sugar}
-							coffeeImage={coffeeImage}
 						/>
 					)
 				})}

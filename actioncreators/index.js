@@ -1,17 +1,18 @@
 import api from '../lib/api'
 
-function getCoffeeImage(coffeeType) {
+function getCoffeeObject(coffeeId) {
 	return (dispatch) => {
 		api.service('coffees')
 			.find({
-				query: { type: coffeeType }
+				query: { id: coffeeId }
 			})
 			.then((actions) => {
-				dispatch({ type: 'GET_COFFEE_IMAGE', payload: actions.data[0].image })
+				console.log(`AddCoffeeToOrder() | Coffee found: ${actions.data[0]}`)
+				dispatch(addCoffeeToOrder(actions.data[0]))
 			})
 	}
 }
 
 export default {
-	getCoffeeImage
+	getCoffeeObject
 }

@@ -8,13 +8,14 @@ class SelectCoffee extends React.Component {
 	}
 
 	render() {
-		const { coffees } = this.props
+		const { coffees, store } = this.props
 		return (
 			<div className="selectcoffee">
 				{coffees.map((coffee) => {
 					return (
 						<Coffee
 							key={coffee.id}
+							store={store}
 							coffeeType={coffee.type}
 							coffeeImage={coffee.image}
 							coffeeDescription={coffee.description}
