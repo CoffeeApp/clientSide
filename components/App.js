@@ -16,7 +16,7 @@ class App extends React.Component {
 				<NavBar />
 				<div className="dashboard">
 					{/* <SelectCoffee /> */}
-					{/* <Cart /> */}
+					<Cart />
 					{/* <SelectCafe /> */}
 				</div>
 			</div>

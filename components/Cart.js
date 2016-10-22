@@ -20,7 +20,9 @@ class Cart extends Component {
                 <a className="itemlink">
                   <div className="itemtitle">Americano</div>
                 </a>
+                {/*############ COFFEE COUNTER COMPONENT #########*/}
                   <CoffeeCounter coffeeName="Americano" />
+                {/*###############################################*/}
               </div>
             </div>
             <div className="itemform">
