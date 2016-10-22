@@ -47,11 +47,7 @@ var App = function (_React$Component) {
 				'div',
 				{ id: 'wrapper' },
 				_react2.default.createElement(_NavBar2.default, null),
-				_react2.default.createElement(
-					'div',
-					{ className: 'dashboard' },
-					_react2.default.createElement(_Cart2.default, null)
-				)
+				_react2.default.createElement('div', { className: 'dashboard' })
 			);
 		}
 	}]);
