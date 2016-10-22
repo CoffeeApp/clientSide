@@ -7,7 +7,7 @@ class Coffee extends React.Component {
 	}
 
 	render() {
-		const { store } = this.props
+		// const { store } = this.props
 		return (
 			<div className="item">
 				<a className="itemcontainer">

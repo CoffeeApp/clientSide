@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import Cart from './Cart'
 import NavBar from './NavBar'
 import SelectCoffee from './SelectCoffee'
 import Cart from './Cart'
@@ -16,8 +15,8 @@ class App extends React.Component {
 			<div id="wrapper">
 				<NavBar />
 				<div className="dashboard">
-					<SelectCoffee />
-					<Cart />
+					{/* <SelectCoffee /> */}
+					{/* <Cart /> */}
 					{/* <SelectCafe /> */}
 				</div>
 			</div>

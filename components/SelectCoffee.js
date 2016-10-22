@@ -8,7 +8,7 @@ class SelectCoffee extends React.Component {
 	}
 
 	render() {
-		const { store } = this.props
+		// const { store } = this.props
 		return (
 			<div className="selectcoffee">
 				<div className="itemscontainer">
