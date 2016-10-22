@@ -11,14 +11,16 @@ class Cart extends Component {
 	render() {
 		const { store } = this.props
 		const { coffees } = this.props.store.getState().order
+		console.log(this.props.store.getState().order)
 		return (
 			<div className="cart">
 				{coffees.map((coffee, index) => {
 					return (
 						<CartItem
 							key={index}
+							coffeeId={coffee.id}
 							coffeeType={coffee.type}
-							coffeeQty={coffee.qty}
+							coffeeQuantity={coffee.quantity}
 							coffeeMilk={coffee.milk}
 							coffeeSugar={coffee.sugar}
 						/>

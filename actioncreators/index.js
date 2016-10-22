@@ -2,12 +2,10 @@ import api from '../lib/api'
 
 export default function createOrder(order) {
 	return (dispatch) => {
-		console.log('Order')
-		console.log(order)
 		api.service('orders')
 			.create(order)
 			.then(function (result) {
-				dispatch({ type: 'RECEIVE_ORDER', payload: result })
+				dispatch({ type: 'RECEIVE_ORDER', payload: order })
 			})
 	}
 }

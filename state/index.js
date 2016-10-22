@@ -1,27 +1,21 @@
 export default {
 	order: {
-		order_id: 1,
-		shop_id: 'Fidels Cafe',
 		coffees: [
 			{
+				coffee_id: 1,
 				type: 'Flat White',
-				qty: 1,
+				quantity: 1,
 				milk: 'trim',
 				sugar: 1
 			},
 			{
+				coffee_id: 2,
 				type: 'Americano',
-				qty: 2,
+				quantity: 2,
 				milk: 'soy',
 				sugar: 0
 			}
-		],
-		details: {
-			price: 6.00,
-			name: 'Jeremy',
-			phone: '021 225 555',
-			ordered: 'Fri Oct 21 2016 10:39:50 GMT+1300 (NZDT)'
-		}
+		]
 	},
 	coffees: [
 		{

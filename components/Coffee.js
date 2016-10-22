@@ -7,11 +7,12 @@ class Coffee extends React.Component {
 		this.handleTouched = this.handleTouched.bind(this)
 	}
 
-	handleTouched(coffeeId) {
+	handleTouched(coffeeId, coffeeType) {
 		console.log('Touched');
 		this.props.store.dispatch({ type: 'ADD_COFFEE_TO_ORDER', payload: {
 			coffee_id: coffeeId,
-			qty: 1,
+			type: coffeeType,
+			quantity: 1,
 			milk: '',
 			sugar: 0
 		} })
@@ -22,7 +23,7 @@ class Coffee extends React.Component {
 		return (
 			<div
 				className="item"
-				onClick={() => this.handleTouched(coffeeId)}
+				onClick={() => this.handleTouched(coffeeId, coffeeType)}
 			>
 				<img
 					alt="coffee image"

@@ -8,7 +8,7 @@ class CartItem extends React.Component {
 	}
 
 	render() {
-		const { coffeeType, coffeeQty, coffeeMilk, coffeeSugar } = this.props
+		const { coffeeType, coffeeQuantity, coffeeMilk, coffeeSugar } = this.props
 		return (
 			<div className="item">
 				<div className="itemoverview">
@@ -22,7 +22,7 @@ class CartItem extends React.Component {
 						<a className="itemlink">
 							<div className="itemtitle">{coffeeType}</div>
 						</a>
-						<CoffeeCounter coffeeName={coffeeType} coffeeQty={coffeeQty} />
+						<CoffeeCounter coffeeName={coffeeType} coffeeQuantity={coffeeQuantity} />
 					</div>
 				</div>
 				<form className="itemform">
