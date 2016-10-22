@@ -148,7 +148,7 @@
          "indent": ["error", "tab"], // this option sets a specific tab width for your code (off by default)
          "array-bracket-spacing": 1, // disallow spacing inside of array bracket
          "brace-style": 1, // enforce one true brace style (off by default)
-         "camelcase": 1, // require camel case names
+         "camelcase": 0, // require camel case names
          "comma-spacing": [1, {
              "before": false,
              "after": true

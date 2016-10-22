@@ -7,20 +7,18 @@ class Coffee extends React.Component {
 	}
 
 	render() {
-		// const { store } = this.props
+		const { coffeeKey, coffeeType, coffeeImage, coffeeDescription } = this.props
 		return (
 			<div className="item">
-				<a className="itemcontainer">
-					<img
-						alt="coffee image"
-						className="itemimage"
-						src="/images/espresso.png"
-					/>
-					<div className="itemdetails">
-						<div className="itemtitle">Coffee title</div>
-						<div className="itemdescription">Description</div>
-					</div>
-				</a>
+				<img
+					alt="coffee image"
+					className="itemimage"
+					src={coffeeImage}
+				/>
+				<div className="itemdetails">
+					<div className="itemtitle">{coffeeType}</div>
+					<div className="itemdescription">{coffeeDescription}</div>
+				</div>
 			</div>
 		)
 	}
