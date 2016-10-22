@@ -95,7 +95,6 @@ var TestForm = function (_Component) {
     };
     _this.handleProp = _this.handleProp.bind(_this);
     _this.handleSubmit = _this.handleSubmit.bind(_this);
-    // this.Caller = this.Caller.bind(this)
     return _this;
   }
 
