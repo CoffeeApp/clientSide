@@ -61,6 +61,7 @@ body {
   width: 100%;
   padding: 10px;
   border-bottom: 1px solid #eee;
+  cursor: pointer;
 }
 
 .itemimage {
@@ -288,7 +289,7 @@ body {
 
 @media (max-width: 767px) {
   .cart {
-    width: 100%;
+    width: 50%;
   }
   .cartheader {
     width: 100%;

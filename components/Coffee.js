@@ -8,22 +8,21 @@ class Coffee extends React.Component {
 	}
 
 	handleTouched(coffeeType) {
-		return (e) => {
-			this.props.store.dispatch({ type: 'ADD_COFFEE_TO_ORDER', payload: {
-				type: coffeeType,
-				qty: 1,
-				milk: '',
-				sugar: 0
-			} })
-		}
+		console.log('Touched');
+		this.props.store.dispatch({ type: 'ADD_COFFEE_TO_ORDER', payload: {
+			type: coffeeType,
+			qty: 1,
+			milk: '',
+			sugar: 0
+		} })
 	}
 
 	render() {
-		const { key, store, coffeeType, coffeeImage, coffeeDescription } = this.props
+		const { store, coffeeType, coffeeImage, coffeeDescription } = this.props
 		return (
 			<div
 				className="item"
-				onClick={() => this.handleTouched({coffeeType})}
+				onClick={() => this.handleTouched(coffeeType)}
 			>
 				<img
 					alt="coffee image"

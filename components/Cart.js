@@ -9,7 +9,7 @@ class Cart extends Component {
 	}
 
 	render() {
-		const { coffees } = this.props.store.getState().orders[0]
+		const { coffees } = this.props.store.getState().order
 		return (
 			<div className="cart">
 				{coffees.map((coffee, index) => {

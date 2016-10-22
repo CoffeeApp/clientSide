@@ -11,10 +11,10 @@ class SelectCoffee extends React.Component {
 		const { coffees, store } = this.props
 		return (
 			<div className="selectcoffee">
-				{coffees.map((coffee) => {
+				{coffees.map((coffee, index) => {
 					return (
 						<Coffee
-							key={coffee.id}
+							key={index}
 							store={store}
 							coffeeType={coffee.type}
 							coffeeImage={coffee.image}

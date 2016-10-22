@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import NavBar from './NavBar'
-// import SelectCoffee from './SelectCoffee'
+import SelectCoffee from './SelectCoffee'
 import Cart from './Cart'
 // import SelectCafe from './SelectCafe'
 
@@ -16,7 +16,7 @@ class App extends React.Component {
 			<div id="wrapper">
 				<NavBar />
 				<div className="dashboard">
-					{/* <SelectCoffee store={store} coffees={store.getState().coffees} /> */}
+					<SelectCoffee store={store} coffees={store.getState().coffees} />
 					<Cart store={store} />
 					{/* <SelectCafe /> */}
 				</div>
