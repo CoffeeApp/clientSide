@@ -2,7 +2,8 @@ import React, { Component } from 'react'
 import Cart from './Cart'
 import NavBar from './NavBar'
 import SelectCoffee from './SelectCoffee'
-// import SelectCafe from './SelectCafe'
+import Cart from './Cart'
+import SelectCafe from './SelectCafe'
 
 class App extends React.Component {
 
