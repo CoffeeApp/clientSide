@@ -1,51 +1,71 @@
 import React, { Component } from 'react'
-import { orderService } from '../lib/api'
-
-console.log(orderService)
+import { api } from '../lib/api'
+import createOrder from '../actioncreators'
 
 class UserForm extends Component {
 
-  constructor (props) {
-    super(props)
-    this.state = {
-      userName: '',
-      userNumber: '',
-      comment: ''
-    }
-    this.handleProp = this.handleProp.bind(this)
-    this.handleSubmit = this.handleSubmit.bind(this)
-  }
+	constructor(props) {
+		super(props)
+		this.state = {
+			userName: '',
+			userNumber: '',
+			comment: ''
+		}
+		this.handleProp = this.handleProp.bind(this)
+		this.handleSubmit = this.handleSubmit.bind(this)
+	}
 
-  handleProp (prop) {
-    return e => {
-    //   var state = {}
-    //   state[prop] = e.target.value
-      this.setState({[prop]:e.target.value})
-      console.log('input logged:', this.state)
-    }
-  }
+	handleProp(prop) {
+		return e => {
+			this.setState({[prop]:e.target.value})
+		}
+	}
 
-  handleSubmit (e) {
-  let name = this.state.userName
-  let phone = this.state.userNumber
-  let comment = this.state.comment
-  e.preventDefault()
-  orderService.create({ name, phone, comment })
-    .then(function(result){
-      console.log('result', result)
-    })
-  }
+	handleSubmit(e) {
+		let name = this.state.userName
+		let phone = this.state.userNumber
+		let comment = this.state.comment
+		e.preventDefault()
+		this.props.store.dispatch(createOrder({
+			details: {
+				name,
+				phone,
+				status: 'new',
+				comment
+			},
+			coffees: this.props.coffees
+		}))
+	}
 
-  render () {
-    return (
-      <form onSubmit={this.handleSubmit}>
-        <input className="iteminput" type="text" onChange={this.handleProp('userName')} placeholder="Your name"/>
-        <input className="iteminput" type="text" onChange={this.handleProp('userNumber')} placeholder="Your phone number"/>
-        <input className="iteminput" type="text" onChange={this.handleProp('comment')} placeholder="Notes"/>
-        <button className="button next" type="submit" >Next</button>
-      </form>
-    )
-  }
+	render () {
+		return (
+			<form onSubmit={this.handleSubmit}>
+				<input
+					className="iteminput"
+					type="text"
+					onChange={this.handleProp('userName')}
+					placeholder="Your name"
+				/>
+				<input
+					className="iteminput"
+					type="text"
+					onChange={this.handleProp('userNumber')}
+					placeholder="Your phone number"
+				/>
+				<input
+					className="iteminput"
+					type="text"
+					onChange={this.handleProp('comment')}
+					placeholder="Notes"
+				/>
+				<button
+					className="button next"
+					type="submit">
+					Next
+				</button>
+			</form>
+		)
+	}
 }
 
 export default UserForm

@@ -15,8 +15,7 @@ const Main = () => {
 		<App name='Coffee App' store={store} />, document.querySelector('main')
 	)
 }
-Main()
-// store.subscribe(Main)
-// store.dispatch({ type: 'GET_COFFEES', payload: 10 })
+store.subscribe(Main)
+store.dispatch({ type: 'GET_COFFEES', payload: 10 })
 
 console.log('welcome to clientSide')
