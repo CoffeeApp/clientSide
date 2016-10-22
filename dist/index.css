@@ -6,8 +6,8 @@ body {
   line-height: 20px;
 }
 
-/* Tnt buttons in CoffeeCounter display properly. probably needs stronger specificity... ids */
-#counterButtonsPlus, #counterButtonsMinus {
+/* This class makes the increment/decrement buttons in CoffeeCounter display properly. probably needs stronger specificity... ids */
+.row > .itemlink > .counterButtons {
   display: inline-block;
 }
 
@@ -16,7 +16,7 @@ body {
   top: 0px;
   right: 0px;
   bottom: 0px;
-  display: none;
+  display: block;
   width: 300px;
   height: 100%;
   float: right;
@@ -177,13 +177,11 @@ body {
 }
 
 .itemdetails {
-  position: absolute;
-  margin-right: 10px;
-  margin-left: 70px;
+  float: left;
 }
 
 .selectcafe {
-  display: none;
+  display: block;
 }
 
 .iteminput {
@@ -245,7 +243,7 @@ body {
   right: 0px;
   bottom: 0px;
   z-index: 2000;
-  display: none;
+  display: block;
   background-color: rgba(0, 0, 0, .5);
 }
 
@@ -313,5 +311,11 @@ body {
   .searchbarcontainer {
     padding-right: 0px;
     padding-left: 0px;
+  }
+}
+
+@media (max-width: 479px) {
+  .itemdetails {
+    max-width: 170px;
   }
 }

@@ -42,6 +42,8 @@ don't forget to append
 
 to the deployment script in package.json before production!
 
+And figure out how to deploy images!
+
 
 ## example client order JSON output for server processing
 
