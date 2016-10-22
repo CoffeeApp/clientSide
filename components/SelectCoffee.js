@@ -1,5 +1,5 @@
 import React from 'react'
-import Coffee from './coffee'
+import Coffee from './Coffee'
 
 class SelectCoffee extends React.Component {
 
@@ -11,16 +11,16 @@ class SelectCoffee extends React.Component {
 		const { coffees } = this.props
 		return (
 			<div className="selectcoffee">
-				<div className="itemscontainer">
-					{coffees.map((coffee, index) => {
+				{coffees.map((mycoffee) => {
+					return (
 						<Coffee
-							key={index}
-							coffeeType={coffee.type}
-							coffeeImage={coffee.image}
-							coffeeDescription={coffee.description}
+							key={mycoffee.id}
+							coffeeType={mycoffee.type}
+							coffeeImage={mycoffee.image}
+							coffeeDescription={mycoffee.description}
 						/>
-					})}
-				</div>
+					)
+				})}
 			</div>
 		)
 	}
