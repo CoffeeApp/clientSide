@@ -1,6 +1,22 @@
 import React from 'react'
 import { render } from 'react-dom'
+import { createStore, applyMiddleware } from 'redux'
+import thunk from 'redux-thunk'
+
+import reducer from './reducers'
+import initialState from './state'
+
 import App from './components/App'
 
-render(<App name='test form' />, document.querySelector('main'))
+const store = createStore(reducer, initialState, applyMiddleware(thunk))
+
+const Main = () => {
+	render(
+		<App name='Coffee App' store={store} />, document.querySelector('main')
+	)
+}
+Main()
+// store.subscribe(Main)
+// store.dispatch({ type: 'GET_COFFEES', payload: 10 })
+
 console.log('welcome to clientSide')
