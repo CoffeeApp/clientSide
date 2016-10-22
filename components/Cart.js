@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
-import UserForm from './UserForm'
 import CartItem from './CartItem'
+import UserForm from './UserForm'
+import { getCoffeeImage } from '../actioncreators'
 
 class Cart extends Component {
 
@@ -9,10 +10,12 @@ class Cart extends Component {
 	}
 
 	render() {
-		const coffees = this.props.orders.coffees
+		const { coffees } = this.props.store.getState().orders[0]
 		return (
 			<div className="cart">
 				{coffees.map((coffee, index) => {
+					const coffeeImage = this.props.store.dispatch(getCoffeeImage(coffee.type))
+					console.log(coffeeImage)
 					return (
 						<CartItem
 							key={index}
@@ -20,6 +23,7 @@ class Cart extends Component {
 							coffeeQty={coffee.qty}
 							coffeeMilk={coffee.milk}
 							coffeeSugar={coffee.sugar}
+							coffeeImage={coffeeImage}
 						/>
 					)
 				})}
