@@ -9,8 +9,8 @@ class Coffee extends React.Component {
 	render() {
 		const { store } = this.props
 		return (
-			<a className="itemcontainer">
-				<div className="item">
+			<div className="item">
+				<a className="itemcontainer">
 					<img
 						alt="coffee image"
 						className="itemimage"
@@ -20,8 +20,8 @@ class Coffee extends React.Component {
 						<div className="itemtitle">Coffee title</div>
 						<div className="itemdescription">Description</div>
 					</div>
-				</div>
-			</a>
+				</a>
+			</div>
 		)
 	}
 }
