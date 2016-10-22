@@ -16,6 +16,7 @@ class SelectCoffee extends React.Component {
 						<Coffee
 							key={index}
 							store={store}
+							coffeeId={coffee.id}
 							coffeeType={coffee.type}
 							coffeeImage={coffee.image}
 							coffeeDescription={coffee.description}

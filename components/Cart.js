@@ -9,6 +9,7 @@ class Cart extends Component {
 	}
 
 	render() {
+		const { store } = this.props
 		const { coffees } = this.props.store.getState().order
 		return (
 			<div className="cart">
@@ -24,7 +25,7 @@ class Cart extends Component {
 					)
 				})}
 				<div className="cartheader">
-					{/* <UserForm /> */}
+					<UserForm coffees={coffees} store={store} />
 				</div>
 			</div>
 		)

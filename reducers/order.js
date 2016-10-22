@@ -6,6 +6,8 @@ const coffees = (state = initialState.order, action) => {
 		console.log([...state.coffees, action.payload])
 		state.coffees = [...state.coffees, action.payload]
 		return state
+	case 'RECEIVE_ORDER':
+		return action.payload
 	default:
 		return state
 	}

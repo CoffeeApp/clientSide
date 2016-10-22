@@ -1,18 +1,26 @@
 import api from '../lib/api'
 
-function getCoffeeObject(coffeeId) {
+export default function createOrder(order) {
 	return (dispatch) => {
-		api.service('coffees')
-			.find({
-				query: { id: coffeeId }
-			})
-			.then((actions) => {
-				console.log(`AddCoffeeToOrder() | Coffee found: ${actions.data[0]}`)
-				dispatch(addCoffeeToOrder(actions.data[0]))
+		console.log('Order')
+		console.log(order)
+		api.service('orders')
+			.create(order)
+			.then(function (result) {
+				dispatch({ type: 'RECEIVE_ORDER', payload: result })
 			})
 	}
 }
 
-export default {
-	getCoffeeObject
-}
+// function getCoffeeObject() {
+// 	return (dispatch) => {
+// 		api.service('coffees')
+// 			.find({
+// 				query: { id: coffeeId }
+// 			})
+// 			.then((actions) => {
+// 				console.log(`AddCoffeeToOrder() | Coffee found: ${actions.data[0]}`)
+// 				dispatch(addCoffeeToOrder(actions.data[0]))
+// 			})
+// 	}
+// }
