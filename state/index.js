@@ -1,8 +1,8 @@
 export default {
-	order: [
+	orders: [
 		{
 			order_id: 1,
-			shop_id: 234,
+			shop_id: 'Fidels Cafe',
 			coffees: [
 				{
 					type: 'Flat White',

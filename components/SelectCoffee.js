@@ -11,13 +11,13 @@ class SelectCoffee extends React.Component {
 		const { coffees } = this.props
 		return (
 			<div className="selectcoffee">
-				{coffees.map((mycoffee) => {
+				{coffees.map((coffee) => {
 					return (
 						<Coffee
-							key={mycoffee.id}
-							coffeeType={mycoffee.type}
-							coffeeImage={mycoffee.image}
-							coffeeDescription={mycoffee.description}
+							key={coffee.id}
+							coffeeType={coffee.type}
+							coffeeImage={coffee.image}
+							coffeeDescription={coffee.description}
 						/>
 					)
 				})}
