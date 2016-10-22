@@ -6,6 +6,11 @@ body {
   line-height: 20px;
 }
 
+/* This class makes the increment/decrement buttons in CoffeeCounter display properly. probably needs stronger specificity... ids */
+.row > .itemlink > .counterButtons {
+  display: inline-block;
+}
+
 .cart {
   position: absolute;
   top: 0px;

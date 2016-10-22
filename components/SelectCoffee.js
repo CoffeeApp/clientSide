@@ -1,5 +1,5 @@
 import React from 'react'
-import Coffee from './coffee'
+import Coffee from './Coffee'
 
 class SelectCoffee extends React.Component {
 

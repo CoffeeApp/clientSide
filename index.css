@@ -6,6 +6,11 @@ body {
   line-height: 20px;
 }
 
+/* Tnt buttons in CoffeeCounter display properly. probably needs stronger specificity... ids */
+#counterButtonsPlus, #counterButtonsMinus {
+  display: inline-block;
+}
+
 .cart {
   position: absolute;
   top: 0px;
