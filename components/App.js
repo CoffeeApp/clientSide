@@ -1,20 +1,27 @@
 import React, { Component } from 'react'
 import Cart from './Cart'
+import NavBar from './NavBar'
+import SelectCoffee from './SelectCoffee'
+// import SelectCafe from './SelectCafe'
 
-class App extends Component {
+class App extends React.Component {
 
-  constructor (props) {
-    super(props)
-  }
+	constructor(props) {
+		super(props)
+	}
 
-  render () {
-    return (
-      <div id="wrapper">
-        <h1>Welcome to {this.props.name}</h1>
-        <Cart />
-      </div>
-    )
-  }
+	render() {
+		return (
+			<div id="wrapper">
+				<NavBar />
+				<div className="dashboard">
+					<SelectCoffee />
+					<Cart />
+					{/* <SelectCafe /> */}
+				</div>
+			</div>
+		)
+	}
 }
 
 export default App
