@@ -35,13 +35,13 @@ class CartItemCounter extends Component {
 					className="quantity"
 					id="counterButtonsPlus"
 					onClick={this.handleProp('increment')}
-					src="http://iconshow.me/media/images/ui/ios7-icons/png/512/plus-outline.png"
+					src="https://iconshow.me/media/images/ui/ios7-icons/png/512/plus-outline.png"
 				/>
 				<img
 					className="quantity"
 					id="counterButtonsMinus"
 					onClick={this.handleProp('decrement')}
-					src="http://iconshow.me/media/images/ui/ios7-icons/png/512/minus-outline.png"
+					src="https://iconshow.me/media/images/ui/ios7-icons/png/512/minus-outline.png"
 				/>
 			</div>
 		)
