@@ -3,5 +3,6 @@ export default {
 		orderCoffees: []
 	},
 	coffees: [],
+	shops: [],
 	searchWord: ''
 }
