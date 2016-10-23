@@ -1,6 +1,6 @@
 export default {
 	order: {
-		coffees: [
+		orderCoffees: [
 			{
 				coffeeorder_id: 0,
 				coffee_id: 3,

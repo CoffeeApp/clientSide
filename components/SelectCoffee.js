@@ -8,10 +8,10 @@ class SelectCoffee extends React.Component {
 	}
 
 	render() {
-		const { coffeeTypes } = this.props
+		const { coffees } = this.props
 		return (
 			<div className="selectcoffee">
-				{coffeeTypes.map((coffee, index) => {
+				{coffees.map((coffee, index) => {
 					return (
 						<Coffee
 							key={index}

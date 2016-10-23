@@ -22,14 +22,6 @@ const mapDispatchToProps = (dispatch) => {
 	}
 }
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    createOrder: (order) => {
-      dispatch(createOrder(order))
-    }
-  }
-}
-
 class App extends React.Component {
 
 	constructor(props) {
