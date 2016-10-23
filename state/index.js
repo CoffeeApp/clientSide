@@ -2,7 +2,7 @@ export default {
 	order: {
 		orderCoffees: [
 			{
-				coffeeorder_id: 0,
+				orderCoffees_id: 0,
 				coffee_id: 3,
 				type: 'Flat White',
 				quantity: 1,
@@ -10,7 +10,7 @@ export default {
 				sugar: 1
 			},
 			{
-				coffeeorder_id: 1,
+				orderCoffees_id: 1,
 				coffee_id: 7,
 				type: 'Americano',
 				quantity: 2,
@@ -18,7 +18,7 @@ export default {
 				sugar: 0
 			},
 			{
-				coffeeorder_id: 2,
+				orderCoffees_id: 2,
 				coffee_id: 3,
 				type: 'Flat White',
 				quantity: 2,

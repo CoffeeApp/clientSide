@@ -9,3 +9,13 @@ export function createOrder(order) {
 			})
 	}
 }
+
+export function addCoffeeToOrder(coffeeId, coffeeType) {
+	return { type: 'ADD_COFFEE_TO_ORDER', payload: {
+		coffee_id: coffeeId,
+		type: coffeeType,
+		quantity: 1,
+		milk: '',
+		sugar: 0
+	} }
+}
