@@ -39,7 +39,10 @@ class UserForm extends Component {
 
 	render () {
 		return (
-			<form onSubmit={this.handleSubmit}>
+			<form
+				className="itemform"
+				onSubmit={this.handleSubmit}
+			>
 				<input
 					className="iteminput"
 					type="text"
@@ -59,7 +62,7 @@ class UserForm extends Component {
 					placeholder="Notes"
 				/>
 				<button
-					className="button next"
+					className="button"
 					type="submit">
 					Next
 				</button>

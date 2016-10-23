@@ -13,7 +13,7 @@ class Cart extends Component {
 		const { coffees } = this.props.store.getState().order
 		console.log(this.props.store.getState().order)
 		return (
-			<div className="cart">
+			<div className="cartitems">
 				{coffees.map((coffee, index) => {
 					return (
 						<CartItem
@@ -26,7 +26,7 @@ class Cart extends Component {
 						/>
 					)
 				})}
-				<div className="cartheader">
+				<div className="cartfooter">
 					<UserForm coffees={coffees} store={store} />
 				</div>
 			</div>
