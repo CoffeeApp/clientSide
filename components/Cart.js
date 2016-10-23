@@ -23,7 +23,7 @@ class Cart extends Component {
 					)
 				})}
 				<div className="cartfooter">
-					<UserForm />
+					<UserForm {...this.props} />
 				</div>
 			</div>
 		)

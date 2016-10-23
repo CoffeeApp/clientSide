@@ -5,7 +5,8 @@ export function createOrder(order) {
 		api.service('orders')
 			.create(order)
 			.then(function (result) {
-				dispatch({ type: 'RECEIVE_ORDER', payload: order })
+				console.log(result)
+				// dispatch({ type: 'RECEIVE_ORDER', payload: order })
 			})
 	}
 }
@@ -16,7 +17,7 @@ export function addCoffeeToOrder(coffee_id, type) {
 		type,
 		quantity: 1,
 		milk: '',
-		sugar: 1
+		sugar: 0
 	} }
 }
 
