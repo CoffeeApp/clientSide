@@ -1,6 +1,14 @@
 import React from 'react'
 import { render } from 'react-dom'
-import App from './components/App'
+import { createStore, applyMiddleware } from 'redux'
+import thunk from 'redux-thunk'
+import reducer from './reducers'
+import initialState from './state'
 
-render(<App name='test form' />, document.querySelector('main'))
+import Root from './containers/Root'
+
+const store = createStore(reducer, initialState, applyMiddleware(thunk))
+
+render(<Root store={ store } />, document.querySelector('main'))
+
 console.log('welcome to clientSide')
