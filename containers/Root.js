@@ -4,7 +4,7 @@ import { Router, Route, hashHistory } from 'react-router'
 
 import App from './App'
 import CoffeeAndCart from '../components/CoffeeAndCart'
-import Cafe from '../components/Cafe'
+import SelectCafe from '../components/SelectCafe'
 
 const Root = ({ store }) => (
 	<Provider store={store}>
