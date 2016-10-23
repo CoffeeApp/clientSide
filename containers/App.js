@@ -47,10 +47,10 @@ class App extends React.Component {
 			<div id="wrapper">
 				<NavBar />
 				<div className="dashboard">
+					{React.Children.map(children, (child) => {
+						return React.cloneElement(child, {...this.props})
+					})}
 				</div>
-				{React.Children.map(children, (child) => {
-					return React.cloneElement(child, {...this.props})
-				})}
 			</div>
 		)
 	}
