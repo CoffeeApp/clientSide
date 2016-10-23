@@ -3,6 +3,16 @@ import NavBar from './NavBar'
 import SelectCoffee from './SelectCoffee'
 import Cart from './Cart'
 // import SelectCafe from './SelectCafe'
+import { browserHistory } from 'react-router'
+import { connect } from 'react-redux'
+
+function mapStateToProps(state) {
+	console.log(state)
+	return {
+		orders: state.order,
+		coffeeTypes: state.coffees
+	}
+}
 
 class App extends React.Component {
 
@@ -10,19 +20,24 @@ class App extends React.Component {
 		super(props)
 	}
 
+	componentDidMount() {
+	browserHistory.push('/coffee')
+	}
+
 	render() {
-		const { store } = this.props
+		const { store, children } = this.props
+		console.log('this', this)
 		return (
 			<div id="wrapper">
 				<NavBar />
 				<div className="dashboard">
-					<SelectCoffee store={store} coffees={store.getState().coffees} />
-					{/*<Cart store={store} />*/}
-					{/* <SelectCafe /> */}
 				</div>
+				{React.Children.map(children, (child) => {
+					return React.cloneElement(child, {...this.props})
+				})}
 			</div>
 		)
 	}
 }
 
-export default App
+export default connect(mapStateToProps)(App)
