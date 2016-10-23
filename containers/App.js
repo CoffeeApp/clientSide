@@ -9,7 +9,8 @@ const mapStateToProps = (state) => {
 	return {
 		order: state.order,
 		coffees: state.coffees,
-		searchWord: state.searchWord
+		searchWord: state.searchWord,
+		orderCoffees: state.order.orderCoffees
 	}
 }
 

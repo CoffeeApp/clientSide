@@ -2,20 +2,15 @@ import React from 'react'
 import SelectCoffee from './SelectCoffee'
 import Cart from './Cart'
 
-class CoffeeAndCart extends React.Component {
-
-	constructor(props) {
-		super(props)
-	}
-
-	render() {
-  	return (
-      <div>
-        <SelectCoffee />
-        <Cart />
-      </div>
-		)
-	}
+const CoffeeAndCart = props => {
+  console.log('PROPS', props)
+  console.log('ORDER COFFEES', )
+  return (
+    <div>
+      <SelectCoffee {...props} />
+      { Object.keys(props.orderCoffees).length > 0 ? <Cart {...props} /> : null }
+    </div>
+  )
 }
 
 export default CoffeeAndCart
