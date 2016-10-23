@@ -1,6 +1,7 @@
 export default {
 	order: {
-		orderCoffees: []
+		orderCoffees: {
+		}
 	},
 	coffees: [],
 	shops: [],

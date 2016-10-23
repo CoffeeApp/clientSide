@@ -23,6 +23,7 @@ class CartItemCounter extends Component {
 						<option value="none">None</option>
 						<option value="whole milk">Whole milk</option>
 						<option value="trim milk">Trim milk</option>
+						<option value="almond milk">Almond milk</option>
 						<option value="soy milk">Soy milk</option>
 				</select>
 				<select className="iteminput" onChange={this.handleProp('sugar')}>
