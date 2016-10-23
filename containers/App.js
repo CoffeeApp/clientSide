@@ -22,14 +22,6 @@ const mapDispatchToProps = (dispatch) => {
 	}
 }
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    createOrder: (order) => {
-      dispatch(createOrder(order))
-    }
-  }
-}
-
 class App extends React.Component {
 
 	constructor(props) {
@@ -47,10 +39,10 @@ class App extends React.Component {
 			<div id="wrapper">
 				<NavBar />
 				<div className="dashboard">
+					{React.Children.map(children, (child) => {
+						return React.cloneElement(child, {...this.props})
+					})}
 				</div>
-				{React.Children.map(children, (child) => {
-					return React.cloneElement(child, {...this.props})
-				})}
 			</div>
 		)
 	}
