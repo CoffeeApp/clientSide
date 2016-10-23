@@ -2,6 +2,7 @@ import React, { PropTypes } from 'react'
 import { Provider } from 'react-redux'
 import { Router, Route, hashHistory } from 'react-router'
 import App from './App'
+
 import SelectCoffee from '../components/SelectCoffee'
 import Cart from '../components/Cart'
 import SelectCafe from '../components/SelectCafe'
