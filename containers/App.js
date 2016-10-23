@@ -10,6 +10,7 @@ import {
 	updateSearchWord,
 	fetchCoffees } from '../actioncreators'
 import SearchBar from '../components/SearchBar'
+import Cart from '../components/Cart'
 
 const mapStateToProps = (state) => {
 	return {
@@ -49,7 +50,7 @@ class App extends React.Component {
 	}
 
 	componentDidMount() {
-		hashHistory.push('/coffees')
+		hashHistory.push('/coffee-select')
 		this.props.fetchCoffees()
 	}
 
