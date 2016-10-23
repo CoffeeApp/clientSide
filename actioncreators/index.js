@@ -1,6 +1,6 @@
 import api from '../lib/api'
 
-export default function createOrder(order) {
+export function createOrder(order) {
 	return (dispatch) => {
 		api.service('orders')
 			.create(order)
