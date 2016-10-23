@@ -4,12 +4,8 @@ import { createStore, applyMiddleware } from 'redux'
 import thunk from 'redux-thunk'
 import reducer from './reducers'
 import initialState from './state'
-import { Router, Route, browserHistory } from 'react-router'
-import { Provider } from 'react-redux'
 
-import Root from './containers/Root'
-import App from './containers/App'
-import SelectCoffee from './components/SelectCoffee'
+import Root from './components/Root'
 
 const store = createStore(reducer, initialState, applyMiddleware(thunk))
 

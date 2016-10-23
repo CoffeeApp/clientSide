@@ -7,11 +7,18 @@ import { browserHistory } from 'react-router'
 import { connect } from 'react-redux'
 import { createOrder } from '../actioncreators'
 
-function mapStateToProps(state) {
-	console.log(state)
+const mapStateToProps = (state) => {
 	return {
-		orders: state.order,
-		coffeeTypes: state.coffees
+		order: state.order,
+		coffees: state.coffees
+	}
+}
+
+const mapDispatchToProps = (dispatch) => {
+	return {
+		createOrder: (order) => {
+			dispatch(createOrder(order))
+		}
 	}
 }
 
@@ -30,7 +37,7 @@ class App extends React.Component {
 	}
 
 	componentDidMount() {
-	browserHistory.push('/coffee')
+		browserHistory.push('/coffee')
 	}
 
 	render() {

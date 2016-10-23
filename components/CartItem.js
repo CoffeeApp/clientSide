@@ -8,21 +8,19 @@ class CartItem extends React.Component {
 	}
 
 	render() {
-		const { coffeeType, coffeeQuantity, coffeeMilk, coffeeSugar } = this.props
+		const { coffee } = this.props
 		return (
-			<div className="item">
+			<div className="cartitem">
 				<div className="itemoverview">
-					<a className="itemlink">
-						<img
-							className="itemimage"
-							src="https://s-media-cache-ak0.pinimg.com/564x/99/94/fe/9994fedb8db160d363719f2acb74acb4.jpg"
-						/>
-					</a>
+					<img
+						className="itemimage"
+						src="https://s-media-cache-ak0.pinimg.com/564x/99/94/fe/9994fedb8db160d363719f2acb74acb4.jpg"
+					/>
 					<div className="itemdetails">
-						<a className="itemlink">
-							<div className="itemtitle">{coffeeType}</div>
-						</a>
-						<CoffeeCounter coffeeName={coffeeType} coffeeQuantity={coffeeQuantity} />
+						<div className="itemtitle">{coffee.type}</div>
+						<CartItemCounter
+							coffee={coffee}
+						/>
 					</div>
 				</div>
 				<form className="itemform">
