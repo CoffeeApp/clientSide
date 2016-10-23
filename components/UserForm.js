@@ -23,20 +23,24 @@ class UserForm extends Component {
 	}
 
 	handleSubmit(e) {
+		e.preventDefault()
 		let name = this.state.userName
 		let phone = this.state.userNumber
 		let comment = this.state.comment
-		e.preventDefault()
-		hashHistory.push('/cafes')
-		this.props.store.dispatch(createOrder({
+		let orderCoffees = Object.keys(this.props.order.orderCoffees).map((key) => (
+			this.props.order.orderCoffees[key]
+		))
+		let order = {
 			details: {
 				name,
 				phone,
 				status: 'new',
 				comment
 			},
-			coffees: this.props.coffees
-		}))
+			orderCoffees
+		}
+		this.props.createOrder(order)
+		hashHistory.push('/cafe-select')
 	}
 
 	render () {
