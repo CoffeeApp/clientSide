@@ -5,6 +5,7 @@ import {
 	createOrder,
 	addCoffeeToOrder,
 	getOrderCoffees,
+	changeOrderOptions,
 	changeQuantity,
 	updateSearchWord,
 	fetchCoffees } from '../actioncreators'
@@ -31,8 +32,8 @@ const mapDispatchToProps = (dispatch) => {
 		getOrderCoffees: () => {
 			dispatch(getOrderCoffees())
 		},
-		changeQuantity: (id, quantity) => {
-			dispatch(changeQuantity(id, quantity))
+		changeOrderOptions: (id, changeType, changePayload) => {
+			dispatch(changeOrderOptions(id, changeType, changePayload))
 		},
 		updateSearchWord: (word) => {
 			dispatch(updateSearchWord(word))
@@ -56,7 +57,6 @@ class App extends React.Component {
 
 	render() {
 		const { store, children, searchWord, updateSearchWord} = this.props
-		console.log('this', this)
 		return (
 			<div id="wrapper">
 				<SearchBar updateSearchWord={updateSearchWord} searchWord={searchWord} />

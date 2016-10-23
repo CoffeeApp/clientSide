@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import Cafe from './Cafe'
-import { map } from 'lodash'
 import { Link } from 'react-router'
 import { connect } from 'react-redux'
 import {fetchShops} from '../actioncreators'
