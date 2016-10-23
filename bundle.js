@@ -5,6 +5,7 @@ Object.defineProperty(exports, "__esModule", {
 	value: true
 });
 exports.createOrder = createOrder;
+exports.addCoffeeToOrder = addCoffeeToOrder;
 
 var _api = require('../lib/api');
 
@@ -20,18 +21,15 @@ function createOrder(order) {
 	};
 }
 
-// function getCoffeeObject() {
-// 	return (dispatch) => {
-// 		api.service('coffees')
-// 			.find({
-// 				query: { id: coffeeId }
-// 			})
-// 			.then((actions) => {
-// 				console.log(`AddCoffeeToOrder() | Coffee found: ${actions.data[0]}`)
-// 				dispatch(addCoffeeToOrder(actions.data[0]))
-// 			})
-// 	}
-// }
+function addCoffeeToOrder(coffeeId, coffeeType) {
+	return { type: 'ADD_COFFEE_TO_ORDER', payload: {
+			coffee_id: coffeeId,
+			type: coffeeType,
+			quantity: 1,
+			milk: '',
+			sugar: 0
+		} };
+}
 
 },{"../lib/api":13}],2:[function(require,module,exports){
 "use strict";
@@ -151,23 +149,18 @@ var Cart = function (_Component) {
 	_createClass(Cart, [{
 		key: 'render',
 		value: function render() {
-			var store = this.props.store;
-			var coffees = this.props.store.getState().order.coffees;
-
-			console.log(this.props.store.getState().order);
+			console.log('Props:');
+			console.log(this.props);
 			return _react2.default.createElement(
 				'div',
 				{ className: 'cartitems' },
 				coffees.map(function (coffee, index) {
-					return _react2.default.createElement(_CartItem2.default, {
-						key: index,
-						coffee: coffee
-					});
+					return _react2.default.createElement(_CartItem2.default, { key: index });
 				}),
 				_react2.default.createElement(
 					'div',
 					{ className: 'cartfooter' },
-					_react2.default.createElement(_UserForm2.default, { coffees: coffees, store: store })
+					_react2.default.createElement(_UserForm2.default, null)
 				)
 			);
 		}
@@ -402,94 +395,50 @@ var CartItemCounter = function (_Component) {
 exports.default = CartItemCounter;
 
 },{"react":331}],6:[function(require,module,exports){
-'use strict';
+"use strict";
 
 Object.defineProperty(exports, "__esModule", {
 	value: true
 });
 
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _react = require('react');
+var _react = require("react");
 
 var _react2 = _interopRequireDefault(_react);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-var Coffee = function (_React$Component) {
-	_inherits(Coffee, _React$Component);
-
-	function Coffee(props) {
-		_classCallCheck(this, Coffee);
-
-		var _this = _possibleConstructorReturn(this, (Coffee.__proto__ || Object.getPrototypeOf(Coffee)).call(this, props));
-
-		_this.handleTouched = _this.handleTouched.bind(_this);
-		return _this;
-	}
-
-	_createClass(Coffee, [{
-		key: 'handleTouched',
-		value: function handleTouched(coffeeId, coffeeType) {
-			this.props.store.dispatch({ type: 'ADD_COFFEE_TO_ORDER', payload: {
-					coffee_id: coffeeId,
-					type: coffeeType,
-					quantity: 1,
-					milk: '',
-					sugar: 0
-				} });
-		}
-	}, {
-		key: 'render',
-		value: function render() {
-			var _this2 = this;
-
-			var _props = this.props;
-			var store = _props.store;
-			var coffeeId = _props.coffeeId;
-			var coffeeType = _props.coffeeType;
-			var coffeeImage = _props.coffeeImage;
-			var coffeeDescription = _props.coffeeDescription;
-
-			return _react2.default.createElement(
-				'div',
-				{
-					className: 'item',
-					onClick: function onClick() {
-						return _this2.handleTouched(coffeeId, coffeeType);
-					}
-				},
-				_react2.default.createElement('img', {
-					alt: 'coffee image',
-					className: 'itemimage',
-					src: coffeeImage
-				}),
-				_react2.default.createElement(
-					'div',
-					{ className: 'itemdetails' },
-					_react2.default.createElement(
-						'div',
-						{ className: 'itemtitle' },
-						coffeeType
-					),
-					_react2.default.createElement(
-						'div',
-						{ className: 'itemdescription' },
-						coffeeDescription
-					)
-				)
-			);
-		}
-	}]);
-
-	return Coffee;
-}(_react2.default.Component);
+var Coffee = function Coffee(_ref) {
+	var coffee = _ref.coffee;
+	var addCoffeeToOrder = _ref.addCoffeeToOrder;
+	return _react2.default.createElement(
+		"div",
+		{
+			className: "item",
+			onClick: function onClick() {
+				return addCoffeeToOrder(coffee.id, coffee.type);
+			}
+		},
+		_react2.default.createElement("img", {
+			alt: "coffee image",
+			className: "itemimage",
+			src: coffee.image
+		}),
+		_react2.default.createElement(
+			"div",
+			{ className: "itemdetails" },
+			_react2.default.createElement(
+				"div",
+				{ className: "itemtitle" },
+				coffee.type
+			),
+			_react2.default.createElement(
+				"div",
+				{ className: "itemdescription" },
+				coffee.description
+			)
+		)
+	);
+};
 
 exports.default = Coffee;
 
@@ -601,6 +550,8 @@ Object.defineProperty(exports, "__esModule", {
 	value: true
 });
 
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 var _react = require('react');
@@ -631,19 +582,17 @@ var SelectCoffee = function (_React$Component) {
 	_createClass(SelectCoffee, [{
 		key: 'render',
 		value: function render() {
+			var _this2 = this;
+
+			console.log('SelectCoffee');
+			console.log(this);
 			var coffees = this.props.coffees;
 
 			return _react2.default.createElement(
 				'div',
 				{ className: 'selectcoffee' },
 				coffees.map(function (coffee, index) {
-					return _react2.default.createElement(_Coffee2.default, {
-						key: index,
-						coffeeId: coffee.id,
-						coffeeType: coffee.type,
-						coffeeImage: coffee.image,
-						coffeeDescription: coffee.description
-					});
+					return _react2.default.createElement(_Coffee2.default, _extends({ key: index, coffee: coffee }, _this2.props));
 				})
 			);
 		}
@@ -824,6 +773,9 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
 	return {
 		createOrder: function createOrder(order) {
 			dispatch((0, _actioncreators.createOrder)(order));
+		},
+		addCoffeeToOrder: function addCoffeeToOrder(coffeeId, coffeeType) {
+			dispatch((0, _actioncreators.addCoffeeToOrder)(coffeeId, coffeeType));
 		}
 	};
 };
@@ -840,7 +792,7 @@ var App = function (_React$Component) {
 	_createClass(App, [{
 		key: 'componentDidMount',
 		value: function componentDidMount() {
-			_reactRouter.browserHistory.push('/coffee');
+			_reactRouter.browserHistory.push('/coffees');
 		}
 	}, {
 		key: 'render',
@@ -851,7 +803,6 @@ var App = function (_React$Component) {
 			var store = _props.store;
 			var children = _props.children;
 
-			console.log('this', this);
 			return _react2.default.createElement(
 				'div',
 				{ id: 'wrapper' },
@@ -912,7 +863,7 @@ var Root = function Root(_ref) {
       _react2.default.createElement(
         _reactRouter.Route,
         { path: '/', component: _App2.default },
-        _react2.default.createElement(_reactRouter.Route, { path: '/coffee', component: _SelectCoffee2.default }),
+        _react2.default.createElement(_reactRouter.Route, { path: '/coffees', component: _SelectCoffee2.default }),
         _react2.default.createElement(_reactRouter.Route, { path: '/cafes', component: _SelectCafe2.default })
       )
     )
@@ -40020,21 +39971,21 @@ Object.defineProperty(exports, "__esModule", {
 exports.default = {
 	order: {
 		orderCoffees: [{
-			coffeeorder_id: 0,
+			orderCoffees_id: 0,
 			coffee_id: 3,
 			type: 'Flat White',
 			quantity: 1,
 			milk: 'trim',
 			sugar: 1
 		}, {
-			coffeeorder_id: 1,
+			orderCoffees_id: 1,
 			coffee_id: 7,
 			type: 'Americano',
 			quantity: 2,
 			milk: 'soy',
 			sugar: 0
 		}, {
-			coffeeorder_id: 2,
+			orderCoffees_id: 2,
 			coffee_id: 3,
 			type: 'Flat White',
 			quantity: 2,
