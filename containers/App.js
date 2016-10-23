@@ -4,6 +4,8 @@ import { connect } from 'react-redux'
 import { createOrder, addCoffeeToOrder, getOrderCoffees, changeQuantity, updateSearchWord } from '../actioncreators'
 import SearchBar from '../components/SearchBar'
 
+import {api, orderService, shopService} from '../lib/api-dev'
+
 const mapStateToProps = (state) => {
 	return {
 		order: state.order,
