@@ -6,6 +6,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.createOrder = createOrder;
 exports.addCoffeeToOrder = addCoffeeToOrder;
+exports.updateSearchWord = updateSearchWord;
 
 var _api = require('../lib/api');
 
@@ -29,6 +30,10 @@ function addCoffeeToOrder(coffeeId, coffeeType) {
 			milk: '',
 			sugar: 0
 		} };
+}
+
+function updateSearchWord(word) {
+	return { type: 'UPDATE_SEARCHWORD', payload: word };
 }
 
 },{"../lib/api":13}],2:[function(require,module,exports){
@@ -443,48 +448,86 @@ var Coffee = function Coffee(_ref) {
 exports.default = Coffee;
 
 },{"react":331}],7:[function(require,module,exports){
-"use strict";
+'use strict';
 
 Object.defineProperty(exports, "__esModule", {
 	value: true
 });
 
-var _react = require("react");
+var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var NavBar = function NavBar() {
+var SearchBar = function SearchBar(_ref) {
+	var searchWord = _ref.searchWord;
+	var updateSearchWord = _ref.updateSearchWord;
+
+	console.log('IMPORTANT STUFF', searchWord, updateSearchWord);
 	return _react2.default.createElement(
-		"div",
-		{ className: "navbar" },
+		'div',
+		{ className: 'navbar' },
 		_react2.default.createElement(
-			"div",
-			{ className: "row" },
+			'div',
+			{ className: 'row' },
 			_react2.default.createElement(
-				"span",
-				{ className: "logo" },
-				"Coffee App"
+				'span',
+				{ className: 'logo' },
+				'Coffee App'
 			)
 		),
 		_react2.default.createElement(
-			"div",
-			{ className: "row" },
+			'div',
+			{ className: 'row' },
 			_react2.default.createElement(
-				"form",
-				{ className: "searchbarcontainer" },
-				_react2.default.createElement("input", {
-					className: "searchbar",
-					placeholder: "What coffee would you like to order?",
-					type: "text"
+				'form',
+				{ className: 'searchbarcontainer' },
+				_react2.default.createElement('input', {
+					className: 'searchbar',
+					placeholder: 'What coffee would you like to order?',
+					type: 'text',
+					value: searchWord,
+					onChange: function onChange(e) {
+						return updateSearchWord(e.target.value);
+					}
 				})
 			)
 		)
 	);
 };
 
-exports.default = NavBar;
+exports.default = SearchBar;
+
+// /*<img src="http://www.clker.com/cliparts/e/v/A/R/K/t/transparent-magnifying-glass-md.png" />*/
+// style={{height:10px}}s
+
+// import React, { Component } from 'react'
+//
+// class SearchBar extends Component {
+//
+//   constructor (props) {
+//     super(props)
+//   }
+//   handleChange () {
+//     this.props.onUserInput(
+//       this.refs.filterTextInput.value
+//     );
+//   }
+//   render () {
+//     return (
+//       <div>
+//         <input type="text" ref="filterTextInput" name="searchName" placeholder="Search" onChange={this.handleChange.bind(this)}/>
+//       </div>
+//     )
+//   }
+//
+// }
+//
+// // /*<img src="http://www.clker.com/cliparts/e/v/A/R/K/t/transparent-magnifying-glass-md.png" />*/
+// // style={{height:10px}}
+//
+// export default SearchBar
 
 },{"react":331}],8:[function(require,module,exports){
 'use strict';
@@ -584,14 +627,17 @@ var SelectCoffee = function (_React$Component) {
 		value: function render() {
 			var _this2 = this;
 
-			console.log('SelectCoffee');
-			console.log(this);
 			var coffees = this.props.coffees;
+
+			var searchWord = this.props.searchWord;
+			var filterResults = coffees.filter(function (coffee) {
+				return coffee.type.toLowerCase().includes(searchWord.toLowerCase());
+			});
 
 			return _react2.default.createElement(
 				'div',
 				{ className: 'selectcoffee' },
-				coffees.map(function (coffee, index) {
+				filterResults.map(function (coffee, index) {
 					return _react2.default.createElement(_Coffee2.default, _extends({ key: index, coffee: coffee }, _this2.props));
 				})
 			);
@@ -734,9 +780,9 @@ var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
-var _NavBar = require('../components/NavBar');
+var _SearchBar = require('../components/SearchBar');
 
-var _NavBar2 = _interopRequireDefault(_NavBar);
+var _SearchBar2 = _interopRequireDefault(_SearchBar);
 
 var _SelectCoffee = require('../components/SelectCoffee');
 
@@ -765,7 +811,8 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 var mapStateToProps = function mapStateToProps(state) {
 	return {
 		order: state.order,
-		coffees: state.coffees
+		coffees: state.coffees,
+		searchWord: state.searchWord
 	};
 };
 
@@ -774,8 +821,8 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
 		createOrder: function createOrder(order) {
 			dispatch((0, _actioncreators.createOrder)(order));
 		},
-		addCoffeeToOrder: function addCoffeeToOrder(coffeeId, coffeeType) {
-			dispatch((0, _actioncreators.addCoffeeToOrder)(coffeeId, coffeeType));
+		updateSearchWord: function updateSearchWord(word) {
+			dispatch((0, _actioncreators.updateSearchWord)(word));
 		}
 	};
 };
@@ -792,7 +839,7 @@ var App = function (_React$Component) {
 	_createClass(App, [{
 		key: 'componentDidMount',
 		value: function componentDidMount() {
-			_reactRouter.browserHistory.push('/coffees');
+			_reactRouter.browserHistory.push('/coffee');
 		}
 	}, {
 		key: 'render',
@@ -802,11 +849,14 @@ var App = function (_React$Component) {
 			var _props = this.props;
 			var store = _props.store;
 			var children = _props.children;
+			var searchWord = _props.searchWord;
+			var updateSearchWord = _props.updateSearchWord;
 
+			console.log('this', this);
 			return _react2.default.createElement(
 				'div',
 				{ id: 'wrapper' },
-				_react2.default.createElement(_NavBar2.default, null),
+				_react2.default.createElement(_SearchBar2.default, { updateSearchWord: updateSearchWord, searchWord: searchWord }),
 				_react2.default.createElement(
 					'div',
 					{ className: 'dashboard' },
@@ -823,7 +873,7 @@ var App = function (_React$Component) {
 
 exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(App);
 
-},{"../actioncreators":1,"../components/Cart":3,"../components/NavBar":7,"../components/SelectCoffee":9,"react":331,"react-redux":146,"react-router":180}],12:[function(require,module,exports){
+},{"../actioncreators":1,"../components/Cart":3,"../components/SearchBar":7,"../components/SelectCoffee":9,"react":331,"react-redux":146,"react-router":180}],12:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -850,6 +900,10 @@ var _SelectCafe = require('../components/SelectCafe');
 
 var _SelectCafe2 = _interopRequireDefault(_SelectCafe);
 
+var _Cart = require('../components/Cart');
+
+var _Cart2 = _interopRequireDefault(_Cart);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var Root = function Root(_ref) {
@@ -863,7 +917,8 @@ var Root = function Root(_ref) {
       _react2.default.createElement(
         _reactRouter.Route,
         { path: '/', component: _App2.default },
-        _react2.default.createElement(_reactRouter.Route, { path: '/coffees', component: _SelectCoffee2.default }),
+        _react2.default.createElement(_reactRouter.Route, { path: '/coffee', component: _SelectCoffee2.default }),
+        _react2.default.createElement(_reactRouter.Route, { path: '/cart', component: _Cart2.default }),
         _react2.default.createElement(_reactRouter.Route, { path: '/cafes', component: _SelectCafe2.default })
       )
     )
@@ -872,7 +927,7 @@ var Root = function Root(_ref) {
 
 exports.default = Root;
 
-},{"../components/SelectCafe":8,"../components/SelectCoffee":9,"./App":11,"react":331,"react-redux":146,"react-router":180}],13:[function(require,module,exports){
+},{"../components/Cart":3,"../components/SelectCafe":8,"../components/SelectCoffee":9,"./App":11,"react":331,"react-redux":146,"react-router":180}],13:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -39905,7 +39960,7 @@ var coffees = function coffees() {
 
 exports.default = coffees;
 
-},{"../state":365}],363:[function(require,module,exports){
+},{"../state":366}],363:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -39922,14 +39977,19 @@ var _order = require('./order');
 
 var _order2 = _interopRequireDefault(_order);
 
+var _searchword = require('./searchword');
+
+var _searchword2 = _interopRequireDefault(_searchword);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 exports.default = (0, _redux.combineReducers)({
 	coffees: _coffees2.default,
-	order: _order2.default
+	order: _order2.default,
+	searchWord: _searchword2.default
 });
 
-},{"./coffees":362,"./order":364,"redux":338}],364:[function(require,module,exports){
+},{"./coffees":362,"./order":364,"./searchword":365,"redux":338}],364:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -39962,7 +40022,34 @@ var coffees = function coffees() {
 
 exports.default = coffees;
 
-},{"../state":365}],365:[function(require,module,exports){
+},{"../state":366}],365:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+	value: true
+});
+
+var _state = require('../state');
+
+var _state2 = _interopRequireDefault(_state);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var searchWord = function searchWord() {
+	var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : _state2.default.searchWord;
+	var action = arguments[1];
+
+	switch (action.type) {
+		case 'UPDATE_SEARCHWORD':
+			return action.payload;
+		default:
+			return state;
+	}
+};
+
+exports.default = searchWord;
+
+},{"../state":366}],366:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -40003,10 +40090,31 @@ exports.default = {
 		type: 'Flat White',
 		image: 'https://s-media-cache-ak0.pinimg.com/564x/99/94/fe/9994fedb8db160d363719f2acb74acb4.jpg',
 		description: 'A type of coffee made with espresso and hot steamed milk, but without the froth characteristic of a cappuccino.'
-	}]
+	}, {
+		coffee_id: 3,
+		type: 'Cold Press',
+		image: 'https://s-media-cache-ak0.pinimg.com/564x/99/94/fe/9994fedb8db160d363719f2acb74acb4.jpg',
+		description: 'Cold brew, or cold press, is coffee grounds steeped in water at cold or room temperature for an extended period.'
+	}, {
+		coffee_id: 4,
+		type: 'Macchiato',
+		image: 'https://s-media-cache-ak0.pinimg.com/564x/99/94/fe/9994fedb8db160d363719f2acb74acb4.jpg',
+		description: 'Macchiato, meaning "stained", is an espresso with a dash of foamed milk. At first sight it resembles a small cappuccino, but even if the ingredients are the same as those used for cappuccino, a macchiato has a much stronger and aromatic taste.'
+	}, {
+		coffee_id: 5,
+		type: 'Chai Latte',
+		image: 'https://s-media-cache-ak0.pinimg.com/564x/99/94/fe/9994fedb8db160d363719f2acb74acb4.jpg',
+		description: 'Numerous houses use the term chai latte to indicate that the steamed milk of a normal caffè latte is being flavoured with a spiced tea concentrate instead of with espresso.'
+	}, {
+		coffee_id: 6,
+		type: 'Mochaccino',
+		image: 'https://s-media-cache-ak0.pinimg.com/564x/99/94/fe/9994fedb8db160d363719f2acb74acb4.jpg',
+		description: 'Single shot poured over heaped teaspoon of hot chocolate powder and stirred. Top with velvety milk in a cappuccino style.'
+	}],
+	searchWord: ''
 };
 
-},{}],366:[function(require,module,exports){
+},{}],367:[function(require,module,exports){
 'use strict';
 
 var _react = require('react');
@@ -40043,4 +40151,4 @@ _reactDom2.default.render(_react2.default.createElement(_Root2.default, { store:
 
 console.log('welcome to clientSide');
 
-},{"./containers/Root":12,"./reducers":363,"./state":365,"react":331,"react-dom":143,"redux":338,"redux-thunk":332}]},{},[366]);
+},{"./containers/Root":12,"./reducers":363,"./state":366,"react":331,"react-dom":143,"redux":338,"redux-thunk":332}]},{},[367]);
