@@ -11,8 +11,6 @@ import {
 import SearchBar from '../components/SearchBar'
 import Cart from '../components/Cart'
 
-import {api, orderService, shopService} from '../lib/api-dev'
-
 const mapStateToProps = (state) => {
 	return {
 		order: state.order,

@@ -2,30 +2,38 @@ import React, { Component } from 'react'
 import Cafe from './Cafe'
 import { map } from 'lodash'
 import { Link } from 'react-router'
-import {shopService} from '../lib/api-dev'
+import { connect } from 'react-redux'
+import {fetchShops} from '../actioncreators'
+
+const mapStateToProps = (state) => {
+	return {
+		shops: state.shops
+	}
+}
+
+const mapDispatchToProps = (dispatch) => {
+	return {
+		fetchShops: () => {
+			dispatch(fetchShops())
+		}
+	}
+}
 
 class SelectCafe extends React.Component {
 
 	constructor(props) {
 		super(props)
-		this.state = {
-			shops: []
-		}
 	}
 
 	componentDidMount() {
-		shopService.find().then(shopsData => {
-			let data = shopsData.data
-			return this.setState({shops: data})
-    })
+		this.props.fetchShops()
 	}
 
 	render() {
-		const { store } = this.props
-		const {shops} = this.state
+		const { shops } = this.props
 		return (
 			<div className="itemscontainer">
-				{map(shops, (shop, index) => {
+				{shops.map((shop, index) => {
 					return (
 						<Link className="link" key={index} to="/cart">
 							<Cafe key={index} shop={shop}/>
@@ -37,7 +45,7 @@ class SelectCafe extends React.Component {
 	}
 }
 
-export default SelectCafe
+export default connect(mapStateToProps, mapDispatchToProps)(SelectCafe)
 
 
 // removed className="selectcafe" from parent div
