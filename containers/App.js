@@ -1,7 +1,13 @@
 import React, { Component } from 'react'
 import { hashHistory } from 'react-router'
 import { connect } from 'react-redux'
-import { createOrder, addCoffeeToOrder, getOrderCoffees, changeQuantity, updateSearchWord } from '../actioncreators'
+import {
+	createOrder,
+	addCoffeeToOrder,
+	getOrderCoffees,
+	changeQuantity,
+	updateSearchWord,
+	fetchCoffees } from '../actioncreators'
 import SearchBar from '../components/SearchBar'
 import Cart from '../components/Cart'
 
@@ -32,6 +38,9 @@ const mapDispatchToProps = (dispatch) => {
 		},
 		updateSearchWord: (word) => {
 			dispatch(updateSearchWord(word))
+		},
+		fetchCoffees: () => {
+			dispatch(fetchCoffees())
 		}
 	}
 }
@@ -43,7 +52,8 @@ class App extends React.Component {
 	}
 
 	componentDidMount() {
-		hashHistory.push('/coffee-select')
+		hashHistory.push('/coffees')
+		this.props.fetchCoffees()
 	}
 
 	render() {

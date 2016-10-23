@@ -1,5 +1,6 @@
 import api from '../lib/api'
 
+
 export function createOrder(order) {
 	return (dispatch) => {
 		api.service('orders')
@@ -26,4 +27,19 @@ export function changeQuantity(id, change) {
 
 export function updateSearchWord (word) {
 	return { type: 'UPDATE_SEARCHWORD', payload: word}
+}
+
+export function fetchCoffees () {
+	return (dispatch) => {
+		api.service('coffees')
+			.find()
+			.then((result) => {
+				console.log(result)
+				dispatch(receiveCoffees(result.data))
+			})
+	}
+}
+
+function receiveCoffees (coffees) {
+	return {type: "RECEIVE_COFFEES", payload: coffees}
 }
