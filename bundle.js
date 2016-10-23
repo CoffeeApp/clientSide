@@ -929,7 +929,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 var feathers = require('feathers-client');
 var io = require('socket.io-client');
-var socket = io('https://192.168.1.8:3030');
+var socket = io('https://coffee-cloud.herokuapp.com/' || 'https://192.168.1.8:3030');
 
 var api = feathers().configure(feathers.hooks()).configure(feathers.socketio(socket));
 
