@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router'
 import Coffee from './Coffee'
 
 class SelectCoffee extends React.Component {
@@ -8,14 +9,14 @@ class SelectCoffee extends React.Component {
 	}
 
 	render() {
-		console.log('SelectCoffee')
-		console.log(this)
 		const { coffees } = this.props
 		return (
 			<div className="selectcoffee">
 				{coffees.map((coffee, index) => {
 					return (
-						<Coffee key={index} coffee={coffee} {...this.props} />
+						<Link className="link" key={index} to="/cart">
+							<Coffee key={index} coffee={coffee} {...this.props} />
+						</Link>
 					)
 				})}
 			</div>

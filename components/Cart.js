@@ -9,13 +9,12 @@ class Cart extends Component {
 	}
 
 	render() {
-		console.log('Props:')
-		console.log(this.props)
+		const coffees = this.props.order.orderCoffees
 		return (
 			<div className="cartitems">
-				{coffees.map((coffee, index) => {
+				{Object.keys(coffees).map((key, index) => {
 					return (
-						<CartItem key={index} />
+						<CartItem coffee={coffees[key]} key={index} id={key} {...this.props} />
 					)
 				})}
 				<div className="cartfooter">

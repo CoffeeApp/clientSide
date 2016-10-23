@@ -11,17 +11,12 @@ class CartItemCounter extends Component {
 	}
 
 	handleProp(prop) {
-		const { coffee } = this.props
+		const { coffee, id } = this.props
 		return (e) => {
 			if (prop === 'increment') {
-				this.props.store.dispatch({ type: 'INCREMENT_COFFEE', payload: this.props.store.getState().order.coffees.length })
-				this.setState({ count: this.props.count+1 }, function () {
-					console.log(this.props.coffeeName, 'incremented to', this.state.count)
-				})
-			} else if (prop === 'decrement' && this.state.count >= 1) {
-				this.setState({ count: this.state.count-1 }, function () {
-					console.log(this.props.coffeeName, 'decremented to', this.state.count)
-				})
+				this.props.changeQuantity(id, 1)
+			} else if (prop === 'decrement' && coffee.quantity >= 1) {
+				this.props.changeQuantity(id, -1)
 			}
 		}
 	}
@@ -30,7 +25,7 @@ class CartItemCounter extends Component {
 		const { coffee } = this.props
 		return (
 			<div>
-				<div className="itemquantity">{this.state.count}</div>
+				<div className="itemquantity">{coffee.quantity}</div>
 				<img
 					className="quantity"
 					id="counterButtonsPlus"
