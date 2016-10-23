@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 
-class CoffeeCounter extends Component {
+class CartItemCounter extends Component {
 
 	constructor(props) {
 		super(props)
@@ -11,9 +11,11 @@ class CoffeeCounter extends Component {
 	}
 
 	handleProp(prop) {
+		const { coffee } = this.props
 		return (e) => {
 			if (prop === 'increment') {
-				this.setState({ count: this.state.count+1 }, function () {
+				this.props.store.dispatch({ type: 'INCREMENT_COFFEE', payload: this.props.store.getState().order.coffees.length })
+				this.setState({ count: this.props.count+1 }, function () {
 					console.log(this.props.coffeeName, 'incremented to', this.state.count)
 				})
 			} else if (prop === 'decrement' && this.state.count >= 1) {
@@ -25,6 +27,7 @@ class CoffeeCounter extends Component {
 	}
 
 	render() {
+		const { coffee } = this.props
 		return (
 			<div>
 				<div className="itemquantity">{this.state.count}</div>
@@ -45,4 +48,4 @@ class CoffeeCounter extends Component {
 	}
 }
 
-export default CoffeeCounter
+export default CartItemCounter

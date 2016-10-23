@@ -8,7 +8,6 @@ class Coffee extends React.Component {
 	}
 
 	handleTouched(coffeeId, coffeeType) {
-		console.log('Touched');
 		this.props.store.dispatch({ type: 'ADD_COFFEE_TO_ORDER', payload: {
 			coffee_id: coffeeId,
 			type: coffeeType,

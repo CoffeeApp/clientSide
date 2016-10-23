@@ -18,11 +18,7 @@ class Cart extends Component {
 					return (
 						<CartItem
 							key={index}
-							coffeeId={coffee.id}
-							coffeeType={coffee.type}
-							coffeeQuantity={coffee.quantity}
-							coffeeMilk={coffee.milk}
-							coffeeSugar={coffee.sugar}
+							coffee={coffee}
 						/>
 					)
 				})}
