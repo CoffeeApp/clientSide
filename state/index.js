@@ -1,7 +1,9 @@
 export default {
 	order: {
-		orderCoffees: [
-		]
+		userName: '',
+		userNumber: '',
+		orderCoffees: {
+		}
 	},
 	coffees: [
 		{
