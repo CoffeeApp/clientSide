@@ -51,7 +51,7 @@ class App extends React.Component {
 	}
 
 	componentDidMount() {
-		hashHistory.push('/coffees')
+		hashHistory.push('/coffee-select')
 		this.props.fetchCoffees()
 	}
 
