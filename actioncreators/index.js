@@ -23,3 +23,7 @@ export function addCoffeeToOrder(coffee_id, type) {
 export function changeQuantity(id, change) {
 	return { type: 'CHANGE_QUANTITY', payload: { id, change } }
 }
+
+export function updateSearchWord (word) {
+	return { type: 'UPDATE_SEARCHWORD', payload: word}
+}

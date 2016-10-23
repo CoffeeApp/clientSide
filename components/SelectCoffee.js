@@ -10,9 +10,14 @@ class SelectCoffee extends React.Component {
 
 	render() {
 		const { coffees } = this.props
+		var searchWord = this.props.searchWord
+		let filterResults = coffees.filter((coffee) => {
+			return coffee.type.toLowerCase().includes(searchWord.toLowerCase())
+		})
+
 		return (
 			<div className="selectcoffee">
-				{coffees.map((coffee, index) => {
+				{filterResults.map((coffee, index) => {
 					return (
 						<Link className="link" key={index} to="/cart">
 							<Coffee key={index} coffee={coffee} {...this.props} />
