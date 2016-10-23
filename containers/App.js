@@ -1,16 +1,17 @@
 import React, { Component } from 'react'
-import NavBar from '../components/NavBar'
+import SearchBar from '../components/SearchBar'
 import SelectCoffee from '../components/SelectCoffee'
 import Cart from '../components/Cart'
 // import SelectCafe from './SelectCafe'
 import { browserHistory } from 'react-router'
 import { connect } from 'react-redux'
-import { createOrder, addCoffeeToOrder } from '../actioncreators'
+import { createOrder, updateSearchWord } from '../actioncreators'
 
 const mapStateToProps = (state) => {
 	return {
 		order: state.order,
-		coffees: state.coffees
+		coffees: state.coffees,
+		searchWord: state.searchWord
 	}
 }
 
@@ -19,8 +20,8 @@ const mapDispatchToProps = (dispatch) => {
 		createOrder: (order) => {
 			dispatch(createOrder(order))
 		},
-		addCoffeeToOrder: (coffeeId, coffeeType) => {
-			dispatch(addCoffeeToOrder(coffeeId, coffeeType))
+		updateSearchWord: (word) => {
+			dispatch(updateSearchWord(word))
 		}
 	}
 }
@@ -32,14 +33,15 @@ class App extends React.Component {
 	}
 
 	componentDidMount() {
-		browserHistory.push('/coffees')
+		browserHistory.push('/coffee')
 	}
 
 	render() {
-		const { store, children } = this.props
+		const { store, children, searchWord, updateSearchWord} = this.props
+		console.log('this', this)
 		return (
 			<div id="wrapper">
-				<NavBar />
+				<SearchBar updateSearchWord={updateSearchWord} searchWord={searchWord} />
 				<div className="dashboard">
 					{React.Children.map(children, (child) => {
 						return React.cloneElement(child, {...this.props})

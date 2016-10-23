@@ -8,12 +8,15 @@ class SelectCoffee extends React.Component {
 	}
 
 	render() {
-		console.log('SelectCoffee');
-		console.log(this)
 		const { coffees } = this.props
+		var searchWord = this.props.searchWord
+		let filterResults = coffees.filter((coffee) => {
+			return coffee.type.toLowerCase().includes(searchWord.toLowerCase())
+		})
+
 		return (
 			<div className="selectcoffee">
-				{coffees.map((coffee, index) => {
+				{filterResults.map((coffee, index) => {
 					return (
 						<Coffee key={index} coffee={coffee} {...this.props} />
 					)

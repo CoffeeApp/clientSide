@@ -19,3 +19,7 @@ export function addCoffeeToOrder(coffeeId, coffeeType) {
 		sugar: 0
 	} }
 }
+
+export function updateSearchWord (word) {
+	return { type: 'UPDATE_SEARCHWORD', payload: word}
+}
