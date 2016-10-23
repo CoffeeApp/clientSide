@@ -1,8 +1,7 @@
 #counterButtonsPlus, #counterButtonsMinus {
 	display: inline-block;
 }
-.item, .itemdetails, .cartitems, .cartitem, .cartfooter, .iteminput, .itemform {box-sizing: border-box;}
-.link {text-decoration: none;}
+.item, .cartitems, .cartitem, .cartfooter, .iteminput, .itemform {box-sizing: border-box;}
 
 /***************************/
 /* PASTE WEBFLOW CSS BELOW */
@@ -185,7 +184,7 @@ body {
 
 .itemdetails {
   position: relative;
-  margin-left: 70px;
+  float: left;
 }
 
 .selectcafe {

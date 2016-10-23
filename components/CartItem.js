@@ -1,14 +1,19 @@
 import React from 'react'
-import CoffeeCounter from './CartItemCounter'
+import CartItemCounter from './CartItemCounter'
 
 class CartItem extends React.Component {
 
 	constructor(props) {
 		super(props)
+		this.handleProp = this.handleProp.bind(this)
+	}
+
+	handleProp() {
+
 	}
 
 	render() {
-		const { coffee } = this.props
+		const { coffee, id } = this.props
 		return (
 			<div className="cartitem">
 				<div className="itemoverview">
@@ -18,9 +23,7 @@ class CartItem extends React.Component {
 					/>
 					<div className="itemdetails">
 						<div className="itemtitle">{coffee.type}</div>
-						<CartItemCounter
-							coffee={coffee}
-						/>
+						<CartItemCounter coffee={coffee} id={id} {...this.props} />
 					</div>
 				</div>
 				<form className="itemform">
@@ -31,7 +34,7 @@ class CartItem extends React.Component {
 							<option value="trim milk">Trim milk</option>
 							<option value="soy milk">Soy milk</option>
 					</select>
-					<select className="iteminput">
+					<select className="iteminput" onChange={this.handleProp}>
 							<option value="">Add sugar...</option>
 							<option value="none">None</option>
 							<option value="1">1 sugar</option>
