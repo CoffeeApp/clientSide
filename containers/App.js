@@ -5,7 +5,7 @@ import Cart from '../components/Cart'
 // import SelectCafe from './SelectCafe'
 import { browserHistory } from 'react-router'
 import { connect } from 'react-redux'
-import { createOrder } from '../actioncreators'
+import { createOrder, addCoffeeToOrder } from '../actioncreators'
 
 const mapStateToProps = (state) => {
 	return {
@@ -18,6 +18,9 @@ const mapDispatchToProps = (dispatch) => {
 	return {
 		createOrder: (order) => {
 			dispatch(createOrder(order))
+		},
+		addCoffeeToOrder: (coffeeId, coffeeType) => {
+			dispatch(addCoffeeToOrder(coffeeId, coffeeType))
 		}
 	}
 }
@@ -29,12 +32,11 @@ class App extends React.Component {
 	}
 
 	componentDidMount() {
-		browserHistory.push('/coffee')
+		browserHistory.push('/coffees')
 	}
 
 	render() {
 		const { store, children } = this.props
-		console.log('this', this)
 		return (
 			<div id="wrapper">
 				<NavBar />

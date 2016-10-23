@@ -9,21 +9,17 @@ class Cart extends Component {
 	}
 
 	render() {
-		const { store } = this.props
-		const { coffees } = this.props.store.getState().order
-		console.log(this.props.store.getState().order)
+		console.log('Props:')
+		console.log(this.props)
 		return (
 			<div className="cartitems">
 				{coffees.map((coffee, index) => {
 					return (
-						<CartItem
-							key={index}
-							coffee={coffee}
-						/>
+						<CartItem key={index} />
 					)
 				})}
 				<div className="cartfooter">
-					<UserForm coffees={coffees} store={store} />
+					<UserForm />
 				</div>
 			</div>
 		)

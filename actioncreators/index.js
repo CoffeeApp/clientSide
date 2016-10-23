@@ -10,15 +10,12 @@ export function createOrder(order) {
 	}
 }
 
-// function getCoffeeObject() {
-// 	return (dispatch) => {
-// 		api.service('coffees')
-// 			.find({
-// 				query: { id: coffeeId }
-// 			})
-// 			.then((actions) => {
-// 				console.log(`AddCoffeeToOrder() | Coffee found: ${actions.data[0]}`)
-// 				dispatch(addCoffeeToOrder(actions.data[0]))
-// 			})
-// 	}
-// }
+export function addCoffeeToOrder(coffeeId, coffeeType) {
+	return { type: 'ADD_COFFEE_TO_ORDER', payload: {
+		coffee_id: coffeeId,
+		type: coffeeType,
+		quantity: 1,
+		milk: '',
+		sugar: 0
+	} }
+}
