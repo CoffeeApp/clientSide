@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { api } from '../lib/api'
 import createOrder from '../actioncreators'
+import { hashHistory } from 'react-router'
 
 class UserForm extends Component {
 
@@ -26,6 +27,7 @@ class UserForm extends Component {
 		let phone = this.state.userNumber
 		let comment = this.state.comment
 		e.preventDefault()
+		hashHistory.push('/cafes')
 		this.props.store.dispatch(createOrder({
 			details: {
 				name,
