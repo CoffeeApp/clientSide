@@ -20,6 +20,7 @@ class Cart extends Component {
 							key={index}
 							id={key}
 							changeOrderOptions={this.props.changeOrderOptions}
+							{...this.props}
 						/>
 					)
 				})}

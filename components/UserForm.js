@@ -40,7 +40,7 @@ class UserForm extends Component {
 			orderCoffees
 		}
 		this.props.createOrder(order)
-		hashHistory.push('/cafe-select')
+		hashHistory.push('/cafe')
 	}
 
 	render () {
