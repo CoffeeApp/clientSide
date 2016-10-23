@@ -10,7 +10,8 @@ class CartItemCounter extends Component {
 	handleProp(prop) {
 		const { coffee, id } = this.props
 		return (e) => {
-			let change = (prop === 'increment') ? 1 : -1
+			let change = coffee.quantity + ((prop === 'increment') ? 1 : -1)
+			console.log(change);
 			this.props.changeOrderOptions(id, 'quantity', change)
 		}
 	}

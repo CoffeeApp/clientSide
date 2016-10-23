@@ -16,7 +16,7 @@ const coffees = (state = initialState.order, action) => {
 					...state.orderCoffees,
 					[action.payload.id]: {
 						...state.orderCoffees[action.payload.id],
-						[action.payload.changeType]: state.orderCoffees[action.payload.id].quantity + action.payload.changePayload
+						[action.payload.changeType]: action.payload.changePayload
 					}
 				}
 			}
