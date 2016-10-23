@@ -28,6 +28,7 @@
   "homepage": "https://github.com/coffeeapp/clientSide",
   "dependencies": {
     "feathers-client": "^1.6.1",
+    "lodash": "^4.16.4",
     "react": "^15.3.2",
     "react-dom": "^15.3.2",
     "react-redux": "^4.4.5",
@@ -50,6 +51,7 @@
     "eslint": "^3.8.1",
     "eslint-plugin-react": "^6.4.1",
     "gh-pages": "^0.11.0",
+    "lodash": "^4.16.4",
     "react": "^15.0.1",
     "react-dom": "^15.0.1",
     "tap-spec": "^4.1.1",
