@@ -3,34 +3,6 @@ import { connect } from 'react-redux'
 import CartItem from './CartItem'
 import UserForm from './UserForm'
 
-const mapStateToProps = (state) => {
-	return {
-		order: state.order,
-		coffees: state.coffees,
-		searchWord: state.searchWord
-	}
-}
-
-const mapDispatchToProps = (dispatch) => {
-	return {
-		createOrder: (order) => {
-			dispatch(createOrder(order))
-		},
-		addCoffeeToOrder: (coffeeId, coffeeType) => {
-			dispatch(addCoffeeToOrder(coffeeId, coffeeType))
-		},
-		getOrderCoffees: () => {
-			dispatch(getOrderCoffees())
-		},
-		changeQuantity: (id, quantity) => {
-			dispatch(changeQuantity(id, quantity))
-		},
-		updateSearchWord: (word) => {
-			dispatch(updateSearchWord(word))
-		}
-	}
-}
-
 class Cart extends Component {
 
 	constructor(props) {
@@ -59,4 +31,4 @@ class Cart extends Component {
 	}
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Cart)
+export default Cart
