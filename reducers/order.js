@@ -11,7 +11,6 @@ const coffees = (state = initialState.order, action) => {
 			}
 		}
 	case 'CHANGE_QUANTITY':
-		console.log(action.payload.id);
 		return {
 			orderCoffees: {
 				...state.orderCoffees,
