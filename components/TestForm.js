@@ -20,7 +20,6 @@ class TestForm extends Component {
     //   var state = {}
     //   state[prop] = e.target.value
       this.setState({[prop]:e.target.value})
-      console.log('input logged:', this.state)
     }
   }
 

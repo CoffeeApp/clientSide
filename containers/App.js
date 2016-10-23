@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { hashHistory } from 'react-router'
 import { connect } from 'react-redux'
-import { createOrder, addCoffeeToOrder, getOrderCoffees, changeQuantity, updateSearchWord } from '../actioncreators'
+import { createOrder, addCoffeeToOrder, getOrderCoffees, changeOrderOptions, updateSearchWord } from '../actioncreators'
 import SearchBar from '../components/SearchBar'
 
 const mapStateToProps = (state) => {
@@ -23,8 +23,8 @@ const mapDispatchToProps = (dispatch) => {
 		getOrderCoffees: () => {
 			dispatch(getOrderCoffees())
 		},
-		changeQuantity: (id, quantity) => {
-			dispatch(changeQuantity(id, quantity))
+		changeOrderOptions: (id, changeType, changePayload) => {
+			dispatch(changeOrderOptions(id, changeType, changePayload))
 		},
 		updateSearchWord: (word) => {
 			dispatch(updateSearchWord(word))
@@ -44,7 +44,6 @@ class App extends React.Component {
 
 	render() {
 		const { store, children, searchWord, updateSearchWord} = this.props
-		console.log('this', this)
 		return (
 			<div id="wrapper">
 				<SearchBar updateSearchWord={updateSearchWord} searchWord={searchWord} />
