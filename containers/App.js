@@ -3,6 +3,7 @@ import { hashHistory } from 'react-router'
 import { connect } from 'react-redux'
 import { createOrder, addCoffeeToOrder, getOrderCoffees, changeQuantity, updateSearchWord } from '../actioncreators'
 import SearchBar from '../components/SearchBar'
+import Cart from '../components/Cart'
 
 const mapStateToProps = (state) => {
 	return {
@@ -39,7 +40,7 @@ class App extends React.Component {
 	}
 
 	componentDidMount() {
-		hashHistory.push('/coffees')
+		hashHistory.push('/coffee-select')
 	}
 
 	render() {
