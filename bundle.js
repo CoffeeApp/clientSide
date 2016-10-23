@@ -6,6 +6,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.createOrder = createOrder;
 exports.addCoffeeToOrder = addCoffeeToOrder;
+exports.changeQuantity = changeQuantity;
 exports.updateSearchWord = updateSearchWord;
 
 var _api = require('../lib/api');
@@ -22,14 +23,18 @@ function createOrder(order) {
 	};
 }
 
-function addCoffeeToOrder(coffeeId, coffeeType) {
+function addCoffeeToOrder(coffee_id, type) {
 	return { type: 'ADD_COFFEE_TO_ORDER', payload: {
-			coffee_id: coffeeId,
-			type: coffeeType,
+			coffee_id: coffee_id,
+			type: type,
 			quantity: 1,
 			milk: '',
-			sugar: 0
+			sugar: 1
 		} };
+}
+
+function changeQuantity(id, change) {
+	return { type: 'CHANGE_QUANTITY', payload: { id: id, change: change } };
 }
 
 function updateSearchWord(word) {
@@ -120,6 +125,8 @@ Object.defineProperty(exports, "__esModule", {
 	value: true
 });
 
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 var _react = require('react');
@@ -154,13 +161,14 @@ var Cart = function (_Component) {
 	_createClass(Cart, [{
 		key: 'render',
 		value: function render() {
-			console.log('Props:');
-			console.log(this.props);
+			var _this2 = this;
+
+			var coffees = this.props.order.orderCoffees;
 			return _react2.default.createElement(
 				'div',
 				{ className: 'cartitems' },
-				coffees.map(function (coffee, index) {
-					return _react2.default.createElement(_CartItem2.default, { key: index });
+				Object.keys(coffees).map(function (key, index) {
+					return _react2.default.createElement(_CartItem2.default, _extends({ coffee: coffees[key], key: index, id: key }, _this2.props));
 				}),
 				_react2.default.createElement(
 					'div',
@@ -182,6 +190,8 @@ exports.default = Cart;
 Object.defineProperty(exports, "__esModule", {
 	value: true
 });
+
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
@@ -207,13 +217,21 @@ var CartItem = function (_React$Component) {
 	function CartItem(props) {
 		_classCallCheck(this, CartItem);
 
-		return _possibleConstructorReturn(this, (CartItem.__proto__ || Object.getPrototypeOf(CartItem)).call(this, props));
+		var _this = _possibleConstructorReturn(this, (CartItem.__proto__ || Object.getPrototypeOf(CartItem)).call(this, props));
+
+		_this.handleProp = _this.handleProp.bind(_this);
+		return _this;
 	}
 
 	_createClass(CartItem, [{
+		key: 'handleProp',
+		value: function handleProp() {}
+	}, {
 		key: 'render',
 		value: function render() {
-			var coffee = this.props.coffee;
+			var _props = this.props;
+			var coffee = _props.coffee;
+			var id = _props.id;
 
 			return _react2.default.createElement(
 				'div',
@@ -233,9 +251,7 @@ var CartItem = function (_React$Component) {
 							{ className: 'itemtitle' },
 							coffee.type
 						),
-						_react2.default.createElement(CartItemCounter, {
-							coffee: coffee
-						})
+						_react2.default.createElement(_CartItemCounter2.default, _extends({ coffee: coffee, id: id }, this.props))
 					)
 				),
 				_react2.default.createElement(
@@ -272,7 +288,7 @@ var CartItem = function (_React$Component) {
 					),
 					_react2.default.createElement(
 						'select',
-						{ className: 'iteminput' },
+						{ className: 'iteminput', onChange: this.handleProp },
 						_react2.default.createElement(
 							'option',
 							{ value: '' },
@@ -350,18 +366,15 @@ var CartItemCounter = function (_Component) {
 		value: function handleProp(prop) {
 			var _this2 = this;
 
-			var coffee = this.props.coffee;
+			var _props = this.props;
+			var coffee = _props.coffee;
+			var id = _props.id;
 
 			return function (e) {
 				if (prop === 'increment') {
-					_this2.props.store.dispatch({ type: 'INCREMENT_COFFEE', payload: _this2.props.store.getState().order.coffees.length });
-					_this2.setState({ count: _this2.props.count + 1 }, function () {
-						console.log(this.props.coffeeName, 'incremented to', this.state.count);
-					});
-				} else if (prop === 'decrement' && _this2.state.count >= 1) {
-					_this2.setState({ count: _this2.state.count - 1 }, function () {
-						console.log(this.props.coffeeName, 'decremented to', this.state.count);
-					});
+					_this2.props.changeQuantity(id, 1);
+				} else if (prop === 'decrement' && coffee.quantity >= 1) {
+					_this2.props.changeQuantity(id, -1);
 				}
 			};
 		}
@@ -376,19 +389,19 @@ var CartItemCounter = function (_Component) {
 				_react2.default.createElement(
 					'div',
 					{ className: 'itemquantity' },
-					this.state.count
+					coffee.quantity
 				),
 				_react2.default.createElement('img', {
 					className: 'quantity',
 					id: 'counterButtonsPlus',
 					onClick: this.handleProp('increment'),
-					src: 'https://iconshow.me/media/images/ui/ios7-icons/png/512/plus-outline.png'
+					src: 'http://iconshow.me/media/images/ui/ios7-icons/png/512/plus-empty.png'
 				}),
 				_react2.default.createElement('img', {
 					className: 'quantity',
 					id: 'counterButtonsMinus',
 					onClick: this.handleProp('decrement'),
-					src: 'https://iconshow.me/media/images/ui/ios7-icons/png/512/minus-outline.png'
+					src: 'http://iconshow.me/media/images/ui/ios7-icons/png/512/minus-empty.png'
 				})
 			);
 		}
@@ -420,7 +433,7 @@ var Coffee = function Coffee(_ref) {
 		{
 			className: "item",
 			onClick: function onClick() {
-				return addCoffeeToOrder(coffee.id, coffee.type);
+				return addCoffeeToOrder(coffee.coffee_id, coffee.type);
 			}
 		},
 		_react2.default.createElement("img", {
@@ -601,6 +614,8 @@ var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
+var _reactRouter = require('react-router');
+
 var _Coffee = require('./Coffee');
 
 var _Coffee2 = _interopRequireDefault(_Coffee);
@@ -638,7 +653,11 @@ var SelectCoffee = function (_React$Component) {
 				'div',
 				{ className: 'selectcoffee' },
 				filterResults.map(function (coffee, index) {
-					return _react2.default.createElement(_Coffee2.default, _extends({ key: index, coffee: coffee }, _this2.props));
+					return _react2.default.createElement(
+						_reactRouter.Link,
+						{ className: 'link', key: index, to: '/cart' },
+						_react2.default.createElement(_Coffee2.default, _extends({ key: index, coffee: coffee }, _this2.props))
+					);
 				})
 			);
 		}
@@ -649,7 +668,7 @@ var SelectCoffee = function (_React$Component) {
 
 exports.default = SelectCoffee;
 
-},{"./Coffee":6,"react":331}],10:[function(require,module,exports){
+},{"./Coffee":6,"react":331,"react-router":180}],10:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -780,23 +799,15 @@ var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
-var _SearchBar = require('../components/SearchBar');
-
-var _SearchBar2 = _interopRequireDefault(_SearchBar);
-
-var _SelectCoffee = require('../components/SelectCoffee');
-
-var _SelectCoffee2 = _interopRequireDefault(_SelectCoffee);
-
-var _Cart = require('../components/Cart');
-
-var _Cart2 = _interopRequireDefault(_Cart);
-
 var _reactRouter = require('react-router');
 
 var _reactRedux = require('react-redux');
 
 var _actioncreators = require('../actioncreators');
+
+var _SearchBar = require('../components/SearchBar');
+
+var _SearchBar2 = _interopRequireDefault(_SearchBar);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -805,8 +816,6 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-// import SelectCafe from './SelectCafe'
-
 
 var mapStateToProps = function mapStateToProps(state) {
 	return {
@@ -820,6 +829,15 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
 	return {
 		createOrder: function createOrder(order) {
 			dispatch((0, _actioncreators.createOrder)(order));
+		},
+		addCoffeeToOrder: function addCoffeeToOrder(coffeeId, coffeeType) {
+			dispatch((0, _actioncreators.addCoffeeToOrder)(coffeeId, coffeeType));
+		},
+		getOrderCoffees: function getOrderCoffees() {
+			dispatch((0, _actioncreators.getOrderCoffees)());
+		},
+		changeQuantity: function changeQuantity(id, quantity) {
+			dispatch((0, _actioncreators.changeQuantity)(id, quantity));
 		},
 		updateSearchWord: function updateSearchWord(word) {
 			dispatch((0, _actioncreators.updateSearchWord)(word));
@@ -839,7 +857,7 @@ var App = function (_React$Component) {
 	_createClass(App, [{
 		key: 'componentDidMount',
 		value: function componentDidMount() {
-			_reactRouter.browserHistory.push('/coffee');
+			_reactRouter.hashHistory.push('/coffees');
 		}
 	}, {
 		key: 'render',
@@ -873,11 +891,11 @@ var App = function (_React$Component) {
 
 exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(App);
 
-},{"../actioncreators":1,"../components/Cart":3,"../components/SearchBar":7,"../components/SelectCoffee":9,"react":331,"react-redux":146,"react-router":180}],12:[function(require,module,exports){
+},{"../actioncreators":1,"../components/SearchBar":7,"react":331,"react-redux":146,"react-router":180}],12:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
-  value: true
+	value: true
 });
 
 var _react = require('react');
@@ -896,33 +914,33 @@ var _SelectCoffee = require('../components/SelectCoffee');
 
 var _SelectCoffee2 = _interopRequireDefault(_SelectCoffee);
 
-var _SelectCafe = require('../components/SelectCafe');
-
-var _SelectCafe2 = _interopRequireDefault(_SelectCafe);
-
 var _Cart = require('../components/Cart');
 
 var _Cart2 = _interopRequireDefault(_Cart);
 
+var _SelectCafe = require('../components/SelectCafe');
+
+var _SelectCafe2 = _interopRequireDefault(_SelectCafe);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var Root = function Root(_ref) {
-  var store = _ref.store;
-  return _react2.default.createElement(
-    _reactRedux.Provider,
-    { store: store },
-    _react2.default.createElement(
-      _reactRouter.Router,
-      { history: _reactRouter.browserHistory },
-      _react2.default.createElement(
-        _reactRouter.Route,
-        { path: '/', component: _App2.default },
-        _react2.default.createElement(_reactRouter.Route, { path: '/coffee', component: _SelectCoffee2.default }),
-        _react2.default.createElement(_reactRouter.Route, { path: '/cart', component: _Cart2.default }),
-        _react2.default.createElement(_reactRouter.Route, { path: '/cafes', component: _SelectCafe2.default })
-      )
-    )
-  );
+	var store = _ref.store;
+	return _react2.default.createElement(
+		_reactRedux.Provider,
+		{ store: store },
+		_react2.default.createElement(
+			_reactRouter.Router,
+			{ history: _reactRouter.hashHistory },
+			_react2.default.createElement(
+				_reactRouter.Route,
+				{ path: '/', component: _App2.default },
+				_react2.default.createElement(_reactRouter.Route, { path: '/coffees', component: _SelectCoffee2.default }),
+				_react2.default.createElement(_reactRouter.Route, { path: '/cart', component: _Cart2.default }),
+				_react2.default.createElement(_reactRouter.Route, { path: '/cafes', component: _SelectCafe2.default })
+			)
+		)
+	);
 };
 
 exports.default = Root;
@@ -39996,13 +40014,15 @@ Object.defineProperty(exports, "__esModule", {
 	value: true
 });
 
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
 var _state = require('../state');
 
 var _state2 = _interopRequireDefault(_state);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 var coffees = function coffees() {
 	var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : _state2.default.order;
@@ -40010,11 +40030,16 @@ var coffees = function coffees() {
 
 	switch (action.type) {
 		case 'ADD_COFFEE_TO_ORDER':
-			action.payload.coffeeorder_id = state.coffees.length;
-			state.coffees = [].concat(_toConsumableArray(state.coffees), [action.payload]);
-			return state;
-		case 'RECEIVE_ORDER':
-			return action.payload;
+			var orderCoffeeId = Object.keys(state.orderCoffees).length;
+			return {
+				orderCoffees: _extends({}, state.orderCoffees, _defineProperty({}, orderCoffeeId, action.payload))
+			};
+		case 'CHANGE_QUANTITY':
+			return {
+				orderCoffees: _extends({}, state.orderCoffees, _defineProperty({}, action.payload.id, _extends({}, state.orderCoffees[action.payload.id], {
+					quantity: state.orderCoffees[action.payload.id].quantity + action.payload.change
+				})))
+			};
 		default:
 			return state;
 	}
@@ -40057,36 +40082,15 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = {
 	order: {
-		orderCoffees: [{
-			orderCoffees_id: 0,
-			coffee_id: 3,
-			type: 'Flat White',
-			quantity: 1,
-			milk: 'trim',
-			sugar: 1
-		}, {
-			orderCoffees_id: 1,
-			coffee_id: 7,
-			type: 'Americano',
-			quantity: 2,
-			milk: 'soy',
-			sugar: 0
-		}, {
-			orderCoffees_id: 2,
-			coffee_id: 3,
-			type: 'Flat White',
-			quantity: 2,
-			milk: 'none',
-			sugar: 3
-		}]
+		orderCoffees: []
 	},
 	coffees: [{
-		coffee_id: 1,
+		coffee_id: 0,
 		type: 'Short Black',
 		image: 'https://s-media-cache-ak0.pinimg.com/564x/99/94/fe/9994fedb8db160d363719f2acb74acb4.jpg',
 		description: 'A Short Black is what Australians call a shot of espresso. It is typically a 30ml espresso served in a small glass with a thick crema floating on top.'
 	}, {
-		coffee_id: 2,
+		coffee_id: 1,
 		type: 'Flat White',
 		image: 'https://s-media-cache-ak0.pinimg.com/564x/99/94/fe/9994fedb8db160d363719f2acb74acb4.jpg',
 		description: 'A type of coffee made with espresso and hot steamed milk, but without the froth characteristic of a cappuccino.'
