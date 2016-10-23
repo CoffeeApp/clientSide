@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { hashHistory } from 'react-router'
 import { connect } from 'react-redux'
 import { createOrder, addCoffeeToOrder, getOrderCoffees, changeQuantity, updateSearchWord } from '../actioncreators'
-// import SelectCafe from './SelectCafe'
+import SearchBar from '../components/SearchBar'
 
 const mapStateToProps = (state) => {
 	return {

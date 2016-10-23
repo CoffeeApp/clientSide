@@ -1,20 +1,6 @@
 export default {
 	order: {
 		orderCoffees: [
-			0: {
-				coffee_id: 3,
-				type: 'Flat White',
-				quantity: 1,
-				milk: 'trim',
-				sugar: 1
-			},
-			1: {
-				coffee_id: 7,
-				type: 'Americano',
-				quantity: 2,
-				milk: 'soy',
-				sugar: 0
-			}
 		]
 	},
 	coffees: [
