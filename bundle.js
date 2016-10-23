@@ -384,13 +384,13 @@ var CartItemCounter = function (_Component) {
 					className: 'quantity',
 					id: 'counterButtonsPlus',
 					onClick: this.handleProp('increment'),
-					src: 'http://iconshow.me/media/images/ui/ios7-icons/png/512/plus-outline.png'
+					src: 'https://iconshow.me/media/images/ui/ios7-icons/png/512/plus-outline.png'
 				}),
 				_react2.default.createElement('img', {
 					className: 'quantity',
 					id: 'counterButtonsMinus',
 					onClick: this.handleProp('decrement'),
-					src: 'http://iconshow.me/media/images/ui/ios7-icons/png/512/minus-outline.png'
+					src: 'https://iconshow.me/media/images/ui/ios7-icons/png/512/minus-outline.png'
 				})
 			);
 		}
@@ -40063,6 +40063,8 @@ var _react2 = _interopRequireDefault(_react);
 
 var _reactDom = require('react-dom');
 
+var _reactDom2 = _interopRequireDefault(_reactDom);
+
 var _redux = require('redux');
 
 var _reduxThunk = require('redux-thunk');
@@ -40085,7 +40087,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 var store = (0, _redux.createStore)(_reducers2.default, _state2.default, (0, _redux.applyMiddleware)(_reduxThunk2.default));
 
-(0, _reactDom.render)(_react2.default.createElement(_Root2.default, { store: store }), document.querySelector('main'));
+_reactDom2.default.render(_react2.default.createElement(_Root2.default, { store: store }), document.querySelector('main'));
 
 console.log('welcome to clientSide');
 
