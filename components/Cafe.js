@@ -3,7 +3,7 @@ import React, { Component } from 'react'
 const Cafe = ({shop, updateOrderWithShop}) => (
 	<div
 		className="item"
-		onClick={() => updateOrderWithShop(shop.shop_id, shop.shop_name)}
+		onClick={() => updateOrderWithShop(shop.order_id, shop.shop_id, shop.shop_name)}
 	>
 		<img
 			alt="coffee image"

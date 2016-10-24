@@ -11,13 +11,15 @@ export function createOrder(order) {
 	}
 }
 
-export function updateOrderWithShop(order) {
+export function updateOrderWithShop(orderId, shop_id, shopName) {
 	return (dispatch) => {
 		api.service('orders')
-			.update(order)
+			.patch(orderId, {
+				action: 'submitted',
+				payload: {shop_id}
+			})
 			.then(function (result) {
-				console.log('Create Order result: ', result)
-				// dispatch({ type: 'RECEIVE_ORDER', payload: order })
+				console.log('Order submitted: ', result)
 			})
 	}
 }
@@ -56,18 +58,3 @@ export function fetchCoffees() {
 			})
 	}
 }
-
-// function receiveShops(shops) {
-// 	return { type: 'RECEIVE_SHOPS', payload: shops }
-// }
-//
-// export function fetchShops() {
-// 	return (dispatch) => {
-// 		api.service('shops')
-// 			.find()
-// 			.then((result) => {
-// 				console.log(result)
-// 				dispatch(receiveShops(result.data))
-// 			})
-// 	}
-// }

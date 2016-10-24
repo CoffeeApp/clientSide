@@ -8,7 +8,9 @@ import {
 	changeOrderOptions,
 	changeQuantity,
 	updateSearchWord,
-	fetchCoffees } from '../actioncreators'
+	fetchCoffees,
+ 	updateOrderWithShop
+} from '../actioncreators'
 import SearchBar from '../components/SearchBar'
 import Cart from '../components/Cart'
 
@@ -42,8 +44,8 @@ const mapDispatchToProps = (dispatch) => {
 		fetchCoffees: () => {
 			dispatch(fetchCoffees())
 		},
-		updateOrderWithShop: (shopId, shopName) => {
-			dispatch(updateOrderWithShop(shopId, shopName))
+		updateOrderWithShop: (orderId, shopId, shopName) => {
+			dispatch(updateOrderWithShop(orderId, shopId, shopName))
 		}
 	}
 }
