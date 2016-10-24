@@ -1,5 +1,6 @@
 import React from 'react'
 import Shop from './Shop'
+import { fetchShops } from '../actioncreators'
 
 class SelectShop extends React.Component {
 
@@ -7,8 +8,15 @@ class SelectShop extends React.Component {
 		super(props)
 	}
 
+	componentDidMount() {
+		navigator.geolocation.getCurrentPosition((position) => {
+			var userCoords = { lat: position.coords.latitude, lng: position.coords.longitude }
+			this.props.fetchShops(userCoords)
+		})
+	}
+
 	render() {
-		const { shops } = this.props
+		const { shops } = this.props // this.props.shops!?
 		return (
 			<div className="itemscontainer">
 				{shops.map((shop, index) => {
@@ -23,7 +31,6 @@ class SelectShop extends React.Component {
 
 export default SelectShop
 
-// OLD SELECTCAFE FOR REFERENCE
 // import React, { Component } from 'react'
 // import Cafe from './Cafe'
 // import { Link } from 'react-router'
@@ -37,11 +44,18 @@ export default SelectShop
 // 	}
 //
 // 	componentDidMount() {
-// 		this.props.fetchShops()
+// 		navigator.geolocation.getCurrentPosition((position) => {
+// 			var userCoords = { lat: position.coords.latitude, lng: position.coords.longitude }
+// 			this.props.fetchShops(userCoords)
+// 		})
+// 		// get shops
+// 		// calculate distance from shop data
+// 		// render shops w info
 // 	}
 //
 // 	render() {
-// 		const { shops } = this.props
+// 		const shops = this.props.shops
+// 		console.log('SHOPS THROWING ERROR IN SELECTCAFE', shops)
 // 		return (
 // 			<div className="itemscontainer">
 // 				{shops.map((shop, index) => {
@@ -57,3 +71,4 @@ export default SelectShop
 // }
 //
 // export default SelectCafe
+// // removed className="selectcafe" from parent div
