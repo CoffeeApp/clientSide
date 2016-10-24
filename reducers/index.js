@@ -6,9 +6,9 @@ import searchWord from './searchword'
 import notification from './notification'
 
 export default combineReducers({
-	coffees,
-	order,
-	shops,
-	searchWord,
-	notification
+  coffees,
+  order,
+  shops,
+  searchWord,
+  notification
 })
