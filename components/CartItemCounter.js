@@ -11,7 +11,6 @@ class CartItemCounter extends Component {
 		const { coffee, id } = this.props
 		return (e) => {
 			let change = coffee.quantity + ((prop === 'increment') ? 1 : -1)
-			console.log(change);
 			this.props.changeOrderOptions(id, 'quantity', change)
 		}
 	}

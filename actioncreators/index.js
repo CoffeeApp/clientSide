@@ -1,12 +1,11 @@
 import api from '../lib/api'
 
-
 export function createOrder(order) {
 	return (dispatch) => {
 		api.service('orders')
 			.create(order)
 			.then(function (result) {
-				console.log(result)
+				console.log('Create Order result: ', result)
 				// dispatch({ type: 'RECEIVE_ORDER', payload: order })
 			})
 	}
@@ -30,7 +29,11 @@ export function updateSearchWord(word) {
 	return { type: 'UPDATE_SEARCHWORD', payload: word }
 }
 
-export function fetchCoffees () {
+function receiveCoffees(coffees) {
+	return { type: 'RECEIVE_COFFEES', payload: coffees }
+}
+
+export function fetchCoffees() {
 	return (dispatch) => {
 		api.service('coffees')
 			.find()
@@ -41,11 +44,11 @@ export function fetchCoffees () {
 	}
 }
 
-function receiveCoffees (coffees) {
-	return {type: "RECEIVE_COFFEES", payload: coffees}
+function receiveShops(shops) {
+	return { type: 'RECEIVE_SHOPS', payload: shops }
 }
 
-export function fetchShops () {
+export function fetchShops() {
 	return (dispatch) => {
 		api.service('shops')
 			.find()
@@ -54,8 +57,4 @@ export function fetchShops () {
 				dispatch(receiveShops(result.data))
 			})
 	}
-}
-
-function receiveShops (shops) {
-	return {type: "RECEIVE_SHOPS", payload: shops}
 }

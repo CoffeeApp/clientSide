@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import { api } from '../lib/api'
 import createOrder from '../actioncreators'
 import { hashHistory } from 'react-router'
 
