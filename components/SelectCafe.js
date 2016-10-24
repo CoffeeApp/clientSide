@@ -2,21 +2,7 @@ import React, { Component } from 'react'
 import Cafe from './Cafe'
 import { Link } from 'react-router'
 import { connect } from 'react-redux'
-import {fetchShops} from '../actioncreators'
-
-const mapStateToProps = (state) => {
-	return {
-		shops: state.shops
-	}
-}
-
-const mapDispatchToProps = (dispatch) => {
-	return {
-		fetchShops: () => {
-			dispatch(fetchShops())
-		}
-	}
-}
+import { fetchShops } from '../actioncreators'
 
 class SelectCafe extends React.Component {
 
@@ -44,7 +30,5 @@ class SelectCafe extends React.Component {
 	}
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(SelectCafe)
-
-
+export default SelectCafe
 // removed className="selectcafe" from parent div

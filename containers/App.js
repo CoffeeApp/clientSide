@@ -8,7 +8,9 @@ import {
 	changeOrderOptions,
 	changeQuantity,
 	updateSearchWord,
-	fetchCoffees } from '../actioncreators'
+	fetchCoffees,
+	fetchShops
+	} from '../actioncreators'
 import SearchBar from '../components/SearchBar'
 import Cart from '../components/Cart'
 
@@ -17,7 +19,8 @@ const mapStateToProps = (state) => {
 		order: state.order,
 		coffees: state.coffees,
 		searchWord: state.searchWord,
-		orderCoffees: state.order.orderCoffees
+		orderCoffees: state.order.orderCoffees,
+		shops: state.shops
 	}
 }
 
@@ -40,7 +43,11 @@ const mapDispatchToProps = (dispatch) => {
 		},
 		fetchCoffees: () => {
 			dispatch(fetchCoffees())
+		},
+		fetchShops: () => {
+			dispatch(fetchShops())
 		}
+		// deleteTask: (id) =>
 	}
 }
 
