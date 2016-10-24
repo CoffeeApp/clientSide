@@ -21,12 +21,15 @@ const coffees = (state = initialState.order, action) => {
 					}
 				}
 			}
+		case 'UPDATE_ORDER':
+			return {orderCoffees: state.orderCoffees, ...action.payload}
+		case 'UPDATE_ORDER_STATUS':
+			return {...state, ...action.payload}
 		case 'DELETE_COFFEE_FROM_ORDER':
-		var orderCoffees = state.orderCoffees
-		console.log(orderCoffees)
-		delete orderCoffees[action.payload.coffee_id]
+			var orderCoffees = state.orderCoffees
+			delete orderCoffees[action.payload.coffee_id]
 			return {
-				orderCoffees: orderCoffees
+				orderCoffees
 			}
 		default:
 			return state

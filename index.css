@@ -1,16 +1,8 @@
 #counterButtonsPlus, #counterButtonsMinus {
-	display: inline-block;
+  display: inline-block;
 }
-.item, .itemdetails, .cartitems, .cartitem, .cartfooter, .iteminput, .itemform {box-sizing: border-box;}
+.item, .itemdetails, .cartitems, .cartitem, .cartfooter, .iteminput, .itemform, .button {box-sizing: border-box;}
 .link {text-decoration: none; color: #333333;}
-.remove-comment {
-  background: none;
-  border: 0;
-  line-height: 1;
-  font-size: 20px;
-  margin-left: 1em;
-  color: lightgrey;
-}
 
 a:hover {
   color: #3f0000;
@@ -35,7 +27,7 @@ body {
   top: 108px;
   right: 0px;
   bottom: 200px;
-  z-index: 5000;
+  z-index: 1000;
   display: block;
   overflow: scroll;
   width: 300px;
@@ -49,7 +41,7 @@ body {
   position: fixed;
   right: 0px;
   bottom: 0px;
-  z-index: 5000;
+  z-index: 1000;
   width: 300px;
   height: 200px;
   padding: 10px;
@@ -140,7 +132,7 @@ body {
 
 .navbar {
   position: fixed;
-  z-index: 10000;
+  z-index: 1000;
   width: 100%;
   background-color: #3f0000;
 }
@@ -234,6 +226,7 @@ body {
   width: 25px;
   height: 25px;
   margin: 10px;
+  cursor: pointer;
 }
 
 .success {
@@ -246,7 +239,6 @@ body {
   top: 50%;
   z-index: 3000;
   width: 240px;
-  height: 250px;
   margin-top: -120px;
   margin-left: -120px;
   padding: 20px;
@@ -284,12 +276,11 @@ body {
   display: block;
 }
 
-.orderstatus {
-  display: none;
+.showorderstatus {
+  display: block;
 }
 
 .notificationstatus {
-  margin-top: 60px;
   font-size: 18px;
   font-weight: 700;
   text-align: center;
@@ -315,6 +306,20 @@ body {
   width: 100%;
   padding: 10px;
   border-top: 1px solid #ddd;
+}
+
+.removeitem {
+  margin-left: 1em;
+  color: #d3d3d3;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.cart {
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  bottom: 0px;
 }
 
 @media (max-width: 767px) {

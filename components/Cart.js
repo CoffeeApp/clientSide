@@ -5,9 +5,9 @@ import UserForm from './UserForm'
 
 class Cart extends Component {
 
-	constructor(props) {
-		super(props)
-	}
+  constructor(props) {
+    super(props)
+  }
 
 	render() {
 		const { orderCoffees } = this.props.order
