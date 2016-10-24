@@ -5,6 +5,7 @@ import React from 'react'
 
 //onClick={() => addCoffeeToOrder(coffee.coffee_id, coffee.type)}
 // ^ alternative onClick
+
 const Shop = ({shop, updateOrder}) => (
 	<div
 		className="item"

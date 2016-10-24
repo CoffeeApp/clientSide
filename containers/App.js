@@ -24,7 +24,7 @@ const mapStateToProps = (state) => {
 		searchWord: state.searchWord,
 		shops: state.shops,
 		notification: state.notification,
-		orderCoffees: state.order.orderCoffees,
+		orderCoffees: state.order.orderCoffees
 	}
 }
 
@@ -57,8 +57,9 @@ const mapDispatchToProps = (dispatch) => {
 		cancelOrder: () => {
 			dispatch(cancelOrder())
 		},
-		// fetchShops: () => {
-		// 	dispatch(fetchShops()),
+		fetchCoffees: () => {
+			dispatch(fetchCoffees())
+		},
 		fetchShops: (userCoords) => {
 			dispatch(fetchShops(userCoords))
 		}

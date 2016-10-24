@@ -14,8 +14,6 @@ class CartItemCounter extends Component {
 			this.props.changeOrderOptions(id, 'quantity', (coffee.quantity+1))
 		} else if (coffee.quantity >= 2 && e.target.alt == 'decrement') {
 				this.props.changeOrderOptions(id, 'quantity', (coffee.quantity-1))
-		// change === 0 ? this.props.deleteCartItem(id) : this.props.changeOrderOptions(id, 'quantity', change)
-		// ^^ concept for 0 coffees = deletion
 		}
 	}
 
