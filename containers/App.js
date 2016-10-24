@@ -10,10 +10,8 @@ import {
 	updateOrder, // is this the same as updateOrder?
  	showNotification,
 	confirmOrder,
-	cancelOrder
+	cancelOrder,
 	changeQuantity,
-	updateSearchWord,
-	fetchCoffees,
 	fetchShops
 	} from '../actioncreators'
 import SearchBar from '../components/SearchBar'
@@ -57,8 +55,8 @@ const mapDispatchToProps = (dispatch) => {
 			dispatch(confirmOrder(orderId, shopId))
 		},
 		cancelOrder: () => {
-			dispatch(cancelOrder()),
-		}
+			dispatch(cancelOrder())
+		},
 		// fetchShops: () => {
 		// 	dispatch(fetchShops()),
 		fetchShops: (userCoords) => {
