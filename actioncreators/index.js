@@ -68,9 +68,25 @@ export function confirmOrder(order_id, shop_id) {
 				console.log('Order submitted: ', result)
 				dispatch({ type: 'UPDATE_ORDER_STATUS', payload: { status: 'received' } })
 			})
+		}
+}
+
+export function fetchShops (userCoords) {
+	return (dispatch) => {
+		api.service('shops')
+			.find()
+			.then((result) => {
+				console.log(result)
+				dispatch(receiveShops(result.data, userCoords))
+			})
 	}
 }
 
 export function cancelOrder() {
-	return { type: 'UPDATE_ORDER_STATUS', payload: { status: 'cancelled' } }
+	return { type: 'UPDATE_ORDER_STATUS', payload: { status: 'cancelled' }
+	}
+}
+
+function receiveShops (shops, userCoords) {
+	return {type: "RECEIVE_SHOPS", payload: {shops, userCoords} }
 }
