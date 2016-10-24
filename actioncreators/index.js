@@ -81,3 +81,18 @@ export function cancelOrder() {
     dispatch(hideNotification())
   }
 }
+
+export function fetchShops (userCoords) {
+  return (dispatch) => {
+    api.service('shops')
+      .find()
+      .then((result) => {
+        console.log(result)
+        dispatch(receiveShops(result.data, userCoords))
+      })
+  }
+}
+
+function receiveShops (shops, userCoords) {
+  return {type: "RECEIVE_SHOPS", payload: {shops, userCoords} }
+}

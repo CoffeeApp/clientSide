@@ -8,9 +8,11 @@ import {
   changeOrderOptions,
   createOrder,
   updateOrder,
-   showNotification,
+  showNotification,
+  hideNotification,
   confirmOrder,
-  cancelOrder
+  cancelOrder,
+  fetchShops
 } from '../actioncreators'
 import SearchBar from '../components/SearchBar'
 import Cart from '../components/Cart'
@@ -48,11 +50,20 @@ const mapDispatchToProps = (dispatch) => {
     showNotification: () => {
       dispatch(showNotification())
     },
+    hideNotification: () => {
+      dispatch(showNotification())
+    },
     confirmOrder: (orderId, shopId) => {
       dispatch(confirmOrder(orderId, shopId))
     },
     cancelOrder: () => {
       dispatch(cancelOrder())
+    },
+    fetchCoffees: () => {
+      dispatch(fetchCoffees())
+    },
+    fetchShops: (userCoords) => {
+      dispatch(fetchShops(userCoords))
     }
   }
 }

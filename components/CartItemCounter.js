@@ -41,4 +41,5 @@ class CartItemCounter extends Component {
   }
 }
 
+
 export default CartItemCounter
