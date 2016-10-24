@@ -4,20 +4,15 @@ class CartItemCounter extends Component {
 
 	constructor(props) {
 		super(props)
-		this.state = {
-			count: 1
-		}
 		this.handleProp = this.handleProp.bind(this)
 	}
 
 	handleProp(prop) {
 		const { coffee, id } = this.props
 		return (e) => {
-			if (prop === 'increment') {
-				this.props.changeQuantity(id, 1)
-			} else if (prop === 'decrement' && coffee.quantity >= 1) {
-				this.props.changeQuantity(id, -1)
-			}
+			let change = coffee.quantity + ((prop === 'increment') ? 1 : -1)
+			console.log(change);
+			this.props.changeOrderOptions(id, 'quantity', change)
 		}
 	}
 

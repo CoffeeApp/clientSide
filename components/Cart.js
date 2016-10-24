@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
 import CartItem from './CartItem'
 import UserForm from './UserForm'
 
@@ -9,16 +10,22 @@ class Cart extends Component {
 	}
 
 	render() {
-		const coffees = this.props.order.orderCoffees
+	const { orderCoffees } = this.props
 		return (
 			<div className="cartitems">
-				{Object.keys(coffees).map((key, index) => {
+				{Object.keys(orderCoffees).map((key, index) => {
 					return (
-						<CartItem coffee={coffees[key]} key={index} id={key} {...this.props} />
+						<CartItem
+							key={index}
+							coffee={orderCoffees[key]}
+							id={key}
+							changeOrderOptions={this.props.changeOrderOptions}
+							{...this.props}
+						/>
 					)
 				})}
 				<div className="cartfooter">
-					<UserForm />
+					<UserForm {...this.props} />
 				</div>
 			</div>
 		)

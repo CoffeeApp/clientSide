@@ -9,8 +9,8 @@ class SelectCoffee extends React.Component {
 	}
 
 	render() {
-		const { coffees } = this.props
-		var searchWord = this.props.searchWord
+		const { coffees, searchWord } = this.props
+		console.log('coffees', coffees)
 		let filterResults = coffees.filter((coffee) => {
 			return coffee.type.toLowerCase().includes(searchWord.toLowerCase())
 		})
@@ -19,9 +19,7 @@ class SelectCoffee extends React.Component {
 			<div className="selectcoffee">
 				{filterResults.map((coffee, index) => {
 					return (
-						<Link className="link" key={index} to="/cart">
-							<Coffee key={index} coffee={coffee} {...this.props} />
-						</Link>
+						<Coffee key={index} coffee={coffee} {...this.props} />
 					)
 				})}
 			</div>

@@ -1,11 +1,10 @@
 import React from 'react'
 
 const SearchBar = ({searchWord, updateSearchWord}) => {
-	console.log('IMPORTANT STUFF', searchWord, updateSearchWord)
 	return (
 		<div className="navbar">
 			<div className="row">
-				<span className="logo">Coffee App</span>
+				<span className="logo">Caffeinati</span>
 			</div>
 			<div className="row">
 				<form className="searchbarcontainer">
