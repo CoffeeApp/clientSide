@@ -7,34 +7,39 @@ class CartItemCounter extends Component {
 		this.handleProp = this.handleProp.bind(this)
 	}
 
-	handleProp(prop) {
-		const { coffee, id } = this.props
-		return (e) => {
-			var change = coffee.quantity + ((prop === 'increment') ? 1 : -1)
-			// change === 0 ? this.props.deleteCartItem(id) : this.props.changeOrderOptions(id, 'quantity', change)
+	handleProp(e) {
+		const { coffee } = this.props
+		const id = e.target.id
+		if (coffee.quantity > 0 && e.target.alt == 'increment') {
+			this.props.changeOrderOptions(id, 'quantity', (coffee.quantity+1))
+		} else if (coffee.quantity >= 2 && e.target.alt == 'decrement') {
+				this.props.changeOrderOptions(id, 'quantity', (coffee.quantity-1))
 		}
 	}
 
 	render() {
-		const { coffee } = this.props
+		const { coffee, id } = this.props
 		return (
 			<div>
 				<div className="itemquantity">{coffee.quantity}</div>
 				<img
 					className="quantity"
-					id="counterButtonsPlus"
-					onClick={this.handleProp('increment')}
+					id={id}
+					alt="increment"
+					onClick={this.handleProp}
 					src="http://iconshow.me/media/images/ui/ios7-icons/png/512/plus-empty.png"
 				/>
 				<img
 					className="quantity"
-					id="counterButtonsMinus"
-					onClick={this.handleProp('decrement')}
+					id={id}
+					alt="decrement"
+					onClick={this.handleProp}
 					src="http://iconshow.me/media/images/ui/ios7-icons/png/512/minus-empty.png"
 				/>
 			</div>
 		)
 	}
 }
+
 
 export default CartItemCounter
