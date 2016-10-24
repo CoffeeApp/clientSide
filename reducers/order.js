@@ -20,6 +20,10 @@ const coffees = (state = initialState.order, action) => {
 					}
 				}
 			}
+		case 'UPDATE_ORDER':
+			return {orderCoffees: state.orderCoffees, ...action.payload}
+		case 'UPDATE_ORDER_STATUS':
+			return {...state, ...action.payload}
 		default:
 			return state
 	}

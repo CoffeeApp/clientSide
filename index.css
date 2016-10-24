@@ -8,7 +8,7 @@
 /* PASTE WEBFLOW CSS BELOW */
 /***************************/
 body {
-  margin: 0px;
+  margin: 0px;.
   font-family: 'Open Sans', sans-serif;
   color: #333;
   font-size: 14px;
@@ -20,6 +20,7 @@ body {
   top: 108px;
   right: 0px;
   bottom: 200px;
+  z-index: 5000;
   display: block;
   overflow: scroll;
   width: 300px;
@@ -30,9 +31,10 @@ body {
 }
 
 .cartfooter {
-  position: fixed;
+  position: absolute;
   right: 0px;
   bottom: 0px;
+  z-index: 12000;
   width: 300px;
   height: 200px;
   padding: 10px;
@@ -66,6 +68,8 @@ body {
 .button.no {
   position: relative;
   z-index: 4000;
+  margin-top: 0px;
+  margin-bottom: 0px;
 }
 
 .item {
@@ -116,6 +120,7 @@ body {
 
 .navbar {
   position: fixed;
+  z-index: 10000;
   width: 100%;
   background-color: #3f0000;
 }
@@ -186,6 +191,7 @@ body {
 .itemdetails {
   position: relative;
   margin-left: 70px;
+  color: #333;
 }
 
 .selectcafe {
@@ -227,7 +233,7 @@ body {
   top: 50%;
   z-index: 3000;
   width: 240px;
-  height: 240px;
+  height: 250px;
   margin-top: -120px;
   margin-left: -120px;
   padding: 20px;
@@ -257,11 +263,15 @@ body {
   right: 0px;
   bottom: 0px;
   z-index: 2000;
-  display: none;
+  display: block;
   background-color: rgba(0, 0, 0, .5);
 }
 
 .confirm {
+  display: block;
+}
+
+.orderstatus {
   display: none;
 }
 
