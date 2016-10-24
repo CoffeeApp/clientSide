@@ -4,6 +4,12 @@
 .item, .itemdetails, .cartitems, .cartitem, .cartfooter, .iteminput, .itemform, .button {box-sizing: border-box;}
 .link {text-decoration: none; color: #333333;}
 
+a:hover {
+  color: #3f0000;
+  cursor: pointer;
+}
+
+
 /*********************************/
 /* DO NOT PASTE CUSTOM CSS BELOW */
 /* ONLY PASTE WEBFLOW CSS BELOW  */
@@ -59,6 +65,11 @@ body {
   font-weight: 700;
   text-align: center;
   cursor: pointer;
+}
+
+.removeitem {
+  margin-left: 10px;
+  color: lightgrey;
 }
 
 .button.yes {

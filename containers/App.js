@@ -1,18 +1,23 @@
 import React, { Component } from 'react'
 import { hashHistory } from 'react-router'
 import { connect } from 'react-redux'
+
 import {
-  fetchCoffees,
-  updateSearchWord,
-  addCoffeeToOrder,
-  changeOrderOptions,
-  createOrder,
-  updateOrder,
-  showNotification,
+	fetchCoffees,
+	updateSearchWord,
+	addCoffeeToOrder,
+	changeOrderOptions,
+	createOrder,
+	updateOrder,
+ 	showNotification,
   hideNotification,
   confirmOrder,
-  cancelOrder
-} from '../actioncreators'
+  cancelOrder,
+	changeQuantity,
+ 	updateOrderWithShop,
+	deleteCoffeeFromCart,
+	fetchShops
+	} from '../actioncreators'
 import SearchBar from '../components/SearchBar'
 import Cart from '../components/Cart'
 
@@ -27,38 +32,51 @@ const mapStateToProps = (state) => {
 }
 
 const mapDispatchToProps = (dispatch) => {
-  return {
-    fetchCoffees: () => {
-      dispatch(fetchCoffees())
-    },
-    updateSearchWord: (word) => {
-      dispatch(updateSearchWord(word))
-    },
-    addCoffeeToOrder: (coffeeId, coffeeType) => {
-      dispatch(addCoffeeToOrder(coffeeId, coffeeType))
-    },
-    changeOrderOptions: (id, changeType, changePayload) => {
-      dispatch(changeOrderOptions(id, changeType, changePayload))
-    },
-    createOrder: (order, userCoords) => {
+	return {
+		fetchCoffees: () => {
+			dispatch(fetchCoffees())
+		},
+		updateSearchWord: (word) => {
+			dispatch(updateSearchWord(word))
+		},
+		addCoffeeToOrder: (coffeeId, coffeeType) => {
+			dispatch(addCoffeeToOrder(coffeeId, coffeeType))
+		},
+		changeOrderOptions: (id, changeType, changePayload) => {
+			dispatch(changeOrderOptions(id, changeType, changePayload))
+		},
+		createOrder: (order, userCoords) => {
       dispatch(createOrder(order, userCoords))
     },
-    updateOrder: (shop) => {
-      dispatch(updateOrder(shop))
-    },
-    showNotification: () => {
-      dispatch(showNotification())
-    },
-    hideNotification: () => {
-      dispatch(showNotification())
-    },
-    confirmOrder: (orderId, shopId) => {
-      dispatch(confirmOrder(orderId, shopId))
-    },
-    cancelOrder: () => {
-      dispatch(cancelOrder())
-    },
-  }
+		updateOrder: (shop) => {
+			dispatch(updateOrder(shop))
+		},
+		showNotification: () => {
+			dispatch(showNotification())
+		},
+		hideNotification: () => {
+		dispatch(showNotification())
+		},
+		confirmOrder: (orderId, shopId) => {
+			dispatch(confirmOrder(orderId, shopId))
+		},
+		cancelOrder: () => {
+			dispatch(cancelOrder())
+		},
+		fetchCoffees: () => {
+			dispatch(fetchCoffees())
+		},
+		updateOrderWithShop: (orderId, shopId, shopName) => {
+			dispatch(updateOrderWithShop(orderId, shopId, shopName))
+		},
+		deleteCoffeeFromCart: (coffee_id) => {
+			dispatch(deleteCoffeeFromCart(coffee_id))
+		},
+		fetchShops: (userCoords) => {
+			dispatch(fetchShops(userCoords))
+		}
+		// deleteTask: (id) =>
+	}
 }
 
 class App extends React.Component {
