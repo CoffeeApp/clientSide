@@ -2,14 +2,15 @@ import React, { Component } from 'react'
 import { hashHistory } from 'react-router'
 import { connect } from 'react-redux'
 import {
-	createOrder,
-	addCoffeeToOrder,
-	getOrderCoffees,
-	changeOrderOptions,
-	changeQuantity,
-	updateSearchWord,
 	fetchCoffees,
- 	updateOrderWithShop
+	updateSearchWord,
+	addCoffeeToOrder,
+	changeOrderOptions,
+	createOrder,
+	updateOrder,
+ 	showNotification,
+	confirmOrder,
+	cancelOrder
 } from '../actioncreators'
 import SearchBar from '../components/SearchBar'
 import Cart from '../components/Cart'
@@ -19,33 +20,39 @@ const mapStateToProps = (state) => {
 		order: state.order,
 		coffees: state.coffees,
 		searchWord: state.searchWord,
-		orderCoffees: state.order.orderCoffees,
-		shops: state.shops
+		shops: state.shops,
+		notification: state.notification
 	}
 }
 
 const mapDispatchToProps = (dispatch) => {
 	return {
-		createOrder: (order) => {
-			dispatch(createOrder(order))
-		},
-		addCoffeeToOrder: (coffeeId, coffeeType) => {
-			dispatch(addCoffeeToOrder(coffeeId, coffeeType))
-		},
-		getOrderCoffees: () => {
-			dispatch(getOrderCoffees())
-		},
-		changeOrderOptions: (id, changeType, changePayload) => {
-			dispatch(changeOrderOptions(id, changeType, changePayload))
+		fetchCoffees: () => {
+			dispatch(fetchCoffees())
 		},
 		updateSearchWord: (word) => {
 			dispatch(updateSearchWord(word))
 		},
-		fetchCoffees: () => {
-			dispatch(fetchCoffees())
+		addCoffeeToOrder: (coffeeId, coffeeType) => {
+			dispatch(addCoffeeToOrder(coffeeId, coffeeType))
 		},
-		updateOrderWithShop: (orderId, shopId, shopName) => {
-			dispatch(updateOrderWithShop(orderId, shopId, shopName))
+		changeOrderOptions: (id, changeType, changePayload) => {
+			dispatch(changeOrderOptions(id, changeType, changePayload))
+		},
+		createOrder: (order) => {
+			dispatch(createOrder(order))
+		},
+		updateOrder: (shop) => {
+			dispatch(updateOrder(shop))
+		},
+		showNotification: () => {
+			dispatch(showNotification())
+		},
+		confirmOrder: (orderId, shopId) => {
+			dispatch(confirmOrder(orderId, shopId))
+		},
+		cancelOrder: () => {
+			dispatch(cancelOrder())
 		}
 	}
 }

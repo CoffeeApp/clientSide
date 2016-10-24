@@ -4,14 +4,14 @@ import { Router, Route, hashHistory } from 'react-router'
 
 import App from './App'
 import CoffeeAndCart from '../components/CoffeeAndCart'
-import SelectCafe from '../components/SelectCafe'
+import ShopsAndNotification from '../components/ShopsAndNotification'
 
 const Root = ({ store }) => (
 	<Provider store={store}>
 		<Router history={hashHistory}>
 			<Route path="/" component={App}>
 				<Route path="/coffees" component={CoffeeAndCart} />
-				<Route path="/cafes" component={SelectCafe} />
+				<Route path="/cafes" component={ShopsAndNotification} />
 			</Route>
 		</Router>
 	</Provider>

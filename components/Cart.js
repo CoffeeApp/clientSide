@@ -10,7 +10,7 @@ class Cart extends Component {
 	}
 
 	render() {
-	const { orderCoffees } = this.props
+		const { orderCoffees } = this.props.order
 		return (
 			<div className="cartitems">
 				{Object.keys(orderCoffees).map((key, index) => {
