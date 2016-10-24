@@ -2,16 +2,21 @@ import React, { Component } from 'react'
 import { hashHistory } from 'react-router'
 import { connect } from 'react-redux'
 import {
-	createOrder,
-	addCoffeeToOrder,
-	getOrderCoffees,
-	changeOrderOptions,
-	changeQuantity,
-	updateSearchWord,
 	fetchCoffees,
+	updateSearchWord,
+	addCoffeeToOrder,
+	changeOrderOptions,
+	createOrder,
+	updateOrder,
+ 	showNotification,
+	confirmOrder,
+	cancelOrder,
+	changeQuantity,
  	updateOrderWithShop,
-	deleteCoffeeFromCart
-} from '../actioncreators'
+	deleteCoffeeFromCart,
+	fetchShops
+	} from '../actioncreators'
+
 import SearchBar from '../components/SearchBar'
 import Cart from '../components/Cart'
 
@@ -20,27 +25,40 @@ const mapStateToProps = (state) => {
 		order: state.order,
 		coffees: state.coffees,
 		searchWord: state.searchWord,
-		orderCoffees: state.order.orderCoffees,
-		shops: state.shops
+		shops: state.shops,
+		notification: state.notification,
+		orderCoffees: state.order.orderCoffees
 	}
 }
 
 const mapDispatchToProps = (dispatch) => {
 	return {
-		createOrder: (order) => {
-			dispatch(createOrder(order))
+		fetchCoffees: () => {
+			dispatch(fetchCoffees())
+		},
+		updateSearchWord: (word) => {
+			dispatch(updateSearchWord(word))
 		},
 		addCoffeeToOrder: (coffeeId, coffeeType) => {
 			dispatch(addCoffeeToOrder(coffeeId, coffeeType))
 		},
-		getOrderCoffees: () => {
-			dispatch(getOrderCoffees())
-		},
 		changeOrderOptions: (id, changeType, changePayload) => {
 			dispatch(changeOrderOptions(id, changeType, changePayload))
 		},
-		updateSearchWord: (word) => {
-			dispatch(updateSearchWord(word))
+		createOrder: (order) => {
+			dispatch(createOrder(order))
+		},
+		updateOrder: (shop) => {
+			dispatch(updateOrder(shop))
+		},
+		showNotification: () => {
+			dispatch(showNotification())
+		},
+		confirmOrder: (orderId, shopId) => {
+			dispatch(confirmOrder(orderId, shopId))
+		},
+		cancelOrder: () => {
+			dispatch(cancelOrder())
 		},
 		fetchCoffees: () => {
 			dispatch(fetchCoffees())
@@ -50,7 +68,11 @@ const mapDispatchToProps = (dispatch) => {
 		},
 		deleteCoffeeFromCart: (coffee_id) => {
 			dispatch(deleteCoffeeFromCart(coffee_id))
+		},
+		fetchShops: (userCoords) => {
+			dispatch(fetchShops(userCoords))
 		}
+		// deleteTask: (id) =>
 	}
 }
 

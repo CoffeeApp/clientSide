@@ -21,7 +21,6 @@ const coffees = (state = initialState.order, action) => {
 				}
 			}
 		case 'DELETE_COFFEE_FROM_ORDER':
-		console.log("PETE Delete coffee", action.payload.coffee_id, 'orders ', state.orderCoffees);
 		var orderCoffees = state.orderCoffees
 		delete orderCoffees[action.payload.coffee_id]
 			return {

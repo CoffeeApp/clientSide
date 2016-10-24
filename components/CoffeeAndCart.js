@@ -6,7 +6,7 @@ const CoffeeAndCart = props => {
   return (
     <div>
       <SelectCoffee {...props} />
-      { Object.keys(props.orderCoffees).length > 0 ? <Cart {...props} /> : null }
+      { Object.keys(props.order.orderCoffees).length > 0 ? <Cart {...props} /> : null }
     </div>
   )
 }

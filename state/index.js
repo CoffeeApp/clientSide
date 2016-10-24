@@ -7,5 +7,6 @@ export default {
 	},
 	coffees: [],
 	shops: [],
-	searchWord: ''
+	searchWord: '',
+	notification: false
 }
