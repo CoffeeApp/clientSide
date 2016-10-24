@@ -1341,7 +1341,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 var feathers = require('feathers-client');
 var io = require('socket.io-client');
-var socket = io('http://localhost:3030');
+var socket = io('https://coffee-cloud.herokuapp.com/');
 // remote server on same network 'https://192.168.1.8:3030'
 // deployed url 'https://coffee-cloud.herokuapp.com/'
 // local url 'http://localhost:3030'
