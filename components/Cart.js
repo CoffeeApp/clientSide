@@ -20,6 +20,7 @@ class Cart extends Component {
 							coffee={orderCoffees[key]}
 							id={key}
 							changeOrderOptions={this.props.changeOrderOptions}
+							deleteCoffeeFromCart={this.props.deleteCoffeeFromCart}
 							{...this.props}
 						/>
 					)

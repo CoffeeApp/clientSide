@@ -9,7 +9,8 @@ import {
 	changeQuantity,
 	updateSearchWord,
 	fetchCoffees,
- 	updateOrderWithShop
+ 	updateOrderWithShop,
+	deleteCoffeeFromCart
 } from '../actioncreators'
 import SearchBar from '../components/SearchBar'
 import Cart from '../components/Cart'
@@ -46,6 +47,9 @@ const mapDispatchToProps = (dispatch) => {
 		},
 		updateOrderWithShop: (orderId, shopId, shopName) => {
 			dispatch(updateOrderWithShop(orderId, shopId, shopName))
+		},
+		deleteCoffeeFromCart: (coffee_id) => {
+			dispatch(deleteCoffeeFromCart(coffee_id))
 		}
 	}
 }
