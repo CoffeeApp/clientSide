@@ -5,13 +5,17 @@ import {
 	fetchCoffees,
 	updateSearchWord,
 	addCoffeeToOrder,
-	changeOrderOptions,
+	changeOrderOptions, // is this the same as updateOrder?
 	createOrder,
-	updateOrder,
+	updateOrder, // is this the same as updateOrder?
  	showNotification,
 	confirmOrder,
 	cancelOrder
-} from '../actioncreators'
+	changeQuantity,
+	updateSearchWord,
+	fetchCoffees,
+	fetchShops
+	} from '../actioncreators'
 import SearchBar from '../components/SearchBar'
 import Cart from '../components/Cart'
 
@@ -21,7 +25,8 @@ const mapStateToProps = (state) => {
 		coffees: state.coffees,
 		searchWord: state.searchWord,
 		shops: state.shops,
-		notification: state.notification
+		notification: state.notification,
+		orderCoffees: state.order.orderCoffees,
 	}
 }
 
@@ -52,8 +57,11 @@ const mapDispatchToProps = (dispatch) => {
 			dispatch(confirmOrder(orderId, shopId))
 		},
 		cancelOrder: () => {
-			dispatch(cancelOrder())
+			dispatch(cancelOrder()),
+		fetchShops: () => {
+			dispatch(fetchShops())
 		}
+		// deleteTask: (id) =>
 	}
 }
 
