@@ -15,7 +15,7 @@ class SelectCoffee extends React.Component {
 		})
 
 		return (
-			<div className="selectcoffee">
+			<div>
 				{filterResults.map((coffee, index) => {
 					return (
 						<Coffee key={index} coffee={coffee} {...this.props} />
