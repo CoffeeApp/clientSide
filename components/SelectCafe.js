@@ -11,11 +11,18 @@ class SelectCafe extends React.Component {
 	}
 
 	componentDidMount() {
-		this.props.fetchShops()
+		navigator.geolocation.getCurrentPosition((position) => {
+			var userCoords = { lat: position.coords.latitude, lng: position.coords.longitude }
+			this.props.fetchShops(userCoords)
+		})
+		// get shops
+		// calculate distance from shop data
+		// render shops w info
 	}
 
 	render() {
-		const { shops } = this.props
+		const shops = this.props.shops
+		console.log('SHOPS THROWING ERROR IN SELECTCAFE', shops)
 		return (
 			<div className="itemscontainer">
 				{shops.map((shop, index) => {

@@ -24,7 +24,7 @@ class Cafe extends React.Component {
 					<div>Website: {shop.website}</div>
 					<div>Rating: {shop.rating}</div>
 					<div>TOTAL ORDER PRICE: $</div>
-					<div>This store is __ away</div>
+					<div>This store is {shop.distance < 1000 ? '' + shop.distance + 'm' : '' + shop.distance/1000 + 'Km'} away</div>
 					<div className="itemdescription">{shop.description}</div>
 				</div>
 			</div>

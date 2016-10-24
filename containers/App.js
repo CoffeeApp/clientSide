@@ -44,8 +44,8 @@ const mapDispatchToProps = (dispatch) => {
 		fetchCoffees: () => {
 			dispatch(fetchCoffees())
 		},
-		fetchShops: () => {
-			dispatch(fetchShops())
+		fetchShops: (userCoords) => {
+			dispatch(fetchShops(userCoords))
 		}
 		// deleteTask: (id) =>
 	}

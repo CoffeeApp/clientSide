@@ -45,17 +45,17 @@ function receiveCoffees (coffees) {
 	return {type: "RECEIVE_COFFEES", payload: coffees}
 }
 
-export function fetchShops () {
+export function fetchShops (userCoords) {
 	return (dispatch) => {
 		api.service('shops')
 			.find()
 			.then((result) => {
 				console.log(result)
-				dispatch(receiveShops(result.data))
+				dispatch(receiveShops(result.data, userCoords))
 			})
 	}
 }
 
-function receiveShops (shops) {
-	return {type: "RECEIVE_SHOPS", payload: shops}
+function receiveShops (shops, userCoords) {
+	return {type: "RECEIVE_SHOPS", payload: {shops, userCoords} }
 }
