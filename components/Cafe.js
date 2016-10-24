@@ -7,8 +7,7 @@ class Cafe extends React.Component {
 	}
 
 	render() {
-		const { store } = this.props
-		const { shop } = this.props
+		const { coffee, store, shop, addCoffeeToOrder } = this.props
 		return (
 			<div
 				className="item"
