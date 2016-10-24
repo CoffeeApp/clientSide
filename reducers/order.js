@@ -1,9 +1,10 @@
 import initialState from '../state'
+import uuid from 'uuid'
 
 const coffees = (state = initialState.order, action) => {
 	switch (action.type) {
 		case 'ADD_COFFEE_TO_ORDER':
-			const orderCoffeeId = Object.keys(state.orderCoffees).length
+			const orderCoffeeId = uuid.v4();
 			return {
 				orderCoffees: {
 					...state.orderCoffees,
@@ -22,6 +23,7 @@ const coffees = (state = initialState.order, action) => {
 			}
 		case 'DELETE_COFFEE_FROM_ORDER':
 		var orderCoffees = state.orderCoffees
+		console.log(orderCoffees)
 		delete orderCoffees[action.payload.coffee_id]
 			return {
 				orderCoffees: orderCoffees
