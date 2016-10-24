@@ -2,7 +2,7 @@
 	display: inline-block;
 }
 .item, .itemdetails, .cartitems, .cartitem, .cartfooter, .iteminput, .itemform {box-sizing: border-box;}
-.link {text-decoration: none;}
+.link {text-decoration: none; color: #333333;}
 
 /***************************/
 /* PASTE WEBFLOW CSS BELOW */
@@ -109,7 +109,7 @@ body {
   padding-top: 2px;
   padding-bottom: 5px;
   float: left;
-  font-size: 20px;
+  font-size: 24px;
   font-weight: 700;
   text-align: center;
 }
@@ -134,7 +134,7 @@ body {
   background-color: hsla(0, 0%, 100%, .3);
   font-family: 'Open Sans', sans-serif;
   color: #fff;
-  font-size: 14px;
+  font-size: 16px;
   line-height: 20px;
   font-weight: 300;
 }
@@ -203,6 +203,7 @@ body {
   border: 1px solid #ddd;
   border-radius: 3px;
   color: #888;
+  font-size: 16px;
   font-weight: 300;
 }
 

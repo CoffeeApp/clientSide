@@ -3,8 +3,6 @@ import SelectCoffee from './SelectCoffee'
 import Cart from './Cart'
 
 const CoffeeAndCart = props => {
-  console.log('PROPS', props)
-  console.log('ORDER COFFEES', )
   return (
     <div>
       <SelectCoffee {...props} />

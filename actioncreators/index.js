@@ -6,11 +6,21 @@ export function createOrder(order) {
 			.create(order)
 			.then(function (result) {
 				console.log('Create Order result: ', result)
-				// dispatch({ type: 'RECEIVE_ORDER', payload: order })
+				dispatch({ type: 'RECEIVE_SHOPS', payload: result })
 			})
 	}
 }
 
+export function updateOrderWithShop(order) {
+	return (dispatch) => {
+		api.service('orders')
+			.update(order)
+			.then(function (result) {
+				console.log('Create Order result: ', result)
+				// dispatch({ type: 'RECEIVE_ORDER', payload: order })
+			})
+	}
+}
 export function addCoffeeToOrder(coffee_id, type) {
 	return { type: 'ADD_COFFEE_TO_ORDER', payload: {
 		coffee_id,
@@ -47,17 +57,17 @@ export function fetchCoffees() {
 	}
 }
 
-function receiveShops(shops) {
-	return { type: 'RECEIVE_SHOPS', payload: shops }
-}
-
-export function fetchShops() {
-	return (dispatch) => {
-		api.service('shops')
-			.find()
-			.then((result) => {
-				console.log(result)
-				dispatch(receiveShops(result.data))
-			})
-	}
-}
+// function receiveShops(shops) {
+// 	return { type: 'RECEIVE_SHOPS', payload: shops }
+// }
+//
+// export function fetchShops() {
+// 	return (dispatch) => {
+// 		api.service('shops')
+// 			.find()
+// 			.then((result) => {
+// 				console.log(result)
+// 				dispatch(receiveShops(result.data))
+// 			})
+// 	}
+// }

@@ -1,37 +1,26 @@
 import React, { Component } from 'react'
 
-class Cafe extends React.Component {
-
-	constructor(props) {
-		super(props)
-	}
-
-	render() {
-		const { store } = this.props
-		const { shop } = this.props
-		return (
-			<div
-				className="item"
-				onClick={() => addCoffeeToOrder(coffee.coffee_id, coffee.type)}
-			>
-				<img
-					alt="coffee image"
-					className="itemimage"
-					src={shop.image}
-				/>
-				<div className="itemdetails">
-					<div className="itemtitle">{shop.name}</div>
-					<div>Phone: {shop.phone}</div>
-					<div>Website: {shop.website}</div>
-					<div>Rating: {shop.rating}</div>
-					<div>TOTAL ORDER PRICE: $</div>
-					<div>This store is __ away</div>
-					<div className="itemdescription">{shop.description}</div>
-				</div>
-			</div>
-		)
-	}
-}
+const Cafe = ({shop, updateOrderWithShop}) => (
+	<div
+		className="item"
+		onClick={() => updateOrderWithShop(shop.shop_id, shop.shop_name)}
+	>
+		<img
+			alt="coffee image"
+			className="itemimage"
+			src={shop.image}
+		/>
+		<div className="itemdetails">
+			<div className="itemtitle">{shop.shop_name}</div>
+			<div>Phone: {shop.shop_phone}</div>
+			<div>Website: {shop.website}</div>
+			<div>Rating: {shop.rating}</div>
+			<div>Price: ${shop.total}</div>
+			<div>This store is __ away</div>
+			<div className="itemdescription">{shop.description}</div>
+		</div>
+	</div>
+)
 
 export default Cafe
 
