@@ -8,13 +8,6 @@ class SelectShop extends React.Component {
     super(props)
   }
 
-  componentDidMount() {
-     navigator.geolocation.getCurrentPosition((position) => {
-        var userCoords = { lat: position.coords.latitude, lng: position.coords.longitude }
-        this.props.fetchShops(userCoords)
-     })
-  }
-
   render() {
     const { shops } = this.props
     return (

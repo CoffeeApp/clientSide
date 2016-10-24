@@ -36,12 +36,13 @@ export function changeOrderOptions(id, changeType, changePayload) {
   return { type: 'CHANGE_ORDER_OPTIONS', payload: { id, changeType, changePayload } }
 }
 
-export function createOrder(order) {
+export function createOrder(order, userCoords) {
   return (dispatch) => {
     api.service('orders')
       .create(order)
       .then(function (result) {
-        dispatch({ type: 'RECEIVE_SHOPS', payload: result })
+        console.log('Result: ', result);
+        dispatch({type: 'RECEIVE_SHOPS', payload: { shops: result, userCoords } })
       })
   }
 }
@@ -80,19 +81,4 @@ export function cancelOrder() {
     dispatch({ type: 'UPDATE_ORDER_STATUS', payload: { status: 'Cancelled' } })
     dispatch(hideNotification())
   }
-}
-
-export function fetchShops (userCoords) {
-  return (dispatch) => {
-    api.service('shops')
-      .find()
-      .then((result) => {
-        console.log(result)
-        dispatch(receiveShops(result.data, userCoords))
-      })
-  }
-}
-
-function receiveShops (shops, userCoords) {
-  return {type: "RECEIVE_SHOPS", payload: {shops, userCoords} }
 }

@@ -38,7 +38,10 @@ class UserForm extends Component {
       },
       orderCoffees
     }
-    this.props.createOrder(order)
+    navigator.geolocation.getCurrentPosition((position) => {
+      var userCoords = { lat: position.coords.latitude, lng: position.coords.longitude }
+      this.props.createOrder(order, userCoords)
+    })
     hashHistory.push('/cafes')
   }
 
