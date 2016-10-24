@@ -1,7 +1,7 @@
 #counterButtonsPlus, #counterButtonsMinus {
 	display: inline-block;
 }
-.item, .itemdetails, .cartitems, .cartitem, .cartfooter, .iteminput, .itemform {box-sizing: border-box;}
+.item, .itemdetails, .cartitems, .cartitem, .cartfooter, .iteminput, .itemform, .button {box-sizing: border-box;}
 .link {text-decoration: none; color: #333333;}
 
 /*********************************/
@@ -228,7 +228,6 @@ body {
   top: 50%;
   z-index: 3000;
   width: 240px;
-  height: 250px;
   margin-top: -120px;
   margin-left: -120px;
   padding: 20px;
@@ -266,12 +265,11 @@ body {
   display: block;
 }
 
-.orderstatus {
-  display: none;
+.showorderstatus {
+  display: block;
 }
 
 .notificationstatus {
-  margin-top: 60px;
   font-size: 18px;
   font-weight: 700;
   text-align: center;
@@ -304,6 +302,13 @@ body {
   color: #d3d3d3;
   font-size: 20px;
   cursor: pointer;
+}
+
+.cart {
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  bottom: 0px;
 }
 
 @media (max-width: 767px) {

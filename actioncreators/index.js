@@ -57,6 +57,10 @@ export function showNotification() {
 	return { type: 'NOTIFICATION', payload: true }
 }
 
+export function hideNotification() {
+	return { type: 'NOTIFICATION', payload: false }
+}
+
 export function confirmOrder(order_id, shop_id) {
 	return (dispatch) => {
 		api.service('orders')
@@ -66,11 +70,14 @@ export function confirmOrder(order_id, shop_id) {
 			})
 			.then(function (result) {
 				console.log('Order submitted: ', result)
-				dispatch({ type: 'UPDATE_ORDER_STATUS', payload: { status: 'received' } })
+				dispatch({ type: 'UPDATE_ORDER_STATUS', payload: { status: 'In process' } })
 			})
 	}
 }
 
 export function cancelOrder() {
-	return { type: 'UPDATE_ORDER_STATUS', payload: { status: 'cancelled' } }
+	return (dispatch) => {
+		dispatch({ type: 'UPDATE_ORDER_STATUS', payload: { status: 'Cancelled' } })
+		dispatch(hideNotification())
+	}
 }

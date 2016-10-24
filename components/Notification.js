@@ -1,22 +1,14 @@
 import React from 'react'
+import Confirm from './Confirm'
+import ShowOrderStatus from './ShowOrderStatus'
 
 const Notification = ({ order, confirmOrder, cancelOrder }) => (
 	<div className="notification">
 		<div className="module">
-			<div className="confirm">
-				<div className="notificationtitle">Confirm</div>
-				<div className="notificationtext">
-					Would you like to confirm your order with {order.shop_name}?
-				</div>
-				<div
-					className="button"
-					onClick={() => confirmOrder(order.order_id, order.shop_id)}
-				>Yes</div>
-				<div
-					className="button"
-					onClick={() => cancelOrder()}
-				>No</div>
-			</div>
+			{ order.status === 'In process' ?
+				<ShowOrderStatus order={order} /> :
+				<Confirm order={order} confirmOrder={confirmOrder} cancelOrder={cancelOrder} />
+			}
 		</div>
 	</div>
 )
