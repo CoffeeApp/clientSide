@@ -38,8 +38,11 @@ export function fetchCoffees() {
 		api.service('coffees')
 			.find()
 			.then((result) => {
-				console.log(result)
-				dispatch(receiveCoffees(result.data))
+				const coffees = result.data.map((coffee) => (
+					{...coffee, coffee_id: coffee.id}
+				))
+				console.log('Fetch coffees: ', coffees)
+				dispatch(receiveCoffees(coffees))
 			})
 	}
 }
