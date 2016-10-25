@@ -53,6 +53,7 @@
     "eslint": "^3.8.1",
     "eslint-plugin-react": "^6.4.1",
     "gh-pages": "^0.11.0",
+    "isuuid": "^0.1.0",
     "react": "^15.0.1",
     "react-dom": "^15.0.1",
     "tap-spec": "^4.1.1",

@@ -3,6 +3,7 @@ const initialState = require('../state')
 const coffees = require('../reducers/coffees').default
 const searchWord = require('../reducers/searchword').default
 const coffeeOrder = require('../reducers/order').default
+const isuuid = require('isuuid')
 
 
 test('testing clientSide', function (t) {
@@ -61,9 +62,13 @@ test('testing that a coffee can be added to order', function (t) {
 	}
 
   const action = {
-    type: 'ADD_COFFEE_TO_ORDER',
-    payload:
+    type: 'ADD_COFFEE_TO_CART',
+    payload: order
   }
-  const actual = coffeeOrder()
+  const expected = order
+  const actual = coffeeOrder(initialState.order, action)
+  const uid = Object.keys(actual.orderCoffees)[0]
+  t.equal(isuuid(uid), true)
+  t.deepEqual(actual.orderCoffees[uid], expected)
   t.end()
 })
