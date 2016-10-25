@@ -40,9 +40,20 @@ class UserForm extends Component {
       },
       orderCoffees
     }
-    navigator.geolocation.getCurrentPosition((position) => {
+    // navigator.geolocation.watchPosition(function(position) {
+    //   console.log("i'm tracking you!");
+    // },
+    // function (error) {
+    //   if (error.code == error.PERMISSION_DENIED)
+    //       console.log("you denied me :-(");
+    // });
+    navigator.geolocation.getCurrentPosition((position, error) => {
+      console.log('getCurrentPosition', position);
       var userCoords = { lat: position.coords.latitude, lng: position.coords.longitude }
       this.props.createOrder(order, userCoords)
+    },(error) => {
+        console.log("you denied me :-(");
+        this.props.createOrder(order, { lat: '-41.2969092', lng: '174.7720306' })
     })
     hashHistory.push('/cafes')
   }
