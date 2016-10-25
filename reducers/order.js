@@ -31,6 +31,11 @@ const coffees = (state = initialState.order, action) => {
       return {orderCoffees: state.orderCoffees, ...action.payload}
     case 'UPDATE_ORDER_STATUS':
       return {...state, ...action.payload}
+    case 'UPDATE_ORDER_STATUS_2':
+      if (state.order_id === action.payload.order_id)
+        return {...state, ...action.payload}
+      else
+        return state
     default:
       return state
   }
