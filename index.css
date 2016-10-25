@@ -1,7 +1,7 @@
 #counterButtonsPlus, #counterButtonsMinus {
   display: inline-block;
 }
-.item, .itemdetails, .cartitems, .cartitem, .cartfooter, .iteminput, .itemform, .button {box-sizing: border-box;}
+.item, .itemdetails, .cartitems, .cartitem, .cartfooter, .iteminput, .itemform, .button, .module {box-sizing: border-box;}
 .link {text-decoration: none; color: #333333;}
 
 a:hover {
@@ -11,7 +11,7 @@ a:hover {
 
 
 /*********************************/
-/* DO NOT PASTE CUSTOM CSS BELOW */
+/* PASTE CUSTOM ABOVE ONLY       */
 /* ONLY PASTE WEBFLOW CSS BELOW  */
 /*********************************/
 body {
@@ -26,7 +26,7 @@ body {
   position: fixed;
   top: 108px;
   right: 0px;
-  bottom: 200px;
+  bottom: 250px;
   z-index: 1000;
   display: block;
   overflow: scroll;
@@ -43,7 +43,7 @@ body {
   bottom: 0px;
   z-index: 1000;
   width: 300px;
-  height: 200px;
+  height: 250px;
   padding: 10px;
   border-top: 1px solid #ddd;
   border-left: 1px solid #ddd;
@@ -67,11 +67,6 @@ body {
   cursor: pointer;
 }
 
-.removeitem {
-  margin-left: 10px;
-  color: lightgrey;
-}
-
 .button.yes {
   position: relative;
   z-index: 4000;
@@ -85,6 +80,7 @@ body {
 }
 
 .item {
+  position: relative;
   overflow: auto;
   width: 100vw;
   padding: 10px;
@@ -103,6 +99,7 @@ body {
 .itemtitle {
   color: #333;
   font-size: 20px;
+  line-height: 24px;
   font-weight: 700;
   text-decoration: none;
 }
@@ -114,8 +111,13 @@ body {
 }
 
 .itemprice {
+  position: absolute;
+  top: 12px;
+  right: 12px;
   float: right;
-  font-size: 16px;
+  color: #a00;
+  font-size: 14px;
+  line-height: 20px;
   font-weight: 600;
 }
 
@@ -182,13 +184,12 @@ body {
   clear: both;
 }
 
-.selectcoffee {
-  display: block;
-}
-
 .itemdescription {
+  margin-top: 3px;
   border-radius: 3px;
-  color: #888;
+  color: #666;
+  font-size: 14px;
+  line-height: 20px;
   font-weight: 300;
 }
 
@@ -204,7 +205,7 @@ body {
 }
 
 .selectcafe {
-  display: none;
+  display: block;
 }
 
 .iteminput {
@@ -238,9 +239,9 @@ body {
   left: 50%;
   top: 50%;
   z-index: 3000;
-  width: 240px;
+  width: 300px;
   margin-top: -120px;
-  margin-left: -120px;
+  margin-left: -150px;
   padding: 20px;
   border: 1px solid #ddd;
   border-radius: 5px;
@@ -268,7 +269,7 @@ body {
   right: 0px;
   bottom: 0px;
   z-index: 2000;
-  display: block;
+  display: none;
   background-color: rgba(0, 0, 0, .5);
 }
 
@@ -322,6 +323,17 @@ body {
   bottom: 0px;
 }
 
+.iteminfo {
+  color: #333;
+  font-size: 14px;
+  line-height: 18px;
+  font-weight: 400;
+}
+
+.distance {
+  color: #a00;
+}
+
 @media (max-width: 767px) {
   .cartitems {
     top: 95px;
@@ -360,5 +372,18 @@ body {
   .searchbarcontainer {
     padding-right: 0px;
     padding-left: 0px;
+  }
+}
+
+@media (max-width: 479px) {
+  .module {
+    display: block;
+    width: 250px;
+    margin-top: -180px;
+    margin-right: auto;
+    margin-left: -125px;
+  }
+  .notification {
+    display: none;
   }
 }
