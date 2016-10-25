@@ -10,14 +10,14 @@ class CartItemCounter extends Component {
   handleProp(prop) {
     const { coffee, id } = this.props
     return (e) => {
-      this.props.changeOrderOptions(id, prop, e.target.value)
+      this.props.changeCoffeeOptions(id, prop, e.target.value)
     }
   }
 
   render() {
     const { coffee } = this.props
     return (
-      <form className="itemform">
+      <div className="itemform">
         <select className="iteminput" onChange={this.handleProp('milk')}>
             <option value="">Select milk...</option>
             <option value="none">None</option>
@@ -33,7 +33,13 @@ class CartItemCounter extends Component {
             <option value="2">2 sugars</option>
             <option value="3">3 sugars</option>
         </select>
-      </form>
+        <input
+          className="iteminput"
+          type="text"
+          onChange={this.handleProp('note')}
+          placeholder="Notes"
+        />
+      </div>
     )
   }
 }

@@ -1,9 +1,9 @@
 import React from 'react'
 
-const Coffee = ({coffee, addCoffeeToOrder}) => (
+const Coffee = ({coffee, addCoffeeToCart}) => (
   <div
     className="item"
-    onClick={() => addCoffeeToOrder(coffee.coffee_id, coffee.type)}
+    onClick={() => addCoffeeToCart(coffee.coffee_id, coffee.type)}
   >
     <img
       alt="coffee image"

@@ -5,8 +5,8 @@ import { connect } from 'react-redux'
 import {
   fetchCoffees,
   updateSearchWord,
-  addCoffeeToOrder,
-  changeOrderOptions,
+  addCoffeeToCart,
+  changeCoffeeOptions,
   createOrder,
   updateOrder,
    showNotification,
@@ -39,11 +39,11 @@ const mapDispatchToProps = (dispatch) => {
     updateSearchWord: (word) => {
       dispatch(updateSearchWord(word))
     },
-    addCoffeeToOrder: (coffeeId, coffeeType) => {
-      dispatch(addCoffeeToOrder(coffeeId, coffeeType))
+    addCoffeeToCart: (coffeeId, coffeeType) => {
+      dispatch(addCoffeeToCart(coffeeId, coffeeType))
     },
-    changeOrderOptions: (id, changeType, changePayload) => {
-      dispatch(changeOrderOptions(id, changeType, changePayload))
+    changeCoffeeOptions: (id, changeType, changePayload) => {
+      dispatch(changeCoffeeOptions(id, changeType, changePayload))
     },
     createOrder: (order, userCoords) => {
       dispatch(createOrder(order, userCoords))

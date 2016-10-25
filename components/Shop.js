@@ -1,9 +1,9 @@
 import React from 'react'
 
-// const { coffee, store, shop, addCoffeeToOrder } = this.props
+// const { coffee, store, shop, addCoffeeToCart } = this.props
 // (under render function in ES6 class-style notation)
 
-//onClick={() => addCoffeeToOrder(coffee.coffee_id, coffee.type)}
+//onClick={() => addCoffeeToCart(coffee.coffee_id, coffee.type)}
 // ^ alternative onClick
 
 const Shop = ({shop, updateOrder}) => (
