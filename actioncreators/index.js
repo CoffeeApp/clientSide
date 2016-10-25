@@ -22,8 +22,8 @@ export function updateSearchWord(word) {
   return { type: 'UPDATE_SEARCHWORD', payload: word }
 }
 
-export function addCoffeeToOrder(coffee_id, type) {
-  return { type: 'ADD_COFFEE_TO_ORDER', payload: {
+export function addCoffeeToCart(coffee_id, type) {
+  return { type: 'ADD_COFFEE_TO_CART', payload: {
     coffee_id,
     type,
     quantity: 1,
@@ -34,13 +34,13 @@ export function addCoffeeToOrder(coffee_id, type) {
 
 export function deleteCoffeeFromCart(coffee_id) {
   return {
-    type: 'DELETE_COFFEE_FROM_ORDER',
+    type: 'DELETE_COFFEE_FROM_CART',
     payload: { coffee_id }
   }
 }
 
-export function changeOrderOptions(id, changeType, changePayload) {
-  return { type: 'CHANGE_ORDER_OPTIONS', payload: { id, changeType, changePayload } }
+export function changeCoffeeOptions(id, changeType, changePayload) {
+  return { type: 'CHANGE_COFFEE_OPTIONS', payload: { id, changeType, changePayload } }
 }
 
 export function createOrder(order, userCoords) {

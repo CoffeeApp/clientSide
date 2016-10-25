@@ -3,7 +3,7 @@ import uuid from 'uuid'
 
 const coffees = (state = initialState.order, action) => {
   switch (action.type) {
-    case 'ADD_COFFEE_TO_ORDER':
+    case 'ADD_COFFEE_TO_CART':
       const orderCoffeeId = uuid.v4();
       return {
         orderCoffees: {
@@ -11,7 +11,7 @@ const coffees = (state = initialState.order, action) => {
           [orderCoffeeId]: action.payload
         }
       }
-    case 'CHANGE_ORDER_OPTIONS':
+    case 'CHANGE_COFFEE_OPTIONS':
       return {
         orderCoffees: {
           ...state.orderCoffees,
@@ -21,16 +21,16 @@ const coffees = (state = initialState.order, action) => {
           }
         }
       }
-    case 'UPDATE_ORDER':
-      return {orderCoffees: state.orderCoffees, ...action.payload}
-    case 'UPDATE_ORDER_STATUS':
-      return {...state, ...action.payload}
-    case 'DELETE_COFFEE_FROM_ORDER':
+    case 'DELETE_COFFEE_FROM_CART':
       var orderCoffees = state.orderCoffees
       delete orderCoffees[action.payload.coffee_id]
       return {
         orderCoffees
       }
+    case 'UPDATE_ORDER':
+      return {orderCoffees: state.orderCoffees, ...action.payload}
+    case 'UPDATE_ORDER_STATUS':
+      return {...state, ...action.payload}
     default:
       return state
   }

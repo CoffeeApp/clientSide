@@ -11,9 +11,9 @@ class CartItemCounter extends Component {
     const { coffee } = this.props
     const id = e.target.id
     if (e.target.alt == 'increment') {
-      this.props.changeOrderOptions(id, 'quantity', (coffee.quantity+1))
+      this.props.changeCoffeeOptions(id, 'quantity', (coffee.quantity+1))
     } else if (coffee.quantity > 1 && e.target.alt == 'decrement') {
-        this.props.changeOrderOptions(id, 'quantity', (coffee.quantity-1))
+        this.props.changeCoffeeOptions(id, 'quantity', (coffee.quantity-1))
     } else if (coffee.quantity === 1) {
       this.props.deleteCoffeeFromCart(e.target.id)
     }
