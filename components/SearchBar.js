@@ -17,7 +17,7 @@ const SearchBar = ({order, screen, updateScreen, searchWord, updateSearchWord, p
           }
           <input
             className="searchbar"
-            placeholder={placeholder.placeholder}
+            placeholder={placeholder}
             type="text"
             value={searchWord}
             onChange={(e) => updateSearchWord(e.target.value)}
