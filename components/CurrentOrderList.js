@@ -8,8 +8,16 @@ class CurrentOrderList extends React.Component {
   }
 
   render() {
+    const { order } = this.props
+    console.log('orderList ', this.props)
     return (
-      <h1>Hello</h1>
+      <div className="item">
+        <div className="itemdetails">
+          <div className="itemtitle">{order.name}</div>
+          <div className="itemtitle">{order.shop_name}</div>
+          <div className="itemdescription">{order.status}</div>
+        </div>
+      </div>
     )
     }
   }

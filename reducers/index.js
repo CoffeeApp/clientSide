@@ -6,6 +6,7 @@ import searchWord from './searchword'
 import notification from './notification'
 import placeholder from './placeholder'
 import customer from './customer'
+import orderHistory from './orderHistory'
 
 export default combineReducers({
   coffees,
@@ -14,5 +15,6 @@ export default combineReducers({
   searchWord,
   notification,
   placeholder,
-  customer
+  customer,
+  orderHistory
 })

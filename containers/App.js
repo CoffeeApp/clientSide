@@ -29,7 +29,8 @@ const mapStateToProps = (state) => {
     shops: state.shops,
     notification: state.notification,
     placeholder: state.placeholder,
-    customer: state.customer
+    customer: state.customer,
+    orderHistory: state.orderHistory
   }
 }
 
@@ -48,7 +49,7 @@ const mapDispatchToProps = (dispatch) => {
     confirmOrder: (orderId, shopId) => dispatch(confirmOrder(orderId, shopId)),
     cancelOrder: (orderId) => dispatch(cancelOrder(orderId)),
     updateOrderStatus: () => dispatch(updateOrderStatus()),
-    findOrder: () => dispatch(findOrder(phone))
+    findOrder: (phone) => dispatch(findOrder(phone))
   }
 }
 

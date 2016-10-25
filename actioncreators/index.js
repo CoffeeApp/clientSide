@@ -19,9 +19,20 @@ export function fetchCoffees() {
 
 export function findOrder(phone) {
   console.log('hitting the function')
+  return (dispatch) => {
+    api.service('orders')
+      .find({query: {phone}})
+      .then((result) => {
+        console.log('find orders by phone result: ', result);
+        dispatch(receiveOrderHistory(result))
+      })
+  }
   return { type: 'FIND_ORDER_BY_PHONE', payload: { phone }}
 }
 
+export function receiveOrderHistory(orderHistory) {
+  return {type: 'RECEIVE_ORDER_HISTORY', payload: orderHistory}
+}
 export function updatePlaceholderText (route) {
   return (dispatch) => {
     dispatch({type: 'SEND_ROUTE_TO_SEARCHBAR', payload: { route }})
