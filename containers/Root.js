@@ -5,6 +5,7 @@ import { Router, Route, hashHistory } from 'react-router'
 import App from './App'
 import CoffeeAndCart from '../components/CoffeeAndCart'
 import ShopsAndNotification from '../components/ShopsAndNotification'
+import CurrentOrders from '../components/CurrentOrders'
 
 
 const Root = ({ store }) => (
@@ -13,6 +14,7 @@ const Root = ({ store }) => (
       <Route path="/" component={App}>
         <Route path="/coffees" component={CoffeeAndCart} />
         <Route path="/cafes" component={ShopsAndNotification} />
+        <Route path="/orders" component={CurrentOrders} />
       </Route>
     </Router>
   </Provider>

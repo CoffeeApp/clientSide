@@ -15,7 +15,8 @@ import {
   hideNotification,
   confirmOrder,
   cancelOrder,
-  updateOrderStatus
+  updateOrderStatus,
+  findOrder
   } from '../actioncreators'
 import SearchBar from '../components/SearchBar'
 import Cart from '../components/Cart'
@@ -46,7 +47,8 @@ const mapDispatchToProps = (dispatch) => {
     hideNotification: () => dispatch(showNotification()),
     confirmOrder: (orderId, shopId) => dispatch(confirmOrder(orderId, shopId)),
     cancelOrder: (orderId) => dispatch(cancelOrder(orderId)),
-    updateOrderStatus: () => dispatch(updateOrderStatus())
+    updateOrderStatus: () => dispatch(updateOrderStatus()),
+    findOrder: () => dispatch(findOrder(phone))
   }
 }
 
@@ -62,10 +64,11 @@ class App extends React.Component {
   }
 
   render() {
-    const { store, children, searchWord, updateSearchWord, placeholder } = this.props
+    console.log('App.js', this.props)
+    const { store, children, searchWord, updateSearchWord, placeholder, findOrder } = this.props
     return (
       <div id="wrapper">
-        <SearchBar updateSearchWord={updateSearchWord} searchWord={searchWord} placeholder={placeholder} />
+        <SearchBar updateSearchWord={updateSearchWord} searchWord={searchWord} placeholder={placeholder} findOrder={findOrder} />
         <div className="dashboard">
           {React.Children.map(children, (child) => {
             return React.cloneElement(child, {...this.props})

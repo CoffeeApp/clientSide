@@ -1,24 +1,43 @@
-import React from 'react'
+import React, { Component } from 'react'
+import { hashHistory } from 'react-router'
 
-const SearchBar = ({searchWord, updateSearchWord, placeholder}) => {
-  return (
-    <div className="navbar">
-      <div className="row">
-        <span className="logo">Caffeinati</span>
+class SearchBar extends Component {
+
+  constructor(props) {
+    super(props)
+  }
+
+  handleClick () {
+    hashHistory.push('/orders')
+  }
+
+  render() {
+    console.log('searchbar ', this.props)
+    const {searchWord, updateSearchWord, placeholder} = this.props
+    return (
+      <div className="navbar">
+        <div className="row">
+          <span className="logo">Caffeinati</span>
+          <button
+            className="button"
+            onClick={this.handleClick}>
+            Next
+          </button>
+        </div>
+        <div className="row">
+          <form className="searchbarcontainer">
+            <input
+              className="searchbar"
+              placeholder={placeholder.placeholder}
+              type="text"
+              value={searchWord}
+              onChange={(e) => updateSearchWord(e.target.value)}
+            />
+          </form>
+        </div>
       </div>
-      <div className="row">
-        <form className="searchbarcontainer">
-          <input
-            className="searchbar"
-            placeholder={placeholder.placeholder}
-            type="text"
-            value={searchWord}
-            onChange={(e) => updateSearchWord(e.target.value)}
-          />
-        </form>
-      </div>
-    </div>
-  )
+    )
+  }
 }
 
 export default SearchBar

@@ -17,6 +17,11 @@ export function fetchCoffees() {
   }
 }
 
+export function findOrder(phone) {
+  console.log('hitting the function')
+  return { type: 'FIND_ORDER_BY_PHONE', payload: { phone }}
+}
+
 export function updatePlaceholderText (route) {
   return (dispatch) => {
     dispatch({type: 'SEND_ROUTE_TO_SEARCHBAR', payload: { route }})
