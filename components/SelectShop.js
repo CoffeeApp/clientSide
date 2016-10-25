@@ -27,9 +27,15 @@ class SelectShop extends React.Component {
         return 0;
         }
 
-        let byPrice = hasClicked === 'byPrice' ? shops.sort(compare) : 
+        var toggles = switch {
+          case user.hasClicked === 'byPrice':
+            var toggles = shops.sort(compare)
+            break;
+          }
 
-        let filterBySearchTerm = byPrice.filter((shop) => {
+        let byPrice =  ? shops.sort(compare) :
+
+        let filterBySearchTerm = toggles.filter((shop) => {
           return shop.shop_name.toLowerCase().includes(searchWord.toLowerCase())
         })
 
