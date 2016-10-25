@@ -1,5 +1,11 @@
 # clientSide
 
+
+Notes
+
+1. if using surge delete dist/? 
+1. use eslint react rules?
+
 The client side of CoffeeApp
 
 ## how

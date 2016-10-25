@@ -30,9 +30,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    fetchCoffees: () => {
-      dispatch(fetchCoffees())
-    },
+    fetchCoffees: () => dispatch(fetchCoffees()),
     updateSearchWord: (word) => {
       dispatch(updateSearchWord(word))
     },

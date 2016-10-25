@@ -6,7 +6,7 @@ class CartItemCounter extends Component {
     super(props)
     this.handleProp = this.handleProp.bind(this)
   }
-
+  // handleClick
   handleProp(e) {
     const { coffee } = this.props
     const id = e.target.id
@@ -18,6 +18,17 @@ class CartItemCounter extends Component {
       this.props.deleteCoffeeFromCart(e.target.id)
     }
   }
+
+  decrement(e) {
+    
+
+  }
+
+  increment(e) {
+
+  }
+
+  
 
   render() {
     const { coffee, id } = this.props

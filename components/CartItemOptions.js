@@ -7,6 +7,7 @@ class CartItemCounter extends Component {
     this.handleProp = this.handleProp.bind(this)
   }
 
+  // handleSelect?
   handleProp(prop) {
     const { coffee, id } = this.props
     return (e) => {

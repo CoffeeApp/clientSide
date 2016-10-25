@@ -10,6 +10,11 @@ class SelectCoffee extends React.Component {
 
   render() {
     const { coffees, searchWord } = this.props
+    // const { filteredCoffees, searchWord } = this.props
+
+    // filter in reducer and state
+    // searchWord 
+    // 
     let filterResults = coffees.filter((coffee) => {
       return coffee.type.toLowerCase().includes(searchWord.toLowerCase())
     })

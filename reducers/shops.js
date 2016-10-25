@@ -1,6 +1,8 @@
 import initialState from '../state'
 import calculateDistance from '../lib/mapping'
+// rename to calculate-distance.js?
 
+// shift to lib/ ?
 function applyCurrentLocation (shops, userCoords) {
   return shops.map((shop) => {
     shop.distance = calculateDistance(shop, userCoords)

@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import createOrder from '../actioncreators'
 import { hashHistory } from 'react-router'
+import { map } from 'lodash'
 
 class UserForm extends Component {
 
@@ -22,14 +23,17 @@ class UserForm extends Component {
   }
 
   handleSubmit(e) {
+    // more destructuring here
+    //const { orderCoffees } = this.props.order
     e.preventDefault()
     let name = this.state.userName
     let phone = this.state.userNumber
     let comment = this.state.comment
+    //const orderCoffees = map(order.orderCoffees, (coffee) => coffee) 
     let orderCoffees = Object.keys(this.props.order.orderCoffees).map((key) => (
       this.props.order.orderCoffees[key]
     ))
-    let order = {
+    let order = { // const
       details: {
         name,
         phone,
@@ -38,9 +42,10 @@ class UserForm extends Component {
       },
       orderCoffees
     }
+
     navigator.geolocation.getCurrentPosition((position) => {
       var userCoords = { lat: position.coords.latitude, lng: position.coords.longitude }
-      this.props.createOrder(order, userCoords)
+      this.props.createOrder(order, userCoords) // place object in function call
     })
     hashHistory.push('/cafes')
   }
@@ -52,6 +57,7 @@ class UserForm extends Component {
         onSubmit={this.handleSubmit}
       >
         <input
+          ref={(input) => this.userNameInput = input}
           className="iteminput"
           type="text"
           onChange={this.handleProp('userName')}
