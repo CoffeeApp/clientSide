@@ -13,7 +13,15 @@ import {
   showNotification,
   hideNotification,
   confirmOrder,
+<<<<<<< HEAD
+  cancelOrder,
+  changeQuantity,
+  updateOrderWithShop,
+  deleteCoffeeFromCart,
+  updatePlaceholderText
+=======
   cancelOrder
+>>>>>>> master
   } from '../actioncreators'
 import SearchBar from '../components/SearchBar'
 import Cart from '../components/Cart'
@@ -24,7 +32,8 @@ const mapStateToProps = (state) => {
     coffees: state.coffees,
     searchWord: state.searchWord,
     shops: state.shops,
-    notification: state.notification
+    notification: state.notification,
+    placeholder: state.placeholder
   }
 }
 
@@ -62,6 +71,12 @@ const mapDispatchToProps = (dispatch) => {
     },
     cancelOrder: () => {
       dispatch(cancelOrder())
+    },
+    updateOrderWithShop: (orderId, shopId, shopName) => {
+      dispatch(updateOrderWithShop(orderId, shopId, shopName))
+    },
+    updatePlaceholderText: (route) => {
+      dispatch(updatePlaceholderText(route))
     }
   }
 }
@@ -78,10 +93,10 @@ class App extends React.Component {
   }
 
   render() {
-    const { store, children, searchWord, updateSearchWord} = this.props
+    const { store, children, searchWord, updateSearchWord, placeholder } = this.props
     return (
       <div id="wrapper">
-        <SearchBar updateSearchWord={updateSearchWord} searchWord={searchWord} />
+        <SearchBar updateSearchWord={updateSearchWord} searchWord={searchWord} placeholder={placeholder} />
         <div className="dashboard">
           {React.Children.map(children, (child) => {
             return React.cloneElement(child, {...this.props})

@@ -1,11 +1,14 @@
 import React from 'react'
 import Shop from './Shop'
-import { fetchShops } from '../actioncreators'
 
 class SelectShop extends React.Component {
 
   constructor(props) {
     super(props)
+  }
+
+  componentDidMount() {
+    this.props.updatePlaceholderText('/cafes')
   }
 
   render() {

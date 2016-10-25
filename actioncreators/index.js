@@ -89,3 +89,9 @@ export function cancelOrder() {
     dispatch(hideNotification())
   }
 }
+
+export function updatePlaceholderText (route) {
+  return (dispatch) => {
+    dispatch({type: 'SEND_ROUTE_TO_SEARCHBAR', payload: { route }})
+  }
+}
