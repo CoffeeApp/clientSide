@@ -16,7 +16,6 @@ import {
   cancelOrder,
   changeQuantity,
   updateOrderWithShop,
-  deleteCoffeeFromCart,
   updatePlaceholderText
   } from '../actioncreators'
 import SearchBar from '../components/SearchBar'
