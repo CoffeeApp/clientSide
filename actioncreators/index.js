@@ -89,3 +89,7 @@ export function cancelOrder() {
     dispatch(hideNotification())
   }
 }
+
+export function updateOrderStatus(payload) {
+  return { type: 'UPDATE_ORDER_STATUS_2', payload }
+}

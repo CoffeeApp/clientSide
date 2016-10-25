@@ -6,7 +6,7 @@ const ShowOrderStatus = ({ order }) => (
       <div className="notificationtext">
          Your order is currently:
       </div>
-      <div className="notificationstatus">{order.status}</div>
+      <div className="notificationstatus">{order.processStatus ? order.processStatus : order.status}</div>
    </div>
 )
 
