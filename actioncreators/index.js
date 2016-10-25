@@ -95,3 +95,13 @@ export function updatePlaceholderText (route) {
     dispatch({type: 'SEND_ROUTE_TO_SEARCHBAR', payload: { route }})
   }
 }
+
+export function getCustomerDetails (order_id) {
+  return (dispatch) => {
+    api.service('orders')
+      .find({query: {order_id}})
+      .then((result) => {
+        console.log('result', result);
+      })
+  }
+}
