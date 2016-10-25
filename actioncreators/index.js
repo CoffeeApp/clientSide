@@ -106,3 +106,13 @@ export function updateOrderStatus() {
       })
   }
 }
+
+export function getCustomerDetails (order_id) {
+  return (dispatch) => {
+    api.service('orders')
+      .find({query: {order_id}})
+      .then((result) => {
+        console.log('result', result);
+      })
+  }
+}
