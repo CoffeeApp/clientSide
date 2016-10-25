@@ -8,8 +8,8 @@ class ToggleButtons extends React.Component {
   }
 
   handleProp(e) {
-      ('############################THIS PROPS FILTER SHOPS IN TOGGLEBUTTONS', this.props)
-      this.props.filterShops(e.target.value)
+      console.log('e.targetValue', e.target.id)
+      this.props.filterShops(e.target.id)
   }
 
   render() {
@@ -17,8 +17,8 @@ class ToggleButtons extends React.Component {
     const { customer } = this.props
     return (
       <div>
-        <div className="button" value="Price" onClick={this.handleProp}>Price</div>
-        <div className="button" value="Distance" onClick={this.handleProp}>Distance</div>
+        <div className="button" id="Price" value="Price" onClick={this.handleProp}>Price</div>
+        <div className="button" id="Distance" value="Distance" onClick={this.handleProp}>Distance</div>
       </div>
     )
   }

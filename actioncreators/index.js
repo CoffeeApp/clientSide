@@ -111,7 +111,8 @@ export function updateOrderStatus() {
 }
 
 export function filterShops(id) {
-  return (dispatch, id) => {
+  console.log('id in filtershops index.js ', id);
+  return (dispatch) => {
     dispatch({ type: 'FILTER_SHOP_LIST', payload: id })
   }
 }
