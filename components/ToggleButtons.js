@@ -20,7 +20,6 @@ class ToggleButtons extends React.Component {
   }
 
   render() {
-    console.log('HERE IS LOCATION AT TOGGLEBUTTONS', this.props.location.pathname);
     const { customer } = this.props
     return (
       <div className="togglebuttons">
@@ -37,7 +36,7 @@ class ToggleButtons extends React.Component {
             d="M12,20A8,8 0 0,1 4,12A8,8 0 0,1 12,4A8,8 0 0,1 20,12A8,8 0 0,1 12,20M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2Z"
           />
         </svg>
-        <div className="radiotext">Price</div>
+        <div className="radiotext" id="Price" onClick={this.handleProp}>Price</div>
         <svg
           id="Distance"
           className="radiobutton"
@@ -50,7 +49,7 @@ class ToggleButtons extends React.Component {
             d="M12,20A8,8 0 0,1 4,12A8,8 0 0,1 12,4A8,8 0 0,1 20,12A8,8 0 0,1 12,20M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2Z"
           />
         </svg>
-        <div className="radiotext">Distance</div>
+        <div className="radiotext" id="Distance" onClick={this.handleProp}>Distance</div>
         <svg
           id="Alphabetically"
           className="radiobutton"
@@ -63,7 +62,7 @@ class ToggleButtons extends React.Component {
             d="M12,20A8,8 0 0,1 4,12A8,8 0 0,1 12,4A8,8 0 0,1 20,12A8,8 0 0,1 12,20M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2Z"
           />
         </svg>
-        <div className="radiotext">Alphabetically</div>
+        <div className="radiotext" id="Alphabetically" onClick={this.handleProp}>Alphabetically</div>
       </div>
     )
   }

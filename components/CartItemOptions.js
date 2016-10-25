@@ -18,7 +18,7 @@ class CartItemCounter extends Component {
     const { coffee } = this.props
     return (
       <div className="itemform">
-        <select className="iteminput" onChange={this.handleProp('milk')}>
+        <select className="iteminput" onChange={this.handleProp('milk')} value={coffee.milk}>
             <option value="No milk">Select milk...</option>
             <option value="No milk">None</option>
             <option value="Whole milk">Whole milk</option>
@@ -26,7 +26,7 @@ class CartItemCounter extends Component {
             <option value="Almond milk">Almond milk</option>
             <option value="Soy milk">Soy milk</option>
         </select>
-        <select className="iteminput" onChange={this.handleProp('sugar')}>
+        <select className="iteminput" onChange={this.handleProp('sugar')} value={coffee.sugar}>
             <option value="0">Add sugar...</option>
             <option value="0">None</option>
             <option value="1">1 sugar</option>
@@ -38,6 +38,7 @@ class CartItemCounter extends Component {
           type="text"
           onChange={this.handleProp('note')}
           placeholder="Notes"
+          value={coffee.note}
         />
       </div>
     )
