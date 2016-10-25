@@ -25,6 +25,7 @@ class UserForm extends Component {
     e.preventDefault()
     let name = this.state.userName
     let phone = this.state.userNumber
+    let ready_time = this.state.readyTime
     let comment = this.state.comment
     let orderCoffees = Object.keys(this.props.order.orderCoffees).map((key) => (
       this.props.order.orderCoffees[key]
