@@ -4,6 +4,7 @@ import { connect } from 'react-redux'
 
 import {
   fetchCoffees,
+  updateScreen,
   updatePlaceholderText,
   updateSearchWord,
   addCoffeeToCart,
@@ -36,6 +37,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     fetchCoffees: () => dispatch(fetchCoffees()),
+    updateScreen: (screen) => dispatch(updateScreen(screen)),
     updatePlaceholderText: (route) => dispatch(updatePlaceholderText(route)),
     updateSearchWord: (word) => dispatch(updateSearchWord(word)),
     addCoffeeToCart: (coffeeId, coffeeType) => dispatch(addCoffeeToCart(coffeeId, coffeeType)),

@@ -18,6 +18,10 @@ export function fetchCoffees() {
   }
 }
 
+export function updateScreen(screen) {
+  return { type: 'UPDATE_SCREEN', payload: screen }
+}
+
 export function updatePlaceholderText (route) {
   return (dispatch) => {
     dispatch({type: 'SEND_ROUTE_TO_SEARCHBAR', payload: { route }})
