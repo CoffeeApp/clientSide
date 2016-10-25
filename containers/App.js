@@ -7,15 +7,13 @@ import {
   updateSearchWord,
   addCoffeeToCart,
   changeCoffeeOptions,
+  deleteCoffeeFromCart,
   createOrder,
   updateOrder,
   showNotification,
   hideNotification,
   confirmOrder,
-  cancelOrder,
-  changeQuantity,
-  updateOrderWithShop,
-  deleteCoffeeFromCart
+  cancelOrder
   } from '../actioncreators'
 import SearchBar from '../components/SearchBar'
 import Cart from '../components/Cart'
@@ -44,6 +42,9 @@ const mapDispatchToProps = (dispatch) => {
     changeCoffeeOptions: (id, changeType, changePayload) => {
       dispatch(changeCoffeeOptions(id, changeType, changePayload))
     },
+    deleteCoffeeFromCart: (coffee_id) => {
+      dispatch(deleteCoffeeFromCart(coffee_id))
+    },
     createOrder: (order, userCoords) => {
       dispatch(createOrder(order, userCoords))
     },
@@ -61,17 +62,7 @@ const mapDispatchToProps = (dispatch) => {
     },
     cancelOrder: () => {
       dispatch(cancelOrder())
-    },
-    fetchCoffees: () => {
-      dispatch(fetchCoffees())
-    },
-    updateOrderWithShop: (orderId, shopId, shopName) => {
-      dispatch(updateOrderWithShop(orderId, shopId, shopName))
-    },
-    deleteCoffeeFromCart: (coffee_id) => {
-      dispatch(deleteCoffeeFromCart(coffee_id))
     }
-    // deleteTask: (id) =>
   }
 }
 
