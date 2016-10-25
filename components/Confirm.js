@@ -11,13 +11,9 @@ class Confirm extends React.Component {
     const coffees = order.orderCoffees
     const orderLength = Object.keys(coffees).length
     const orderString = Object.keys(coffees).map((key, index) => {
-      const milk = coffees[key].milk
+      const quantity = (coffees[key].quantity === 1) ? 'a' : coffees[key].quantity
       const sugar = coffees[key].sugar
-      console.log(milk);
-      console.log(sugar);
-      const hasMilk = ((milk !== '') && (milk !== 'none')) ? true : false
-      const hasSugar = ((sugar > 0) && (sugar !== 'none')) ? true : false
-      const milkString = hasMilk ? milk : 'no milk'
+      const milkString = (coffees[key].milk === '') ? 'no milk' : coffees[key].milk
       let sugarString = ''
       if (sugar > 1) {
         sugarString = sugar + ' sugars'
@@ -28,13 +24,12 @@ class Confirm extends React.Component {
       }
       let end = ''
       if (orderLength > index + 2) {
-         end = ', '
-      }
-      else if (orderLength === index + 2) {
-         end = ', and '
+        end = ', '
+      } else if (orderLength === index + 2) {
+        end = ', and '
       }
       return (
-        coffees[key].quantity
+        quantity
         + ' '
         + coffees[key].type
         + ' with '
