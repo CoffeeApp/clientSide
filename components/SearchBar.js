@@ -2,7 +2,7 @@ import React from 'react'
 import LinkBack from './LinkBack'
 import LinkCart from './LinkCart'
 
-const SearchBar = ({order, screen, searchWord, updateSearchWord, placeholder}) => {
+const SearchBar = ({order, screen, updateScreen, searchWord, updateSearchWord, placeholder}) => {
   return (
     <div className="navbar">
       <div className="row">
@@ -12,7 +12,7 @@ const SearchBar = ({order, screen, searchWord, updateSearchWord, placeholder}) =
         <div className="searchbarcontainer">
           {
             (screen === 'cart')
-            ? <LinkBack />
+            ? <LinkBack updateScreen={updateScreen} />
             : null
           }
           <input
@@ -27,7 +27,7 @@ const SearchBar = ({order, screen, searchWord, updateSearchWord, placeholder}) =
               (Object.keys(order.orderCoffees).length > 0) &&
               (screen === 'coffees') || (screen === 'shops')
             )
-            ? <LinkCart />
+            ? <LinkCart updateScreen={updateScreen} />
             : null
           }
         </div>
