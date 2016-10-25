@@ -72,3 +72,27 @@ test('testing that a coffee can be added to order', function (t) {
   t.deepEqual(actual.orderCoffees[uid], expected)
   t.end()
 })
+
+test('testing that a coffee is being deleted from the cart', function (t) {
+  const initial = {
+    orderCoffees:
+       { 'cdc7a911-84e6-4302-8b1a-ebb15b3bd673':
+          { coffee_id: 1,
+            type: 'short black',
+            quantity: 1,
+            milk: '',
+            sugar: 0
+           }
+      }
+  }
+
+  const action =
+  {
+    type: 'DELETE_COFFEE_FROM_CART',
+    payload: {coffee_id: 'cdc7a911-84e6-4302-8b1a-ebb15b3bd673'}
+  }
+  const expected = {orderCoffees: {}}
+  const actual = coffeeOrder(initial, action)
+  t.deepEqual(actual, expected)
+  t.end()
+})
