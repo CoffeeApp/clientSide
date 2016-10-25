@@ -19,16 +19,16 @@ class CartItemCounter extends Component {
     return (
       <div className="itemform">
         <select className="iteminput" onChange={this.handleProp('milk')}>
-            <option value="">Select milk...</option>
-            <option value="none">None</option>
+            <option value="no milk">Select milk...</option>
+            <option value="no milk">None</option>
             <option value="whole milk">Whole milk</option>
             <option value="trim milk">Trim milk</option>
             <option value="almond milk">Almond milk</option>
             <option value="soy milk">Soy milk</option>
         </select>
         <select className="iteminput" onChange={this.handleProp('sugar')}>
-            <option value="">Add sugar...</option>
-            <option value="none">None</option>
+            <option value="0">Add sugar...</option>
+            <option value="0">None</option>
             <option value="1">1 sugar</option>
             <option value="2">2 sugars</option>
             <option value="3">3 sugars</option>

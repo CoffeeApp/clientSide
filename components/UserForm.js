@@ -25,6 +25,7 @@ class UserForm extends Component {
     e.preventDefault()
     let name = this.state.userName
     let phone = this.state.userNumber
+    let ready_time = this.state.readyTime
     let comment = this.state.comment
     let orderCoffees = Object.keys(this.props.order.orderCoffees).map((key) => (
       this.props.order.orderCoffees[key]
@@ -34,7 +35,8 @@ class UserForm extends Component {
         name,
         phone,
         status: 'new',
-        comment
+        comment,
+        ready_time
       },
       orderCoffees
     }
@@ -69,6 +71,13 @@ class UserForm extends Component {
           onChange={this.handleProp('comment')}
           placeholder="Notes"
         />
+        <select className="iteminput" onChange={this.handleProp('readyTime')}>
+          <option value="ASAP" defaultValue>Pick up asap...</option>
+          <option value="in 15 minutes">Pick up in 15 mins</option>
+          <option value="in 30 minutes">Pick up in 30 mins</option>
+          <option value="in 45 minutes">Pick up in 45 mins</option>
+          <option value="in 1 hour">Pick up in 1 hour</option>
+        </select>
         <button
           className="button"
           type="submit">

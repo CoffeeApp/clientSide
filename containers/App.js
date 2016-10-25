@@ -4,6 +4,7 @@ import { connect } from 'react-redux'
 
 import {
   fetchCoffees,
+  updatePlaceholderText,
   updateSearchWord,
   addCoffeeToCart,
   changeCoffeeOptions,
@@ -14,9 +15,7 @@ import {
   hideNotification,
   confirmOrder,
   cancelOrder,
-  changeQuantity,
-  updateOrderWithShop,
-  updatePlaceholderText
+  updateOrderStatus
   } from '../actioncreators'
 import SearchBar from '../components/SearchBar'
 import Cart from '../components/Cart'
@@ -28,51 +27,26 @@ const mapStateToProps = (state) => {
     searchWord: state.searchWord,
     shops: state.shops,
     notification: state.notification,
-    placeholder: state.placeholder
+    placeholder: state.placeholder,
+    customer: state.customer
   }
 }
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    fetchCoffees: () => {
-      dispatch(fetchCoffees())
-    },
-    updateSearchWord: (word) => {
-      dispatch(updateSearchWord(word))
-    },
-    addCoffeeToCart: (coffeeId, coffeeType) => {
-      dispatch(addCoffeeToCart(coffeeId, coffeeType))
-    },
-    changeCoffeeOptions: (id, changeType, changePayload) => {
-      dispatch(changeCoffeeOptions(id, changeType, changePayload))
-    },
-    deleteCoffeeFromCart: (coffee_id) => {
-      dispatch(deleteCoffeeFromCart(coffee_id))
-    },
-    createOrder: (order, userCoords) => {
-      dispatch(createOrder(order, userCoords))
-    },
-    updateOrder: (shop) => {
-      dispatch(updateOrder(shop))
-    },
-    showNotification: () => {
-      dispatch(showNotification())
-    },
-    hideNotification: () => {
-    dispatch(showNotification())
-    },
-    confirmOrder: (orderId, shopId) => {
-      dispatch(confirmOrder(orderId, shopId))
-    },
-    cancelOrder: () => {
-      dispatch(cancelOrder())
-    },
-    updateOrderWithShop: (orderId, shopId, shopName) => {
-      dispatch(updateOrderWithShop(orderId, shopId, shopName))
-    },
-    updatePlaceholderText: (route) => {
-      dispatch(updatePlaceholderText(route))
-    }
+    fetchCoffees: () => dispatch(fetchCoffees()),
+    updatePlaceholderText: (route) => dispatch(updatePlaceholderText(route)),
+    updateSearchWord: (word) => dispatch(updateSearchWord(word)),
+    addCoffeeToCart: (coffeeId, coffeeType) => dispatch(addCoffeeToCart(coffeeId, coffeeType)),
+    changeCoffeeOptions: (id, changeType, changePayload) => dispatch(changeCoffeeOptions(id, changeType, changePayload)),
+    deleteCoffeeFromCart: (coffee_id) => dispatch(deleteCoffeeFromCart(coffee_id)),
+    createOrder: (order, userCoords) => dispatch(createOrder(order, userCoords)),
+    updateOrder: (shop) => dispatch(updateOrder(shop)),
+    showNotification: () => dispatch(showNotification()),
+    hideNotification: () => dispatch(showNotification()),
+    confirmOrder: (orderId, shopId) => dispatch(confirmOrder(orderId, shopId)),
+    cancelOrder: (orderId) => dispatch(cancelOrder(orderId)),
+    updateOrderStatus: () => dispatch(updateOrderStatus())
   }
 }
 

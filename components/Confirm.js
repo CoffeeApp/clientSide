@@ -11,21 +11,33 @@ class Confirm extends React.Component {
     const coffees = order.orderCoffees
     const orderLength = Object.keys(coffees).length
     const orderString = Object.keys(coffees).map((key, index) => {
-      const milk = coffees[key].milk
+      const quantity = (coffees[key].quantity === 1) ? 'a' : coffees[key].quantity
       const sugar = coffees[key].sugar
-      const milkOrSugar = ((milk !== '') || (sugar > 0)) ? ' with ' : ''
-      const milkString = (milk !== '') ? (milk) : ''
-      const combiner = ((milk !== '') && (sugar > 0)) ? ' and ' : ''
-      const sugarString = (sugar > 0) ? (sugar + ' sugars') : ''
+      const milkString = (coffees[key].milk === '') ? 'no milk' : coffees[key].milk
+      let sugarString = ''
+      if (sugar > 1) {
+        sugarString = sugar + ' sugars'
+      } else if (sugar === 1) {
+        sugarString = sugar + ' sugar'
+      } else {
+        sugarString = ' no sugar'
+      }
       let end = ''
-      console.log('orderLength: ' + orderLength + ' index: ' + index);
       if (orderLength > index + 2) {
-         end = ', '
+        end = ', '
+      } else if (orderLength === index + 2) {
+        end = ', and '
       }
-      else if (orderLength === index + 2) {
-         end = ', and '
-      }
-      return (coffees[key].quantity + ' ' + coffees[key].type + milkOrSugar + milk + combiner + sugarString + end)
+      return (
+        quantity
+        + ' '
+        + coffees[key].type
+        + ' with '
+        + milkString
+        + ' and '
+        + sugarString
+        + end
+      )
     })
     return (
       <div className="confirm">

@@ -6,6 +6,7 @@ import App from './App'
 import CoffeeAndCart from '../components/CoffeeAndCart'
 import ShopsAndNotification from '../components/ShopsAndNotification'
 
+
 const Root = ({ store }) => (
   <Provider store={store}>
     <Router history={hashHistory}>

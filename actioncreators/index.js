@@ -12,9 +12,14 @@ export function fetchCoffees() {
         const coffees = result.data.map((coffee) => (
           {...coffee, coffee_id: coffee.id}
         ))
-        console.log('Fetch coffees: ', coffees)
         dispatch(receiveCoffees(coffees))
       })
+  }
+}
+
+export function updatePlaceholderText (route) {
+  return (dispatch) => {
+    dispatch({type: 'SEND_ROUTE_TO_SEARCHBAR', payload: { route }})
   }
 }
 
@@ -45,6 +50,7 @@ export function changeCoffeeOptions(id, changeType, changePayload) {
 
 export function createOrder(order, userCoords) {
   return (dispatch) => {
+    dispatch(saveCustomerDetails(order.details))
     api.service('orders')
       .create(order)
       .then(function (result) {
@@ -53,7 +59,9 @@ export function createOrder(order, userCoords) {
       })
   }
 }
-
+export function saveCustomerDetails(customerDetails) {
+  return {type: 'SAVE_CUSTOMER_DETAIL', payload: {...customerDetails}}
+}
 export function updateOrder(shop) {
   return (dispatch) => {
     dispatch({ type: 'UPDATE_ORDER', payload: shop })
@@ -78,20 +86,26 @@ export function confirmOrder(order_id, shop_id) {
       })
       .then(function (result) {
         console.log('Order submitted: ', result)
-        dispatch({ type: 'UPDATE_ORDER_STATUS', payload: { status: 'In process' } })
+        dispatch({ type: 'UPDATE_ORDER_STATUS', payload: { status: 'In process', order_id } })
       })
   }
 }
 
-export function cancelOrder() {
+export function cancelOrder(order_id) {
   return (dispatch) => {
-    dispatch({ type: 'UPDATE_ORDER_STATUS', payload: { status: 'Cancelled' } })
+    dispatch({ type: 'UPDATE_ORDER_STATUS', payload: { status: 'Cancelled', order_id } })
     dispatch(hideNotification())
   }
 }
 
-export function updatePlaceholderText (route) {
+export function updateOrderStatus() {
   return (dispatch) => {
-    dispatch({type: 'SEND_ROUTE_TO_SEARCHBAR', payload: { route }})
+    api.service('orders')
+      .on('patched', (orderData) => {
+        dispatch({ type: 'UPDATE_ORDER_STATUS', payload: {
+          status: (orderData.order)[0].status,
+          order_id: (orderData.order)[0].order_id
+        } })
+      })
   }
 }
