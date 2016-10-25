@@ -15,25 +15,38 @@ class SelectShop extends React.Component {
 
     const { shops, searchWord } = this.props
 
-    const user = {
-      hasClicked: 'byPrice'
-    }
+    // const user = {
+    //   hasClicked: 'byPrice'
+    // }
+    //
+    //     function compare(a, b, type) {
+    //     var compareOutput = switch {
+    //       case type = 'price'
+    //         return shops.sort(compare('price'))
+    //       case user.hasClicked === 'byDistance':
+    //         return shops.sort(compare('distance'))
+    //       case user.hasClicked === 'Alphabetically':
+    //         return shops.sort(compare('alphabetically'))
+    //       }
+    //     }
+    //
+    //     if (a.total < b.total)
+    //       return -1;
+    //     if (a.total > b.total)
+    //       return 1;
+    //     return 0;
+    //     }
 
-        function compare(a,b) {
-        if (a.total < b.total)
-          return -1;
-        if (a.total > b.total)
-          return 1;
-        return 0;
-        }
-
-        var toggles = switch {
-          case user.hasClicked === 'byPrice':
-            var toggles = shops.sort(compare)
-            break;
-          }
-
-        let byPrice =  ? shops.sort(compare) :
+        // var toggles = switch {
+        //   case user.hasClicked === 'byPrice':
+        //     return shops.sort(compare('price'))
+        //   case user.hasClicked === 'byDistance':
+        //     return shops.sort(compare('distance'))
+        //   case user.hasClicked === 'Alphabetically':
+        //     return shops.sort(compare('alphabetically'))
+        //   default
+        //     return
+        //   }
 
         let filterBySearchTerm = toggles.filter((shop) => {
           return shop.shop_name.toLowerCase().includes(searchWord.toLowerCase())

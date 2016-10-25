@@ -1,24 +1,42 @@
 import React from 'react'
 
-const SearchBar = ({searchWord, updateSearchWord, placeholder}) => {
-  return (
-    <div className="navbar">
-      <div className="row">
-        <span className="logo">Caffeinati</span>
+class SearchBar extends React.Component {
+
+  constructor(props) {
+    super(props)
+    this.handleProp = this.handleProp.bind(this)
+  }
+
+  handleProp(e) {
+      this.props.filterShops(e.target.id)
+  }
+
+  render() {
+
+    const { searchWord, updateSearchWord, placeholder, filterShops } = this.props
+
+    return (
+      <div className="navbar">
+        <div className="row">
+          <span className="logo">Caffeinati</span>
+        </div>
+        <div className="row">
+          <form className="searchbarcontainer">
+            <input
+              className="searchbar"
+              placeholder={placeholder.placeholder}
+              type="text"
+              value={searchWord}
+              onChange={(e) => updateSearchWord(e.target.value)}
+            />
+          </form>
+          { this.props.location = '/cafes' ?
+            <div className="button" id="Price" onClick={this.handleProp}>Price</div>
+             : null }
+        </div>
       </div>
-      <div className="row">
-        <form className="searchbarcontainer">
-          <input
-            className="searchbar"
-            placeholder={placeholder.placeholder}
-            type="text"
-            value={searchWord}
-            onChange={(e) => updateSearchWord(e.target.value)}
-          />
-        </form>
-      </div>
-    </div>
-  )
+    )
+  }
 }
 
 export default SearchBar
