@@ -1,4 +1,5 @@
 import React from 'react'
+import { hashHistory } from 'react-router'
 
 class LinkCart extends React.Component {
 
@@ -8,6 +9,7 @@ class LinkCart extends React.Component {
   }
 
   handleClick() {
+    hashHistory.push('/coffees')
     this.props.updateScreen('cart')
   }
 

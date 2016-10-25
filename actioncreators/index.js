@@ -72,15 +72,16 @@ export function createOrder(order, userCoords) {
     api.service('orders')
       .create(order)
       .then(function (result) {
-        console.log('Result: ', result);
-        dispatch({type: 'RECEIVE_SHOPS', payload: { shops: result, userCoords } })
+        dispatch({ type: 'RECEIVE_SHOPS', payload: { shops: result, userCoords } })
         dispatch({ type: 'UPDATE_SCREEN', payload: 'shops' })
       })
   }
 }
+
 export function saveCustomerDetails(customerDetails) {
   return {type: 'SAVE_CUSTOMER_DETAIL', payload: {...customerDetails}}
 }
+
 export function updateOrder(shop) {
   return (dispatch) => {
     dispatch({ type: 'UPDATE_ORDER', payload: shop })
