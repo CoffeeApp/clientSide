@@ -21,7 +21,7 @@ const Shop = ({shop, updateOrder}) => (
       <div>Phone: {shop.shop_phone}</div>
       <div>Website: {shop.website}</div>
       <div>Rating: {shop.rating}</div>
-      <div>Price: ${shop.total}</div>
+      <div>Price: ${shop.total.toFixed(2)}</div>
       <div>This store is {shop.distance < 1000 ? '' + shop.distance + 'm' : '' + shop.distance/1000 + 'Km'} away</div>
       <div className="itemdescription">{shop.description}</div>
     </div>
