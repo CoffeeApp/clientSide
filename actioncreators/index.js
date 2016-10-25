@@ -17,6 +17,12 @@ export function fetchCoffees() {
   }
 }
 
+export function updatePlaceholderText (route) {
+  return (dispatch) => {
+    dispatch({type: 'SEND_ROUTE_TO_SEARCHBAR', payload: { route }})
+  }
+}
+
 export function updateSearchWord(word) {
   return { type: 'UPDATE_SEARCHWORD', payload: word }
 }
@@ -97,6 +103,6 @@ export function updateOrderStatus() {
           status: (orderData.order)[0].status,
           order_id: (orderData.order)[0].order_id
         } })
-    })
+      })
   }
 }

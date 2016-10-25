@@ -4,6 +4,7 @@ import { connect } from 'react-redux'
 
 import {
   fetchCoffees,
+  updatePlaceholderText,
   updateSearchWord,
   addCoffeeToCart,
   changeCoffeeOptions,
@@ -25,13 +26,15 @@ const mapStateToProps = (state) => {
     coffees: state.coffees,
     searchWord: state.searchWord,
     shops: state.shops,
-    notification: state.notification
+    notification: state.notification,
+    placeholder: state.placeholder
   }
 }
 
 const mapDispatchToProps = (dispatch) => {
   return {
     fetchCoffees: () => dispatch(fetchCoffees()),
+    updatePlaceholderText: (route) => dispatch(updatePlaceholderText(route)),
     updateSearchWord: (word) => dispatch(updateSearchWord(word)),
     addCoffeeToCart: (coffeeId, coffeeType) => dispatch(addCoffeeToCart(coffeeId, coffeeType)),
     changeCoffeeOptions: (id, changeType, changePayload) => dispatch(changeCoffeeOptions(id, changeType, changePayload)),
@@ -58,10 +61,10 @@ class App extends React.Component {
   }
 
   render() {
-    const { store, children, searchWord, updateSearchWord} = this.props
+    const { store, children, searchWord, updateSearchWord, placeholder } = this.props
     return (
       <div id="wrapper">
-        <SearchBar updateSearchWord={updateSearchWord} searchWord={searchWord} />
+        <SearchBar updateSearchWord={updateSearchWord} searchWord={searchWord} placeholder={placeholder} />
         <div className="dashboard">
           {React.Children.map(children, (child) => {
             return React.cloneElement(child, {...this.props})

@@ -1,6 +1,6 @@
 import React from 'react'
 
-const SearchBar = ({searchWord, updateSearchWord}) => {
+const SearchBar = ({searchWord, updateSearchWord, placeholder}) => {
   return (
     <div className="navbar">
       <div className="row">
@@ -10,7 +10,7 @@ const SearchBar = ({searchWord, updateSearchWord}) => {
         <form className="searchbarcontainer">
           <input
             className="searchbar"
-            placeholder="What coffee would you like to order?"
+            placeholder={placeholder.placeholder}
             type="text"
             value={searchWord}
             onChange={(e) => updateSearchWord(e.target.value)}
