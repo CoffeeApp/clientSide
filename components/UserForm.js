@@ -73,10 +73,10 @@ class UserForm extends Component {
         />
         <select className="iteminput" onChange={this.handleProp('readyTime')}>
           <option value="ASAP" defaultValue>Pick up asap...</option>
-          <option value="15 minutes">Pick up in 15 mins</option>
-          <option value="30 minutes">Pick up in 30 mins</option>
-          <option value="45 minutes">Pick up in 45 mins</option>
-          <option value="1 hour">Pick up in 1 hour</option>
+          <option value="in 15 minutes">Pick up in 15 mins</option>
+          <option value="in 30 minutes">Pick up in 30 mins</option>
+          <option value="in 45 minutes">Pick up in 45 mins</option>
+          <option value="in 1 hour">Pick up in 1 hour</option>
         </select>
         <button
           className="button"
