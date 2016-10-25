@@ -66,7 +66,6 @@ class App extends React.Component {
 
   render() {
     const { store, children, searchWord, updateSearchWord, placeholder, location, filterShops, filterShopsId, toggleButtonsId } = this.props
-    console.log('##################### FILTER SHOPS ID ##################', filterShopsId)
     return (
       <div id="wrapper">
         <SearchBar updateSearchWord={updateSearchWord} searchWord={searchWord} placeholder={placeholder} location={location} />

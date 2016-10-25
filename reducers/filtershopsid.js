@@ -3,7 +3,6 @@ import initialState from '../state'
 const filterShopsId = (state = initialState, action) => {
   switch (action.type) {
   case 'FILTER_SHOP_LIST':
-  console.log('ACTION ********** PAYLOAD *********** ID', action.payload)
     return action.payload
   default:
     return state

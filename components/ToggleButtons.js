@@ -19,6 +19,7 @@ class ToggleButtons extends React.Component {
       <div>
         <div className="button" id="Price" value="Price" onClick={this.handleProp}>Price</div>
         <div className="button" id="Distance" value="Distance" onClick={this.handleProp}>Distance</div>
+        <div className="button" id="Alphabetically" value="Alphabetically" onClick={this.handleProp}>Alphabetically</div>
       </div>
     )
   }
