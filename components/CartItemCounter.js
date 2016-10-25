@@ -8,14 +8,14 @@ class CartItemCounter extends Component {
   }
 
   handleProp(e) {
-    const { coffee } = this.props
+    const { coffee, order } = this.props
     const id = e.target.id
     if (e.target.alt == 'increment') {
-      this.props.changeCoffeeOptions(id, 'quantity', (coffee.quantity+1))
+      this.props.changeCoffeeOptions(id, 'quantity', (coffee.quantity+1), order.orderCoffees)
     } else if (coffee.quantity > 1 && e.target.alt == 'decrement') {
-        this.props.changeCoffeeOptions(id, 'quantity', (coffee.quantity-1))
+        this.props.changeCoffeeOptions(id, 'quantity', (coffee.quantity-1), order.orderCoffees)
     } else if (coffee.quantity === 1) {
-      this.props.deleteCoffeeFromCart(e.target.id)
+      this.props.deleteCoffeeFromCart(e.target.id, order.orderCoffees)
     }
   }
 

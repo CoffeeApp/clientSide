@@ -9,7 +9,6 @@ a:hover {
   cursor: pointer;
 }
 
-
 /*********************************/
 /* PASTE CUSTOM ABOVE ONLY       */
 /* ONLY PASTE WEBFLOW CSS BELOW  */
@@ -26,7 +25,7 @@ body {
   position: fixed;
   top: 108px;
   right: 0px;
-  bottom: 250px;
+  bottom: 249px;
   z-index: 1000;
   display: block;
   overflow: scroll;
@@ -83,7 +82,7 @@ body {
   position: relative;
   overflow: auto;
   width: 100vw;
-  padding: 10px;
+  padding: 20px;
   border-top: 1px solid #ddd;
   cursor: pointer;
 }
@@ -112,12 +111,12 @@ body {
 
 .itemprice {
   position: absolute;
-  top: 12px;
-  right: 12px;
+  top: 22px;
+  right: 22px;
   float: right;
   color: #a00;
-  font-size: 14px;
-  line-height: 20px;
+  font-size: 20px;
+  line-height: 24px;
   font-weight: 600;
 }
 
@@ -141,11 +140,13 @@ body {
 
 .searchbar {
   display: block;
-  width: 100%;
   height: 20px;
-  margin-top: 10px;
-  margin-bottom: 20px;
+  margin: 10px 150px 20px;
   padding: 8px 12px;
+  -webkit-box-flex: 1;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
   border-style: solid;
   border-width: 1px;
   border-color: rgba(243, 230, 255, .5);
@@ -270,7 +271,7 @@ body {
   bottom: 0px;
   z-index: 2000;
   display: none;
-  background-color: rgba(0, 0, 0, .5);
+  background-color: rgba(0, 0, 0, .7);
 }
 
 .confirm {
@@ -293,12 +294,10 @@ body {
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  padding-right: 150px;
-  padding-left: 150px;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
 }
 
 .cartitem {
@@ -321,6 +320,8 @@ body {
   top: 0px;
   right: 0px;
   bottom: 0px;
+  overflow: auto;
+  background-color: #fff;
 }
 
 .iteminfo {
@@ -334,6 +335,20 @@ body {
   color: #a00;
 }
 
+.menuimage {
+  width: 30px;
+  height: 30px;
+  margin: 15px 20px;
+}
+
+.menuright {
+  width: 30px;
+  height: 30px;
+  margin-top: 10px;
+  margin-right: 20px;
+  margin-bottom: 20px;
+}
+
 @media (max-width: 767px) {
   .cartitems {
     top: 95px;
@@ -342,16 +357,24 @@ body {
   .cartfooter {
     width: 100%;
   }
+  .item {
+    padding: 10px;
+  }
   .itemtitle {
     font-size: 18px;
   }
   .itemprice {
-    font-size: 18px;
+    top: 12px;
+    right: 12px;
+    font-size: 14px;
+    line-height: 20px;
   }
   .searchbar {
-    width: 80%;
+    width: 60%;
     height: 17px;
+    margin-right: 20px;
     margin-bottom: 10px;
+    margin-left: 20px;
     font-size: 12px;
   }
   .dashboard {
@@ -373,6 +396,16 @@ body {
     padding-right: 0px;
     padding-left: 0px;
   }
+  .menuimage {
+    width: 30px;
+    height: 30px;
+    margin: 13px 10px 10px;
+  }
+  .menuright {
+    width: 30px;
+    height: 30px;
+    margin-right: 10px;
+  }
 }
 
 @media (max-width: 479px) {
@@ -383,7 +416,7 @@ body {
     margin-right: auto;
     margin-left: -125px;
   }
-  .notification {
-    display: none;
+  .cart {
+    display: block;
   }
 }
