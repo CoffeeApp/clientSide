@@ -32,6 +32,14 @@ npm test
 npm run deploy
 ```
 
+currently deploys in a rather temperamental manner to Surge.
+
+#### alternative deploy script for Github Pages
+
+```
+"deploy": "npm run build && npm run dist && npm run push"
+```
+
 ### important deploy notes!
 
 don't forget to append
@@ -40,10 +48,9 @@ don't forget to append
 -g uglifyify
 ```
 
-to the deployment script in package.json before production!
+to the build script in package.json before production!
 
-And figure out how to deploy images!
-
+(and figure out how to deploy images!)
 
 ## example client order JSON output for server processing
 
