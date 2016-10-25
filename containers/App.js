@@ -13,15 +13,10 @@ import {
   showNotification,
   hideNotification,
   confirmOrder,
-<<<<<<< HEAD
   cancelOrder,
   changeQuantity,
   updateOrderWithShop,
-  deleteCoffeeFromCart,
   updatePlaceholderText
-=======
-  cancelOrder
->>>>>>> master
   } from '../actioncreators'
 import SearchBar from '../components/SearchBar'
 import Cart from '../components/Cart'
