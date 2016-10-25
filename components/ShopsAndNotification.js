@@ -12,7 +12,7 @@ class ShopsAndNotification extends React.Component {
   render() {
     return (
       <div>
-        <CustomerDetails />
+        <CustomerDetails {...this.props}/>
         <SelectShop {...this.props} />
         { this.props.notification ? <Notification {...this.props} /> : null }
       </div>
