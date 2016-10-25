@@ -4,7 +4,6 @@ class SearchBar extends React.Component {
 
   constructor(props) {
     super(props)
-    this.handleProp = this.handleProp.bind(this)
   }
 
   render() {
@@ -19,7 +18,7 @@ class SearchBar extends React.Component {
           <form className="searchbarcontainer">
             <input
               className="searchbar"
-              placeholder={placeholder.placeholder}
+              placeholder={placeholder}
               type="text"
               value={searchWord}
               onChange={(e) => updateSearchWord(e.target.value)}

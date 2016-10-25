@@ -110,7 +110,7 @@ export function updateOrderStatus() {
   }
 }
 
-export function filterShops() {
+export function filterShops(id) {
   return (dispatch) => {
     dispatch({ type: 'FILTER_SHOP_LIST', payload: id })
   }

@@ -8,12 +8,14 @@ class SelectShop extends React.Component {
   }
 
   componentDidMount() {
-    this.props.updatePlaceholderText('/cafes')
+    this.props.updatePlaceholderText(this.props.location.pathname)
   }
 
   render() {
-
+    console.log('##########################TOGGLEBUTTONS', this.props.toggleButtons)
     const { shops, searchWord } = this.props
+
+
 
     // const user = {
     //   hasClicked: 'byPrice'

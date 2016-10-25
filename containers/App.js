@@ -28,7 +28,8 @@ const mapStateToProps = (state) => {
     shops: state.shops,
     notification: state.notification,
     placeholder: state.placeholder,
-    customer: state.customer
+    customer: state.customer,
+    toggleButtons: state.toggleButtons
   }
 }
 

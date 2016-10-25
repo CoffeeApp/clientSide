@@ -1,4 +1,5 @@
 import React from 'react'
+import { Match } from 'react-router'
 import SelectShop from './SelectShop'
 import Notification from './Notification'
 import CustomerDetails from './CustomerDetails'
@@ -14,13 +15,12 @@ class ShopsAndNotification extends React.Component {
     return (
       <div>
         <CustomerDetails {...this.props} />
+        { (this.props.location.pathname === '/cafes') ? <ToggleButtons {...this.props} /> : null }
         <SelectShop {...this.props} />
         { this.props.notification ? <Notification {...this.props} /> : null }
-        <Match exactly pattern="/cafes" component={wrapComponent(ToggleButtons, {...this.props})} />
       </div>
     )
   }
-
 }
 
 export default ShopsAndNotification

@@ -1,13 +1,9 @@
 import initialState from '../state'
 
-const toggleButtons = (state = initialState, id) => {
+const toggleButtons = (state = initialState, action) => {
   switch (action.type) {
   case 'FILTER_SHOP_LIST':
-    if (action.payload.id === 'Price' ) {
-      
-    } else if (action.payload.id === 'Distance' ) {
-
-    }
+    return action.payload.id
   default:
     return state
   }

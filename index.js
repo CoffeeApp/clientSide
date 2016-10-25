@@ -7,6 +7,7 @@ import reducer from './reducers'
 import initialState from './state'
 import api from './lib/api'
 import Root from './containers/Root'
+
 const logger = createLogger({
   level: {
     prevState: () => `info`,
@@ -26,6 +27,6 @@ const logger = createLogger({
 });
 
 const store = createStore(reducer, initialState, applyMiddleware(thunk, logger))
-ReactDOM.render(<Root store={ store } />, document.querySelector('main'))
+ReactDOM.render( <Root store={ store } />, document.querySelector('main'))
 
 console.log('welcome to clientSide')

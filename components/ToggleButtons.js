@@ -12,9 +12,8 @@ class ToggleButtons extends React.Component {
   }
 
   render() {
-    const { customer, location } = this.props
-    console.log('###############LOCATION.PATHNAME IN TOGGLEBUTTONS', location.pathname)
-
+    console.log('HERE IS LOCATION AT TOGGLEBUTTONS', this.props.location.pathname);
+    const { customer } = this.props
     return (
       <div>
         <div className="button" id="Price" onClick={this.handleProp}>Price</div>
