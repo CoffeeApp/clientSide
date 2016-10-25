@@ -1,7 +1,8 @@
 import React from 'react'
 import SelectShop from './SelectShop'
 import Notification from './Notification'
-import CustomerDetails from '../components/CustomerDetails'
+import CustomerDetails from './CustomerDetails'
+import ToggleButtons from './ToggleButtons'
 
 class ShopsAndNotification extends React.Component {
 
@@ -12,9 +13,10 @@ class ShopsAndNotification extends React.Component {
   render() {
     return (
       <div>
-        <CustomerDetails {...this.props}/>
+        <CustomerDetails {...this.props} />
         <SelectShop {...this.props} />
         { this.props.notification ? <Notification {...this.props} /> : null }
+        <Match exactly pattern="/cafes" component={wrapComponent(ToggleButtons, {...this.props})} />
       </div>
     )
   }

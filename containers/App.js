@@ -46,7 +46,8 @@ const mapDispatchToProps = (dispatch) => {
     hideNotification: () => dispatch(showNotification()),
     confirmOrder: (orderId, shopId) => dispatch(confirmOrder(orderId, shopId)),
     cancelOrder: (orderId) => dispatch(cancelOrder(orderId)),
-    updateOrderStatus: () => dispatch(updateOrderStatus())
+    updateOrderStatus: () => dispatch(updateOrderStatus()),
+    filterShops: (id) => dispatch(filterShops(id))
   }
 }
 
@@ -62,10 +63,11 @@ class App extends React.Component {
   }
 
   render() {
-    const { store, children, searchWord, updateSearchWord, placeholder } = this.props
+    const { store, children, searchWord, updateSearchWord, placeholder, location } = this.props
+
     return (
       <div id="wrapper">
-        <SearchBar updateSearchWord={updateSearchWord} searchWord={searchWord} placeholder={placeholder} />
+        <SearchBar updateSearchWord={updateSearchWord} searchWord={searchWord} placeholder={placeholder} location={location} />
         <div className="dashboard">
           {React.Children.map(children, (child) => {
             return React.cloneElement(child, {...this.props})

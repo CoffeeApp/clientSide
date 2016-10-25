@@ -48,7 +48,7 @@ class SelectShop extends React.Component {
         //     return
         //   }
 
-        let filterBySearchTerm = toggles.filter((shop) => {
+        let filterBySearchTerm = shops.filter((shop) => {
           return shop.shop_name.toLowerCase().includes(searchWord.toLowerCase())
         })
 

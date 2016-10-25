@@ -7,14 +7,9 @@ class SearchBar extends React.Component {
     this.handleProp = this.handleProp.bind(this)
   }
 
-  handleProp(e) {
-      this.props.filterShops(e.target.id)
-  }
-
   render() {
 
-    const { searchWord, updateSearchWord, placeholder, filterShops } = this.props
-
+    const { searchWord, updateSearchWord, placeholder } = this.props
     return (
       <div className="navbar">
         <div className="row">
@@ -30,9 +25,6 @@ class SearchBar extends React.Component {
               onChange={(e) => updateSearchWord(e.target.value)}
             />
           </form>
-          { this.props.location = '/cafes' ?
-            <div className="button" id="Price" onClick={this.handleProp}>Price</div>
-             : null }
         </div>
       </div>
     )

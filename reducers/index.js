@@ -14,5 +14,6 @@ export default combineReducers({
   searchWord,
   notification,
   placeholder,
-  customer
+  customer,
+  toggleButtons
 })
