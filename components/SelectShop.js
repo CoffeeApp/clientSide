@@ -12,13 +12,30 @@ class SelectShop extends React.Component {
   }
 
   render() {
+
     const { shops, searchWord } = this.props
-        let filterResults = shops.filter((shop) => {
+
+    const user = {
+      hasClicked: 'byPrice'
+    }
+
+        function compare(a,b) {
+        if (a.total < b.total)
+          return -1;
+        if (a.total > b.total)
+          return 1;
+        return 0;
+        }
+
+        let byPrice = hasClicked === 'byPrice' ? shops.sort(compare) : 
+
+        let filterBySearchTerm = byPrice.filter((shop) => {
           return shop.shop_name.toLowerCase().includes(searchWord.toLowerCase())
         })
+
     return (
       <div className="itemscontainer">
-        {filterResults.map((shop, index) => {
+        {filterBySearchTerm.map((shop, index) => {
           return (
             <Shop key={index} shop={shop} {...this.props} />
           )
