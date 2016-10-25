@@ -32,8 +32,8 @@ const SearchBar = ({order, screen, searchWord, updateSearchWord, placeholder}) =
           }
         </div>
       </div>
-    </div>
-  )
+    )
+  }
 }
 
 export default SearchBar

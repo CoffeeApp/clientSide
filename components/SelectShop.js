@@ -1,5 +1,6 @@
 import React from 'react'
 import Shop from './Shop'
+import _ from 'lodash'
 
 class SelectShop extends React.Component {
 
@@ -8,21 +9,41 @@ class SelectShop extends React.Component {
   }
 
   componentDidMount() {
-    this.props.updatePlaceholderText('/cafes')
+    this.props.updatePlaceholderText(this.props.location.pathname)
+  }
+
+  toggles(id, shops) {
+    switch (id) {
+      case 'Price':
+      return _.sortBy(shops, [function(shop) { return shop.total }])
+      case 'Distance':
+      return _.sortBy(shops, [function(shop) { return shop.distance }])
+      case 'Alphabetically':
+      return _.sortBy(shops, [function(shop) { return shop.shop_name }])
+      default:
+      return shops
+    }
   }
 
   render() {
-    const { shops, searchWord } = this.props
-        let filterResults = shops.filter((shop) => {
-          return shop.shop_name.toLowerCase().includes(searchWord.toLowerCase())
-        })
+
+    const { shops, searchWord, filterShopsId } = this.props
+    var results = this.toggles(filterShopsId, shops)
+    console.log('############Rsults', results);
+    // var filtered = this.toggles(filterShopsId, shops)
+    // console.log('results of this.toggles function', filtered)
+    let filterBySearchTerm = results.filter((shop) => {
+      return shop.shop_name.toLowerCase().includes(searchWord.toLowerCase())
+    })
+
     return (
       <div className="itemscontainer">
-        {filterResults.map((shop, index) => {
+        {filterBySearchTerm.map((shop, index) => {
           return (
             <Shop key={index} shop={shop} {...this.props} />
           )
-        })}
+        })
+      }
       </div>
     )
   }

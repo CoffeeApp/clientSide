@@ -80,3 +80,51 @@ to the build script in package.json before production!
   ]
 }
 ```
+
+## example shop info
+
+```
+
+address
+:
+"40 Abel Smith St, Te Aro, Wellington 6011"
+description
+:
+"Raglan Roast coffee is roasted daily at our "Hole in the Wall" coffee shop located in Volcom Lane and at the Te Uku Roast Office, Raglan New Zealand."
+distance
+:
+99
+image
+:
+"http://main-cdn.grabone.co.nz/goimage/440x267/ixplxb4.jpg"
+lat
+:
+"-41.2964276"
+lng
+:
+"174.7728275"
+order_id
+:
+25
+rating
+:
+3.5
+shop_id
+:
+2
+shop_name
+:
+"Raglan Roast"
+shop_phone
+:
+"04 801 6558"
+status
+:
+""
+total
+:
+4
+website
+:
+"https://www.raglanroast.co.nz/"
+```
