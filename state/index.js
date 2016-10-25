@@ -9,5 +9,6 @@ export default {
   shops: [],
   searchWord: '',
   notification: false,
-  placeholder: ''
+  placeholder: '',
+  customer: {}
 }
