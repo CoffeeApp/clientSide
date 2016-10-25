@@ -30,7 +30,8 @@ const mapStateToProps = (state) => {
     notification: state.notification,
     placeholder: state.placeholder,
     customer: state.customer,
-    filterShopsId: state.filterShopsId
+    filterShopsId: state.filterShopsId,
+    screen: state.screen
   }
 }
 
@@ -40,8 +41,8 @@ const mapDispatchToProps = (dispatch) => {
     updatePlaceholderText: (route) => dispatch(updatePlaceholderText(route)),
     updateSearchWord: (word) => dispatch(updateSearchWord(word)),
     addCoffeeToCart: (coffeeId, coffeeType) => dispatch(addCoffeeToCart(coffeeId, coffeeType)),
-    changeCoffeeOptions: (id, changeType, changePayload) => dispatch(changeCoffeeOptions(id, changeType, changePayload)),
-    deleteCoffeeFromCart: (coffee_id) => dispatch(deleteCoffeeFromCart(coffee_id)),
+    changeCoffeeOptions: (id, changeType, changePayload, orderCoffees) => dispatch(changeCoffeeOptions(id, changeType, changePayload, orderCoffees)),
+    deleteCoffeeFromCart: (coffee_id, orderCoffees) => dispatch(deleteCoffeeFromCart(coffee_id, orderCoffees)),
     createOrder: (order, userCoords) => dispatch(createOrder(order, userCoords)),
     updateOrder: (shop) => dispatch(updateOrder(shop)),
     showNotification: () => dispatch(showNotification()),
@@ -68,7 +69,7 @@ class App extends React.Component {
     const { store, children, searchWord, updateSearchWord, placeholder, location, filterShops, filterShopsId, toggleButtonsId } = this.props
     return (
       <div id="wrapper">
-        <SearchBar updateSearchWord={updateSearchWord} searchWord={searchWord} placeholder={placeholder} location={location} />
+        <SearchBar {...this.props} />
         <div className="dashboard">
           {React.Children.map(children, (child) => {
             return React.cloneElement(child, {...this.props})

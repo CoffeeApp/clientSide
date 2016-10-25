@@ -13,6 +13,7 @@ export function fetchCoffees() {
           {...coffee, coffee_id: coffee.id}
         ))
         dispatch(receiveCoffees(coffees))
+        dispatch({ type: 'UPDATE_SCREEN', payload: 'coffees' })
       })
   }
 }
@@ -28,24 +29,37 @@ export function updateSearchWord(word) {
 }
 
 export function addCoffeeToCart(coffee_id, type) {
-  return { type: 'ADD_COFFEE_TO_CART', payload: {
-    coffee_id,
-    type,
-    quantity: 1,
-    milk: '',
-    sugar: 0
-  } }
-}
-
-export function deleteCoffeeFromCart(coffee_id) {
-  return {
-    type: 'DELETE_COFFEE_FROM_CART',
-    payload: { coffee_id }
+  return (dispatch) => {
+    dispatch({ type: 'ADD_COFFEE_TO_CART', payload: {
+      coffee_id,
+      type,
+      quantity: 1,
+      milk: '',
+      sugar: 0
+    } })
+    dispatch({ type: 'UPDATE_SCREEN', payload: 'cart' })
   }
 }
 
-export function changeCoffeeOptions(id, changeType, changePayload) {
-  return { type: 'CHANGE_COFFEE_OPTIONS', payload: { id, changeType, changePayload } }
+export function deleteCoffeeFromCart(coffee_id, orderCoffees) {
+  return (dispatch) => {
+    dispatch({
+      type: 'DELETE_COFFEE_FROM_CART',
+      payload: { coffee_id }
+    })
+    if (Object.keys(orderCoffees).length === 0) {
+      dispatch({ type: 'UPDATE_SCREEN', payload: 'coffee' })
+    }
+  }
+}
+
+export function changeCoffeeOptions(id, changeType, changePayload, orderCoffees) {
+  return (dispatch) => {
+    dispatch({ type: 'CHANGE_COFFEE_OPTIONS', payload: { id, changeType, changePayload } })
+    if (Object.keys(orderCoffees).length === 0) {
+      dispatch({ type: 'UPDATE_SCREEN', payload: 'coffee' })
+    }
+  }
 }
 
 export function createOrder(order, userCoords) {
@@ -56,6 +70,7 @@ export function createOrder(order, userCoords) {
       .then(function (result) {
         console.log('Result: ', result);
         dispatch({type: 'RECEIVE_SHOPS', payload: { shops: result, userCoords } })
+        dispatch({ type: 'UPDATE_SCREEN', payload: 'shops' })
       })
   }
 }

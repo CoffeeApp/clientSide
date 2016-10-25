@@ -10,12 +10,11 @@ class CartItem extends Component {
   }
 
   handleClick (e) {
-    console.log(e.target)
-    this.props.deleteCoffeeFromCart(e.target.id)
+    this.props.deleteCoffeeFromCart(e.target.id, this.props.order.orderCoffees)
   }
 
   render () {
-    const {coffee, id, changeCoffeeOptions, deleteCoffeeFromCart} = this.props
+    const {coffee, id, deleteCoffeeFromCart} = this.props
     return (
       <div className="cartitem">
       <div className="itemoverview">
@@ -31,12 +30,11 @@ class CartItem extends Component {
            <CartItemCounter
               coffee={coffee}
               id={id}
-              changeCoffeeOptions={changeCoffeeOptions}
-              deleteCoffeeFromCart={deleteCoffeeFromCart}
+              {...this.props}
            />
            </div>
         </div>
-        <CartItemOptions coffee={coffee} id={id} changeCoffeeOptions={changeCoffeeOptions} />
+        <CartItemOptions coffee={coffee} id={id} {...this.props} />
       </div>
     )
   }

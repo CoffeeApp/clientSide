@@ -11,5 +11,6 @@ export default {
   notification: false,
   placeholder: '',
   customer: {},
-  filterShopsId: ''
+  filterShopsId: '',
+  screen: ''
 }
