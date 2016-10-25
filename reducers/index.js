@@ -6,6 +6,7 @@ import searchWord from './searchword'
 import notification from './notification'
 import placeholder from './placeholder'
 import customer from './customer'
+import filterShopsId from './filtershopsid'
 import screen from './screen'
 
 export default combineReducers({
@@ -16,5 +17,6 @@ export default combineReducers({
   notification,
   placeholder,
   customer,
+  filterShopsId,
   screen
 })
