@@ -8,9 +8,14 @@ class CustomerDetails extends React.Component {
   }
 
   render() {
-    return <h1>Hello</h1>
-  }
+    const { customer } = this.props
 
+    return (
+      <div>
+        <h2>Hey {customer.name}, check out the places nearby where you can grab your coffee order!</h2>
+      </div>
+    )
+  }
 }
 
 export default CustomerDetails

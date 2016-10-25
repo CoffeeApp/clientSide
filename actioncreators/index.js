@@ -50,6 +50,7 @@ export function changeCoffeeOptions(id, changeType, changePayload) {
 
 export function createOrder(order, userCoords) {
   return (dispatch) => {
+    dispatch(saveCustomerDetails(order.details))
     api.service('orders')
       .create(order)
       .then(function (result) {
@@ -58,7 +59,9 @@ export function createOrder(order, userCoords) {
       })
   }
 }
-
+export function saveCustomerDetails(customerDetails) {
+  return {type: 'SAVE_CUSTOMER_DETAIL', payload: {...customerDetails}}
+}
 export function updateOrder(shop) {
   return (dispatch) => {
     dispatch({ type: 'UPDATE_ORDER', payload: shop })
@@ -103,16 +106,6 @@ export function updateOrderStatus() {
           status: (orderData.order)[0].status,
           order_id: (orderData.order)[0].order_id
         } })
-      })
-  }
-}
-
-export function getCustomerDetails (order_id) {
-  return (dispatch) => {
-    api.service('orders')
-      .find({query: {order_id}})
-      .then((result) => {
-        console.log('result', result);
       })
   }
 }

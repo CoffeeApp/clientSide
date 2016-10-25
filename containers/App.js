@@ -27,7 +27,8 @@ const mapStateToProps = (state) => {
     searchWord: state.searchWord,
     shops: state.shops,
     notification: state.notification,
-    placeholder: state.placeholder
+    placeholder: state.placeholder,
+    customer: state.customer
   }
 }
 
