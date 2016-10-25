@@ -33,10 +33,10 @@ export function addCoffeeToOrder(coffee_id, type) {
 }
 
 export function deleteCoffeeFromCart(coffee_id) {
-	return {
-		type: 'DELETE_COFFEE_FROM_ORDER',
-		payload: { coffee_id }
-	}
+  return {
+    type: 'DELETE_COFFEE_FROM_ORDER',
+    payload: { coffee_id }
+  }
 }
 
 export function changeOrderOptions(id, changeType, changePayload) {

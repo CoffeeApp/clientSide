@@ -1,5 +1,5 @@
 #counterButtonsPlus, #counterButtonsMinus {
-	display: inline-block;
+  display: inline-block;
 }
 .item, .itemdetails, .cartitems, .cartitem, .cartfooter, .iteminput, .itemform {box-sizing: border-box;}
 .link {text-decoration: none; color: #333333;}
