@@ -6,10 +6,11 @@
   "scripts": {
     "start": "budo . -d --serve bundle.js --live",
     "build": "browserify . -o bundle.js",
+    "build-deploy": "browserify . -o bundle.js -g uglifyify",
     "test": "browserify test/index.js | node | tap-spec",
     "dist": "mkdir -p dist && bash -c 'cp *.{js,html,css} dist'",
     "push": "gh-pages -d dist",
-    "deploy": "npm build && surge -p ./ build --domain caffeinati.surge.sh"
+    "deploy": "npm run build-deploy && surge -p ./ build --domain https://caffeinati.surge.sh"
   },
   "browserify": {
     "transform": [
