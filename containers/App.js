@@ -15,7 +15,8 @@ import {
   cancelOrder,
   changeQuantity,
   updateOrderWithShop,
-  deleteCoffeeFromCart
+  deleteCoffeeFromCart,
+  updatePlaceholderText
   } from '../actioncreators'
 import SearchBar from '../components/SearchBar'
 import Cart from '../components/Cart'
@@ -26,7 +27,8 @@ const mapStateToProps = (state) => {
     coffees: state.coffees,
     searchWord: state.searchWord,
     shops: state.shops,
-    notification: state.notification
+    notification: state.notification,
+    placeholder: state.placeholder
   }
 }
 
@@ -70,8 +72,10 @@ const mapDispatchToProps = (dispatch) => {
     },
     deleteCoffeeFromCart: (coffee_id) => {
       dispatch(deleteCoffeeFromCart(coffee_id))
+    },
+    updatePlaceholderText: (route) => {
+      dispatch(updatePlaceholderText(route))
     }
-    // deleteTask: (id) =>
   }
 }
 
@@ -87,10 +91,10 @@ class App extends React.Component {
   }
 
   render() {
-    const { store, children, searchWord, updateSearchWord} = this.props
+    const { store, children, searchWord, updateSearchWord, placeholder } = this.props
     return (
       <div id="wrapper">
-        <SearchBar updateSearchWord={updateSearchWord} searchWord={searchWord} />
+        <SearchBar updateSearchWord={updateSearchWord} searchWord={searchWord} placeholder={placeholder} />
         <div className="dashboard">
           {React.Children.map(children, (child) => {
             return React.cloneElement(child, {...this.props})

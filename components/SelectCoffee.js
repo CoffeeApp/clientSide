@@ -8,6 +8,10 @@ class SelectCoffee extends React.Component {
     super(props)
   }
 
+  componentDidMount() {
+    this.props.updatePlaceholderText('/coffees')
+  }
+
   render() {
     const { coffees, searchWord } = this.props
     let filterResults = coffees.filter((coffee) => {
