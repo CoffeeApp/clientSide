@@ -9,14 +9,13 @@ import {
   changeCoffeeOptions,
   createOrder,
   updateOrder,
-   showNotification,
+  showNotification,
   hideNotification,
   confirmOrder,
   cancelOrder,
   changeQuantity,
-   updateOrderWithShop,
-  deleteCoffeeFromCart,
-  fetchShops
+  updateOrderWithShop,
+  deleteCoffeeFromCart
   } from '../actioncreators'
 import SearchBar from '../components/SearchBar'
 import Cart from '../components/Cart'
@@ -71,9 +70,6 @@ const mapDispatchToProps = (dispatch) => {
     },
     deleteCoffeeFromCart: (coffee_id) => {
       dispatch(deleteCoffeeFromCart(coffee_id))
-    },
-    fetchShops: (userCoords) => {
-      dispatch(fetchShops(userCoords))
     }
     // deleteTask: (id) =>
   }
