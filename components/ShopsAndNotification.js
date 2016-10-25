@@ -12,6 +12,7 @@ class ShopsAndNotification extends React.Component {
   }
 
   render() {
+    console.log('###################### INSIDE SHOPSANDNOTIFICATIONS THIS.PROPS ################', this.props.filterShops)
     return (
       <div>
         <CustomerDetails {...this.props} />

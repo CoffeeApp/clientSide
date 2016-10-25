@@ -6,7 +6,7 @@ import searchWord from './searchword'
 import notification from './notification'
 import placeholder from './placeholder'
 import customer from './customer'
-import toggleButtons from './togglebuttons'
+import filterShopsId from './filtershopsid'
 
 export default combineReducers({
   coffees,
@@ -16,5 +16,5 @@ export default combineReducers({
   notification,
   placeholder,
   customer,
-  toggleButtons
+  filterShopsId
 })

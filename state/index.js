@@ -10,5 +10,6 @@ export default {
   searchWord: '',
   notification: false,
   placeholder: '',
-  customer: {}
+  customer: {},
+  filterShopsId: ''
 }

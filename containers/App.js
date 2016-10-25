@@ -15,7 +15,8 @@ import {
   hideNotification,
   confirmOrder,
   cancelOrder,
-  updateOrderStatus
+  updateOrderStatus,
+  filterShops
   } from '../actioncreators'
 import SearchBar from '../components/SearchBar'
 import Cart from '../components/Cart'
@@ -29,7 +30,7 @@ const mapStateToProps = (state) => {
     notification: state.notification,
     placeholder: state.placeholder,
     customer: state.customer,
-    toggleButtons: state.toggleButtons
+    filterShopsId: state.filterShopsId
   }
 }
 
@@ -64,8 +65,8 @@ class App extends React.Component {
   }
 
   render() {
-    const { store, children, searchWord, updateSearchWord, placeholder, location } = this.props
-
+    const { store, children, searchWord, updateSearchWord, placeholder, location, filterShops, filterShopsId, toggleButtonsId } = this.props
+    console.log('##################### FILTER SHOPS ID ##################', filterShopsId)
     return (
       <div id="wrapper">
         <SearchBar updateSearchWord={updateSearchWord} searchWord={searchWord} placeholder={placeholder} location={location} />
