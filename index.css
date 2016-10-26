@@ -1,6 +1,3 @@
-#counterButtonsPlus, #counterButtonsMinus {
-  display: inline-block;
-}
 .item, .itemdetails, .cartitems, .cartitem, .cartfooter, .iteminput, .itemform, .button, .module {box-sizing: border-box;}
 .link {text-decoration: none; color: #333333;}
 a:hover {
@@ -369,8 +366,8 @@ body {
   display: block;
   width: 30px;
   height: 30px;
-  margin-right: 50px;
-  margin-left: 50px;
+  margin-right: 55px;
+  margin-left: 55px;
 }
 
 .notificationstatus {
