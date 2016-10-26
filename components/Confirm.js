@@ -10,36 +10,7 @@ class Confirm extends React.Component {
     const { order, confirmOrder, cancelOrder } = this.props
     const coffees = order.orderCoffees
     const orderPrice = order.total % 1 === 0 ? order.total : '' + order.total + 0
-    const orderLength = Object.keys(coffees).length
-    const orderString = Object.keys(coffees).map((key, index) => {
-      const quantity = (coffees[key].quantity === 1) ? 'a' : coffees[key].quantity
-      const sugar = coffees[key].sugar
-      const milkString = (coffees[key].milk === '') ? 'No milk' : coffees[key].milk.toLowerCase()
-      let sugarString = ''
-      if (sugar > 1) {
-        sugarString = sugar + ' sugars'
-      } else if (sugar === 1) {
-        sugarString = sugar + ' sugar'
-      } else {
-        sugarString = ' no sugar'
-      }
-      let end = ''
-      if (orderLength > index + 2) {
-        end = ', '
-      } else if (orderLength === index + 2) {
-        end = ', and '
-      }
-      return (
-        quantity
-        + ' '
-        + coffees[key].type
-        + ' with '
-        + milkString
-        + ' and '
-        + sugarString
-        + end
-      )
-    })
+    const orderString = generateOrderString(coffees)
     return (
       <div className="confirm">
         <div className="notificationtitle">Confirm</div>
@@ -61,3 +32,36 @@ class Confirm extends React.Component {
 }
 
 export default Confirm
+
+function generateSugarString(amount) {
+  console.log('SUGAR AMOUNT IS ', amount, 'and typeof is: ', typeof amount);
+
+  switch (amount) {
+    case   0: return 'no sugar'
+    case '0': return 'no sugar'
+    case '1': return `1 sugar`
+    default: return `${amount} sugars`
+  }
+}
+
+function generateSuffix(orderLength, index) {
+  let end = ''
+  if (orderLength > index + 2) {
+    end = ', '
+  } else if (orderLength === index + 2) {
+    end = ', and '
+  }
+  return end
+}
+
+function generateOrderString (coffees) {
+  const orderString = Object.keys(coffees).map((key, index) => {
+    const orderLength = Object.keys(coffees).length
+    const quantity = (coffees[key].quantity === 1) ? 'a' : coffees[key].quantity
+    const sugar = coffees[key].sugar
+    const milkString = (coffees[key].milk === '') ? 'No milk' : coffees[key].milk.toLowerCase()
+    return `${quantity} ${coffees[key].type} with ${milkString} and ${generateSugarString(sugar)}${generateSuffix(orderLength, index)}`
+  })
+
+  return orderString
+}
