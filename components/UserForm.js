@@ -27,9 +27,10 @@ class UserForm extends Component {
     let phone = this.state.userNumber
     let ready_time = this.state.readyTime
     let comment = this.state.comment
-    let orderCoffees = Object.keys(this.props.order.orderCoffees).map((key) => (
-      this.props.order.orderCoffees[key]
-    ))
+    let orderCoffees = Object.keys(this.props.order.orderCoffees).map((key) => {
+      delete this.props.order.orderCoffees[key].image
+      return this.props.order.orderCoffees[key]
+    }
     let order = {
       details: {
         name,
