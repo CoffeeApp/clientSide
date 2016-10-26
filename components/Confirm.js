@@ -9,6 +9,7 @@ class Confirm extends React.Component {
   render() {
     const { order, confirmOrder, cancelOrder } = this.props
     const coffees = order.orderCoffees
+    const orderPrice = order.total % 1 === 0 ? order.total : '' + order.total + 0
     const orderLength = Object.keys(coffees).length
     const orderString = Object.keys(coffees).map((key, index) => {
       const quantity = (coffees[key].quantity === 1) ? 'a' : coffees[key].quantity
@@ -43,7 +44,7 @@ class Confirm extends React.Component {
       <div className="confirm">
         <div className="notificationtitle">Confirm</div>
         <div className="notificationtext">
-          Would you like to confirm your order with {order.shop_name} for {orderString} for a total of ${order.total}?
+          Would you like to confirm your order with {order.shop_name} for {orderString} for a total of ${orderPrice}?
         </div>
         <div
           className="button"
