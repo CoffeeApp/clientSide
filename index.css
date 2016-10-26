@@ -287,10 +287,8 @@ body {
 .notificationstatustext {
   position: absolute;
   display: block;
-  width: 140px;
+  width: 260px;
   margin-top: 40px;
-  padding-right: 10px;
-  padding-left: 10px;
   font-size: 18px;
   font-weight: 700;
   text-align: center;
@@ -369,17 +367,15 @@ body {
   display: block;
   width: 30px;
   height: 30px;
-  margin-right: 55px;
-  margin-left: 55px;
+  margin-right: 115px;
+  margin-left: 115px;
 }
 
 .notificationstatus {
   position: relative;
   overflow: scroll;
-  width: 140px;
+  width: 260px;
   min-height: 80px;
-  margin-right: auto;
-  margin-left: auto;
 }
 
 .navimageright {
