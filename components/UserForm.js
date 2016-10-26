@@ -27,15 +27,19 @@ class UserForm extends Component {
     let phone = this.state.userNumber
     let ready_time = this.state.readyTime
     let comment = this.state.comment
-    let orderCoffees = Object.keys(this.props.order.orderCoffees).map((key) => (
-      this.props.order.orderCoffees[key]
-   ))
+    let orderCoffees = Object.keys(this.props.order.orderCoffees).map((key) => {
+      return Object.assign({}, this.props.order.orderCoffees[key])
+   })
     orderCoffees.map((coffee) => {
-      if (coffee.image in orderCoffees) {
+      if (coffee.image) {
         delete coffee.image
       }
     })
-    let order = {
+    console.log('********** orderCoffees **********');
+    console.log(orderCoffees);
+    console.log('********** state **********');
+    console.log(this.props.order.orderCoffees);
+    let sendOrder = {
       details: {
         name,
         phone,
@@ -55,10 +59,10 @@ class UserForm extends Component {
     navigator.geolocation.getCurrentPosition((position, error) => {
       console.log('getCurrentPosition', position);
       var userCoords = { lat: position.coords.latitude, lng: position.coords.longitude }
-      this.props.createOrder(order, userCoords)
+      this.props.createOrder(sendOrder, userCoords)
     },(error) => {
         console.log("you denied me :-(");
-        this.props.createOrder(order, { lat: '-41.2969092', lng: '174.7720306' })
+        this.props.createOrder(sendOrder, { lat: '-41.2969092', lng: '174.7720306' })
     })
     hashHistory.push('/cafes')
   }
