@@ -14,7 +14,7 @@ class LinkBack extends React.Component {
   render() {
     return (
       <svg
-          className="menuimage"
+          className="navimageleft"
           onClick={this.handleClick}
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 24 24">

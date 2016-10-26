@@ -18,7 +18,7 @@ class SelectShop extends React.Component {
       return _.sortBy(shops, [function(shop) { return shop.total }])
       case 'Distance':
       return _.sortBy(shops, [function(shop) { return shop.distance }])
-      case 'Alphabetically':
+      case 'Name':
       return _.sortBy(shops, [function(shop) { return shop.shop_name }])
       default:
       return shops

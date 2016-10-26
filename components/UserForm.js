@@ -71,20 +71,27 @@ class UserForm extends Component {
           type="text"
           onChange={this.handleProp('userName')}
           placeholder="Your name"
+          value={this.props.customer.name}
         />
         <input
           className="iteminput"
           type="text"
           onChange={this.handleProp('userNumber')}
           placeholder="Your phone number"
+          value={this.props.customer.phone}
         />
         <input
           className="iteminput"
           type="text"
           onChange={this.handleProp('comment')}
           placeholder="Notes"
+          value={this.props.customer.comment}
         />
-        <select className="iteminput" onChange={this.handleProp('readyTime')}>
+        <select
+          className="iteminput"
+          onChange={this.handleProp('readyTime')}
+          value={this.props.customer.ready_time}
+        >
           <option value="ASAP" defaultValue>Pick up asap...</option>
           <option value="in 15 minutes">Pick up in 15 mins</option>
           <option value="in 30 minutes">Pick up in 30 mins</option>

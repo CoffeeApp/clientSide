@@ -7,7 +7,7 @@
     "start": "budo . -d --serve bundle.js --live",
     "build": "browserify . -o bundle.js",
     "build-deploy": "browserify . -o bundle.js -g uglifyify",
-    "test": "browserify test/index.js | node | tap-spec",
+    "test": "browserify test/**.js | node | tap-spec",
     "dist": "mkdir -p dist && bash -c 'cp *.{js,html,css} dist'",
     "push": "gh-pages -d dist",
     "deploy": "npm run build-deploy && surge -p ./ build --domain https://caffeinati.surge.sh"
@@ -29,7 +29,9 @@
   "homepage": "https://github.com/coffeeapp/clientSide",
   "dependencies": {
     "feathers-client": "^1.6.1",
+    "isuuid": "^0.1.0",
     "lodash": "^4.16.4",
+    "material-ui": "^0.16.1",
     "react": "^15.3.2",
     "react-dom": "^15.3.2",
     "react-redux": "^4.4.5",
