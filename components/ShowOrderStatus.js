@@ -22,7 +22,7 @@ const ShowOrderStatus = ({ order }) => (
          ? null
          : <div className="spinner">
                <MuiThemeProvider muiTheme={muiTheme}>
-                  <CircularProgress size={20} color={'#3F0000'}/>
+                  <CircularProgress size={40} color={'#3F0000'}/>
                </MuiThemeProvider>
             </div>
       }
