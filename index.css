@@ -287,8 +287,8 @@ body {
 .notificationstatustext {
   position: absolute;
   display: block;
-  width: 260px;
-  margin-top: 40px;
+  width: 200px;
+  margin-top: 10px;
   font-size: 18px;
   font-weight: 700;
   text-align: center;
@@ -363,19 +363,22 @@ body {
 }
 
 .spinner {
-  position: absolute;
+  position: relative;
   display: block;
   width: 30px;
   height: 30px;
-  margin-right: 115px;
-  margin-left: 115px;
+  margin-right: auto;
+  margin-left: auto;
 }
 
 .notificationstatus {
   position: relative;
+  display: block;
   overflow: scroll;
-  width: 260px;
+  width: 200px;
   min-height: 80px;
+  margin-right: auto;
+  margin-left: auto;
 }
 
 .navimageright {
