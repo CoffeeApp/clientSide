@@ -13,14 +13,18 @@ const ShowOrderStatus = ({ order }) => (
  <div className="showorderstatus">
     <div className="notificationtitle">Confirm</div>
     <div className="notificationtext">
-       Your order is currently
+       Your order is
     </div>
     <div className="notificationstatus">
-      <div className="spinner">
-        <MuiThemeProvider muiTheme={muiTheme}>
-          <CircularProgress size={120} color={'#3F0000'}/>
-        </MuiThemeProvider>
-      </div>
+      {
+         ((order.processStatus === 'READY') || (order.processStatus === 'COMPLETE'))
+         ? null
+         : <div className="spinner">
+               <MuiThemeProvider muiTheme={muiTheme}>
+                  <CircularProgress size={120} color={'#3F0000'}/>
+               </MuiThemeProvider>
+            </div>
+      }
       <div className="notificationstatustext">
         {order.processStatus ? order.processStatus : order.status}
       </div>
