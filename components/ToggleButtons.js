@@ -1,68 +1,46 @@
 import React from 'react'
+import Toggle from './Toggle'
 
 class ToggleButtons extends React.Component {
 
   constructor(props) {
     super(props)
+    this.state = {
+      group: ''
+    }
     this.handleProp = this.handleProp.bind(this)
   }
 
-  handleProp(e) {
-      let inactive = []
-      if (e.target.id === 'Price') {inactive = ['Distance', 'Alphabetically']}
-      if (e.target.id === 'Distance') {inactive = ['Price', 'Alphabetically']}
-      if (e.target.id === 'Alphabetically') {inactive = ['Price', 'Distance']}
-      this.props.filterShops(e.target.id)
-      document.getElementById(e.target.id + 'Toggle').setAttribute('d', 'M12,20A8,8 0 0,1 4,12A8,8 0 0,1 12,4A8,8 0 0,1 20,12A8,8 0 0,1 12,20M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2M12,7A5,5 0 0,0 7,12A5,5 0 0,0 12,17A5,5 0 0,0 17,12A5,5 0 0,0 12,7Z')
-      for (let element of inactive) {
-        document.getElementById(element + 'Toggle').setAttribute('d', 'M12,20A8,8 0 0,1 4,12A8,8 0 0,1 12,4A8,8 0 0,1 20,12A8,8 0 0,1 12,20M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2Z')
-      }
+  handleProp(action) {
+    this.setState({ group: action })
+    this.props.filterShops(action)
   }
 
   render() {
-    const { customer } = this.props
     return (
       <div className="togglebuttons">
         <div className="radiotext">Sort by:</div>
-        <svg
-          id="Price"
-          className="radiobutton"
-          onClick={this.handleProp}
-          viewBox="0 0 24 24"
-        >
-          <path
-            id="PriceToggle"
-            fill="#3f0000"
-            d="M12,20A8,8 0 0,1 4,12A8,8 0 0,1 12,4A8,8 0 0,1 20,12A8,8 0 0,1 12,20M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2Z"
+        <div onClick={() => this.handleProp('Price')}>
+          <Toggle
+            toggle={ this.state.group === 'Price' ? true : false }
+            fill={'#3f0000'}
+            text={'Price'}
           />
-        </svg>
-        <div className="radiotext" id="Price" onClick={this.handleProp}>Price</div>
-        <svg
-          id="Distance"
-          className="radiobutton"
-          onClick={this.handleProp}
-          viewBox="0 0 24 24"
-        >
-          <path
-            id="DistanceToggle"
-            fill="#3f0000"
-            d="M12,20A8,8 0 0,1 4,12A8,8 0 0,1 12,4A8,8 0 0,1 20,12A8,8 0 0,1 12,20M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2Z"
+        </div>
+        <div onClick={() => this.handleProp('Distance')}>
+          <Toggle
+            toggle={ this.state.group === 'Distance' ? true : false }
+            fill={'#3f0000'}
+            text={'Distance'}
           />
-        </svg>
-        <div className="radiotext" id="Distance" onClick={this.handleProp}>Distance</div>
-        <svg
-          id="Alphabetically"
-          className="radiobutton"
-          onClick={this.handleProp}
-          viewBox="0 0 24 24"
-        >
-          <path
-            id="AlphabeticallyToggle"
-            fill="#3f0000"
-            d="M12,20A8,8 0 0,1 4,12A8,8 0 0,1 12,4A8,8 0 0,1 20,12A8,8 0 0,1 12,20M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2Z"
+        </div>
+        <div onClick={() => this.handleProp('Alphabetically')}>
+          <Toggle
+            toggle={ this.state.group === 'Alphabetically' ? true : false }
+            fill={'#3f0000'}
+            text={'Alphabetically'}
           />
-        </svg>
-        <div className="radiotext" id="Alphabetically" onClick={this.handleProp}>Alphabetically</div>
+        </div>
       </div>
     )
   }

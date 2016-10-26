@@ -29,9 +29,6 @@ class SelectShop extends React.Component {
 
     const { shops, searchWord, filterShopsId } = this.props
     var results = this.toggles(filterShopsId, shops)
-    console.log('############Rsults', results);
-    // var filtered = this.toggles(filterShopsId, shops)
-    // console.log('results of this.toggles function', filtered)
     let filterBySearchTerm = results.filter((shop) => {
       return shop.shop_name.toLowerCase().includes(searchWord.toLowerCase())
     })

@@ -7,14 +7,6 @@ a:hover {
   color: #3f0000;
   cursor: pointer;
 }
-.radiobutton {
-  width: 25px; height: 25px;
-  margin: 0 5px 0 10px;
-  cursor: pointer;
-}
-.radiotext {
-  font-size: 16px; font-weight: 600; margin-top: 2px;
-}
 
 /*********************************/
 /* PASTE CUSTOM ABOVE ONLY       */
@@ -358,8 +350,11 @@ body {
 }
 
 .radiobutton {
-  margin-right: 10px;
-  margin-left: 10px;
+  width: 25px;
+  height: 25px;
+  margin: 0px 5px 0px 10px;
+  float: left;
+  cursor: pointer;
 }
 
 .togglebuttons {
@@ -377,6 +372,7 @@ body {
 
 .radiotext {
   margin-top: 2px;
+  float: left;
   font-size: 16px;
   font-weight: 600;
   cursor: pointer;
