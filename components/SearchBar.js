@@ -1,12 +1,15 @@
 import React from 'react'
 import LinkBack from './LinkBack'
 import LinkCart from './LinkCart'
+import Logo from './Logo'
 
 const SearchBar = ({order, screen, updateScreen, searchWord, updateSearchWord, placeholder}) => {
   return (
     <div className="navbar">
       <div className="row">
-        <span className="logo">Caffeinati</span>
+        <span className="logo">
+          <Logo />
+        </span>
       </div>
       <div className="row">
         <div className="searchbarcontainer">
