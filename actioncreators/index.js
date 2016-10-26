@@ -127,7 +127,7 @@ export function updateOrderStatus() {
           processStatus: (orderData.order)[0].status,
           order_id: (orderData.order)[0].order_id
         } })
-      }) 
+      })
   }
 }
 
@@ -135,4 +135,18 @@ export function filterShops(id) {
   return (dispatch) => {
     dispatch({ type: 'FILTER_SHOP_LIST', payload: id })
   }
+}
+
+export function findOrder(phone) {
+  return (dispatch) => {
+    api.service('orders')
+      .find({query: {phone}})
+      .then((result) => {
+        dispatch(receiveOrderHistory(result))
+      })
+  }
+}
+
+export function receiveOrderHistory(orderHistory) {
+  return {type: 'RECEIVE_ORDER_HISTORY', payload: orderHistory}
 }

@@ -16,7 +16,6 @@ class ShopsAndNotification extends React.Component {
       <div>
         {(this.props.screen === 'shops') ? <ToggleButtons {...this.props} /> : null }
         {(this.props.screen === 'shops') ? <SelectShop {...this.props} /> : null}
-        {/* {(this.props.screen === 'cart') ? hashHistory.push('/coffees') : null} */}
         { this.props.notification ? <Notification {...this.props} /> : null }
       </div>
     )

@@ -17,7 +17,8 @@ import {
   confirmOrder,
   cancelOrder,
   updateOrderStatus,
-  filterShops
+  filterShops,
+  findOrder
   } from '../actioncreators'
 import SearchBar from '../components/SearchBar'
 import Cart from '../components/Cart'
@@ -32,7 +33,8 @@ const mapStateToProps = (state) => {
     placeholder: state.placeholder,
     customer: state.customer,
     filterShopsId: state.filterShopsId,
-    screen: state.screen
+    screen: state.screen,
+    orderHistory: state.orderHistory
   }
 }
 
@@ -52,7 +54,8 @@ const mapDispatchToProps = (dispatch) => {
     confirmOrder: (orderId, shopId) => dispatch(confirmOrder(orderId, shopId)),
     cancelOrder: (orderId) => dispatch(cancelOrder(orderId)),
     updateOrderStatus: () => dispatch(updateOrderStatus()),
-    filterShops: (id) => dispatch(filterShops(id))
+    filterShops: (id) => dispatch(filterShops(id)),
+    findOrder: (phone) => dispatch(findOrder(phone))
   }
 }
 

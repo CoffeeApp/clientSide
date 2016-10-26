@@ -11,5 +11,6 @@ export default {
   placeholder: '',
   customer: {},
   filterShopsId: '',
-  screen: ''
+  screen: '',
+  orderHistory: []
 }

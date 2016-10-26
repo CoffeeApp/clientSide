@@ -6,7 +6,7 @@ const Shop = ({shop, updateOrder}) => (
     onClick={() => updateOrder(shop)}
   >
     <img
-      alt="coffee image"
+      alt={shop.shop_name}
       className="itemimage"
       src={shop.image}
     />
