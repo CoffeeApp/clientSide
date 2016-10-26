@@ -7,6 +7,8 @@ a:hover {
   color: #3f0000;
   cursor: pointer;
 }
+.removeitem {color: #ccc; margin: 10px;}
+input, textarea {-webkit-appearance: none;}
 
 /*********************************/
 /* PASTE CUSTOM ABOVE ONLY       */
@@ -139,8 +141,9 @@ body {
 
 .searchbar {
   display: block;
+  width: 80%;
   height: 20px;
-  margin: 10px 150px 20px;
+  margin: 10px auto 20px;
   padding: 8px 12px;
   -webkit-box-flex: 1;
   -webkit-flex: 1;
@@ -269,7 +272,6 @@ body {
   right: 0px;
   bottom: 0px;
   z-index: 2000;
-  display: block;
   background-color: rgba(0, 0, 0, .7);
 }
 
@@ -290,30 +292,12 @@ body {
   text-transform: uppercase;
 }
 
-.searchbarcontainer {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: justify;
-  -webkit-justify-content: space-between;
-  -ms-flex-pack: justify;
-  justify-content: space-between;
-}
-
 .cartitem {
   display: block;
   overflow: auto;
   width: 100%;
   padding: 10px;
   border-top: 1px solid #ddd;
-}
-
-.removeitem {
-  margin-left: 1em;
-  color: #d3d3d3;
-  font-size: 20px;
-  cursor: pointer;
 }
 
 .cart {
@@ -336,19 +320,13 @@ body {
   color: #a00;
 }
 
-.menuimage {
+.navimageleft {
+  position: fixed;
+  left: 20px;
+  top: 55px;
   width: 30px;
   height: 30px;
-  margin: 15px 20px;
   cursor: pointer;
-}
-
-.menuright {
-  width: 30px;
-  height: 30px;
-  margin-top: 10px;
-  margin-right: 20px;
-  margin-bottom: 20px;
 }
 
 .radiobutton {
@@ -375,6 +353,7 @@ body {
 .radiotext {
   margin-top: 2px;
   float: left;
+  color: #3f0000;
   font-size: 16px;
   font-weight: 600;
   cursor: pointer;
@@ -393,6 +372,14 @@ body {
   height: 120px;
   margin-right: auto;
   margin-left: auto;
+}
+
+.navimageright {
+  position: fixed;
+  top: 55px;
+  right: 20px;
+  width: 30px;
+  height: 30px;
 }
 
 @media (max-width: 767px) {
@@ -416,11 +403,10 @@ body {
     line-height: 20px;
   }
   .searchbar {
-    width: 60%;
+    display: block;
+    width: 70%;
     height: 17px;
-    margin-right: 10px;
-    margin-bottom: 10px;
-    margin-left: 10px;
+    margin: 8px auto 10px;
     font-size: 12px;
   }
   .dashboard {
@@ -442,15 +428,19 @@ body {
     padding-right: 10px;
     padding-left: 10px;
   }
-  .menuimage {
-    width: 30px;
-    height: 30px;
-    margin: 13px 10px 10px;
-  }
-  .menuright {
+  .navimageleft {
+    left: 10px;
+    top: 53px;
     width: 30px;
     height: 30px;
     margin-right: 10px;
+    margin-bottom: 10px;
+    margin-left: 10px;
+  }
+  .navimageright {
+    top: 53px;
+    right: 10px;
+    margin-bottom: 10px;
   }
 }
 
