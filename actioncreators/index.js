@@ -39,7 +39,7 @@ export function addCoffeeToCart(coffee_id, type, image) {
       type,
       image,
       quantity: 1,
-      milk: 'Select milk...',
+      milk: 'No milk',
       sugar: 0
     } })
     dispatch({ type: 'UPDATE_SCREEN', payload: 'cart' })

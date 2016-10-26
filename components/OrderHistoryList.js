@@ -47,7 +47,7 @@ class OrderHistoryList extends React.Component {
       const quantity = (coffee.quantity === 1) ? 'a' : coffee.quantity
       const plural = (coffee.quantity > 1) ? 's' : ''
       const sugar = coffee.sugar
-      const milkString = (coffee.milk === 'Select milk...') ? 'no milk' : coffee.milk.toLowerCase()
+      const milkString = coffee.milk.toLowerCase()
       return `${quantity} ${coffee.type}${plural} with ${milkString} and ${generateSugarString(sugar)}${generateSuffix(orderLength, index)}`
     })
     return orderString
