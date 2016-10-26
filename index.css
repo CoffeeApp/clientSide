@@ -1,4 +1,4 @@
-.item, .itemdetails, .cartitems, .cartitem, .cartfooter, .iteminput, .itemform, .button, .module {box-sizing: border-box;}
+.item, .itemdetails, .cartitems, .cartitem, .cartfooter, .iteminput, .itemform, .button, .module, .notificationstatus, .spinner, .notificationstatustext {box-sizing: border-box;}
 .link {text-decoration: none; color: #333333;}
 a:hover {
   color: #3f0000;
