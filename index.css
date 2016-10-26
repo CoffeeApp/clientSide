@@ -8,6 +8,11 @@ a:hover {
   cursor: pointer;
 }
 
+button:disabled {
+  background: #ccc;
+}
+
+
 /*********************************/
 /* PASTE CUSTOM ABOVE ONLY       */
 /* ONLY PASTE WEBFLOW CSS BELOW  */
