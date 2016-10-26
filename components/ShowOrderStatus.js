@@ -16,20 +16,18 @@ const ShowOrderStatus = ({ order }) => (
     <div className="notificationtext">
        Your order is
     </div>
-    <div className="notificationstatus">
-      {
-         ((order.processStatus === 'READY') || (order.processStatus === 'COMPLETE'))
-         ? null
-         : <div className="spinner">
-               <MuiThemeProvider muiTheme={muiTheme}>
-                  <CircularProgress size={30} color={'#3F0000'}/>
-               </MuiThemeProvider>
-            </div>
-      }
-      <div className="notificationstatustext">
-        {order.processStatus ? order.processStatus : order.status}
-      </div>
-    </div>
+   {
+      ((order.processStatus === 'READY') || (order.processStatus === 'COMPLETE'))
+      ? null
+      : <div className="spinner">
+            <MuiThemeProvider muiTheme={muiTheme}>
+               <CircularProgress size={30} color={'#3F0000'}/>
+            </MuiThemeProvider>
+         </div>
+   }
+   <div className="notificationstatustext">
+     {order.processStatus ? order.processStatus : order.status}
+   </div>
     <div
       className="button"
       onClick={() => hashHistory.push('/orders')}
