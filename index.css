@@ -286,6 +286,7 @@ body {
 
 .notificationstatustext {
   position: absolute;
+  margin-top: 30px;
   padding-right: 10px;
   padding-left: 10px;
   font-size: 18px;
@@ -363,29 +364,20 @@ body {
 
 .spinner {
   position: absolute;
-  width: 120px;
-  height: 120px;
+  display: block;
+  width: 20px;
+  height: 20px;
+  margin-right: 50px;
+  margin-left: 50px;
 }
 
 .notificationstatus {
   position: relative;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
   overflow: scroll;
   width: 120px;
-  height: 120px;
+  min-height: 80px;
   margin-right: auto;
   margin-left: auto;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  -webkit-box-align: center;
-  -webkit-align-items: center;
-  -ms-flex-align: center;
-  align-items: center;
 }
 
 .navimageright {
