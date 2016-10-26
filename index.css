@@ -1,6 +1,3 @@
-#counterButtonsPlus, #counterButtonsMinus {
-  display: inline-block;
-}
 .item, .itemdetails, .cartitems, .cartitem, .cartfooter, .iteminput, .itemform, .button, .module {box-sizing: border-box;}
 .link {text-decoration: none; color: #333333;}
 a:hover {
@@ -9,11 +6,9 @@ a:hover {
 }
 .removeitem {color: #ccc; margin: 10px;}
 input, textarea {-webkit-appearance: none;}
-
 button:disabled {
   background: #ccc;
 }
-
 
 /*********************************/
 /* PASTE CUSTOM ABOVE ONLY       */
@@ -277,6 +272,7 @@ body {
   right: 0px;
   bottom: 0px;
   z-index: 2000;
+  display: block;
   background-color: rgba(0, 0, 0, .7);
 }
 

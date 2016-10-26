@@ -33,12 +33,10 @@ class Confirm extends React.Component {
 export default Confirm
 
 function generateSugarString(amount) {
-  console.log('SUGAR AMOUNT IS ', amount, 'and typeof is: ', typeof amount);
-
   switch (amount) {
-    case   0: return 'no sugar'
+    case 0: return 'no sugar'
     case '0': return 'no sugar'
-    case '1': return `1 sugar`
+    case '1': return '1 sugar'
     default: return `${amount} sugars`
   }
 }
