@@ -30,7 +30,7 @@ class UserForm extends Component {
     let orderCoffees = Object.keys(this.props.order.orderCoffees).map((key) => {
       delete this.props.order.orderCoffees[key].image
       return this.props.order.orderCoffees[key]
-    }
+    })
     let order = {
       details: {
         name,
