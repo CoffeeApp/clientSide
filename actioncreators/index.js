@@ -32,11 +32,12 @@ export function updateSearchWord(word) {
   return { type: 'UPDATE_SEARCHWORD', payload: word }
 }
 
-export function addCoffeeToCart(coffee_id, type) {
+export function addCoffeeToCart(coffee_id, type, image) {
   return (dispatch) => {
     dispatch({ type: 'ADD_COFFEE_TO_CART', payload: {
       coffee_id,
       type,
+      image,
       quantity: 1,
       milk: '',
       sugar: 0

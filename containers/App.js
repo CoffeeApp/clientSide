@@ -42,7 +42,7 @@ const mapDispatchToProps = (dispatch) => {
     updateScreen: (screen) => dispatch(updateScreen(screen)),
     updatePlaceholderText: (route) => dispatch(updatePlaceholderText(route)),
     updateSearchWord: (word) => dispatch(updateSearchWord(word)),
-    addCoffeeToCart: (coffeeId, coffeeType) => dispatch(addCoffeeToCart(coffeeId, coffeeType)),
+    addCoffeeToCart: (coffeeId, coffeeType, coffeeImage) => dispatch(addCoffeeToCart(coffeeId, coffeeType, coffeeImage)),
     changeCoffeeOptions: (id, changeType, changePayload, orderCoffees) => dispatch(changeCoffeeOptions(id, changeType, changePayload, orderCoffees)),
     deleteCoffeeFromCart: (coffee_id, orderCoffees) => dispatch(deleteCoffeeFromCart(coffee_id, orderCoffees)),
     createOrder: (order, userCoords) => dispatch(createOrder(order, userCoords)),

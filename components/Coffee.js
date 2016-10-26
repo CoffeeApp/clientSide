@@ -3,7 +3,7 @@ import React from 'react'
 const Coffee = ({coffee, addCoffeeToCart}) => (
   <div
     className="item"
-    onClick={() => addCoffeeToCart(coffee.coffee_id, coffee.type)}
+    onClick={() => addCoffeeToCart(coffee.coffee_id, coffee.type, coffee.image)}
   >
     <img
       alt="coffee image"

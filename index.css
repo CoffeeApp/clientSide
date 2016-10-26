@@ -190,7 +190,7 @@ body {
 .itemdescription {
   margin-top: 3px;
   border-radius: 3px;
-  color: #666;
+  color: #333;
   font-size: 14px;
   line-height: 20px;
   font-weight: 300;
@@ -272,6 +272,7 @@ body {
   right: 0px;
   bottom: 0px;
   z-index: 2000;
+  display: block;
   background-color: rgba(0, 0, 0, .7);
 }
 
