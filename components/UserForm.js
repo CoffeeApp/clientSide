@@ -29,16 +29,12 @@ class UserForm extends Component {
     let comment = this.state.comment
     let orderCoffees = Object.keys(this.props.order.orderCoffees).map((key) => {
       return Object.assign({}, this.props.order.orderCoffees[key])
-   })
+    })
     orderCoffees.map((coffee) => {
       if (coffee.image) {
         delete coffee.image
       }
     })
-    console.log('********** orderCoffees **********');
-    console.log(orderCoffees);
-    console.log('********** state **********');
-    console.log(this.props.order.orderCoffees);
     let sendOrder = {
       details: {
         name,
@@ -76,27 +72,27 @@ class UserForm extends Component {
         <input
           className="iteminput"
           type="text"
-          onChange={this.handleProp('userName')}
+          onChange={() => this.handleProp('userName')}
           placeholder="Your name"
           value={this.props.customer.name}
         />
         <input
           className="iteminput"
           type="text"
-          onChange={this.handleProp('userNumber')}
+          onChange={() => this.handleProp('userNumber')}
           placeholder="Your phone number"
           value={this.props.customer.phone}
         />
         <input
           className="iteminput"
           type="text"
-          onChange={this.handleProp('comment')}
+          onChange={() => this.handleProp('comment')}
           placeholder="Notes"
           value={this.props.customer.comment}
         />
         <select
           className="iteminput"
-          onChange={this.handleProp('readyTime')}
+          onChange={() => this.handleProp('readyTime')}
           value={this.props.customer.ready_time}
         >
           <option value="ASAP" defaultValue>Pick up asap...</option>

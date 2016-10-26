@@ -15,8 +15,6 @@ class CartItem extends Component {
 
   render () {
     const { coffee, id, deleteCoffeeFromCart } = this.props
-    console.log('******** COFFEE *********');
-    console.log(coffee);
     return (
       <div className="cartitem">
       <div className="itemoverview">
