@@ -34,9 +34,9 @@ export default Confirm
 
 function generateSugarString(amount) {
   switch (amount) {
-    case 0: return 'no sugar'
-    case '0': return 'no sugar'
-    case '1': return '1 sugar'
+    case 0: return `no sugar`
+    case '0': return `no sugar`
+    case '1': return `1 sugar`
     default: return `${amount} sugars`
   }
 }
@@ -55,10 +55,12 @@ function generateOrderString (coffees) {
   const orderString = Object.keys(coffees).map((key, index) => {
     const orderLength = Object.keys(coffees).length
     const quantity = (coffees[key].quantity === 1) ? 'a' : coffees[key].quantity
+    const plural = (coffees[key].quantity > 1) ? 's' : ''
     const sugar = coffees[key].sugar
-    const milkString = (coffees[key].milk === '') ? 'no milk' : coffees[key].milk.toLowerCase()
-    return `${quantity} ${coffees[key].type} with ${milkString} and ${generateSugarString(sugar)}${generateSuffix(orderLength, index)}`
+    const milkString = (coffees[key].milk === 'Select milk...')
+      ? 'no milk'
+      : coffees[key].milk.toLowerCase()
+    return `${quantity} ${coffees[key].type}${plural} with ${milkString} and ${generateSugarString(sugar)}${generateSuffix(orderLength, index)}`
   })
-
   return orderString
 }

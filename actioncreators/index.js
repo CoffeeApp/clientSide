@@ -32,13 +32,14 @@ export function updateSearchWord(word) {
   return { type: 'UPDATE_SEARCHWORD', payload: word }
 }
 
-export function addCoffeeToCart(coffee_id, type) {
+export function addCoffeeToCart(coffee_id, type, image) {
   return (dispatch) => {
     dispatch({ type: 'ADD_COFFEE_TO_CART', payload: {
       coffee_id,
       type,
+      image,
       quantity: 1,
-      milk: '',
+      milk: 'Select milk...',
       sugar: 0
     } })
     dispatch({ type: 'UPDATE_SCREEN', payload: 'cart' })
@@ -123,7 +124,7 @@ export function updateOrderStatus() {
     api.service('orders')
       .on('patched', (orderData) => {
         dispatch({ type: 'UPDATE_ORDER_STATUS', payload: {
-          status: (orderData.order)[0].status,
+          processStatus: (orderData.order)[0].status,
           order_id: (orderData.order)[0].order_id
         } })
       })
@@ -134,4 +135,18 @@ export function filterShops(id) {
   return (dispatch) => {
     dispatch({ type: 'FILTER_SHOP_LIST', payload: id })
   }
+}
+
+export function findOrder(phone) {
+  return (dispatch) => {
+    api.service('orders')
+      .find({query: {phone}})
+      .then((result) => {
+        dispatch(receiveOrderHistory(result))
+      })
+  }
+}
+
+export function receiveOrderHistory(orderHistory) {
+  return {type: 'RECEIVE_ORDER_HISTORY', payload: orderHistory}
 }

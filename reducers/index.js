@@ -8,6 +8,7 @@ import placeholder from './placeholder'
 import customer from './customer'
 import filterShopsId from './filtershopsid'
 import screen from './screen'
+import orderHistory from './orderhistory'
 
 export default combineReducers({
   coffees,
@@ -18,5 +19,6 @@ export default combineReducers({
   placeholder,
   customer,
   filterShopsId,
-  screen
+  screen,
+  orderHistory
 })

@@ -175,14 +175,3 @@ test('testing that an order can be updated', function (t) {
   t.deepEqual(actual, expected)
   t.end()
 })
-
-// test.only('testing that an order status can be updated', function (t) {
-//
-//   const action = {
-//     type: 'UPDATE_ORDER_STATUS',
-//     payload: {
-//       id: 'iiuid2'
-//     }
-//   }
-//
-// })

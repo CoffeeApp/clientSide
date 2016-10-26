@@ -7,9 +7,10 @@ class UserForm extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      userName: '',
-      userNumber: '',
-      comment: ''
+      userName: this.props.customer.name,
+      userNumber: this.props.customer.phone,
+      comment: this.props.customer.comment,
+      readyTime: this.props.customer.ready_time
     }
     this.handleProp = this.handleProp.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
@@ -27,10 +28,15 @@ class UserForm extends Component {
     let phone = this.state.userNumber
     let ready_time = this.state.readyTime
     let comment = this.state.comment
-    let orderCoffees = Object.keys(this.props.order.orderCoffees).map((key) => (
-      this.props.order.orderCoffees[key]
-    ))
-    let order = {
+    let orderCoffees = Object.keys(this.props.order.orderCoffees).map((key) => {
+      return Object.assign({}, this.props.order.orderCoffees[key])
+    })
+    orderCoffees.map((coffee) => {
+      if (coffee.image) {
+        delete coffee.image
+      }
+    })
+    let sendOrder = {
       details: {
         name,
         phone,
@@ -40,21 +46,12 @@ class UserForm extends Component {
       },
       orderCoffees
     }
-    // navigator.geolocation.watchPosition(function(position) {
-    //   console.log("i'm tracking you!");
-    // },
-    // function (error) {
-    //   if (error.code == error.PERMISSION_DENIED)
-    //       console.log("you denied me :-(");
-    // });
-
     navigator.geolocation.getCurrentPosition((position, error) => {
-      console.log('getCurrentPosition', position);
-      var userCoords = { lat: position.coords.latitude, lng: position.coords.longitude }
-      this.props.createOrder(order, userCoords)
-    },(error) => {
-        console.log("you denied me :-(");
-        this.props.createOrder(order, { lat: '-41.2969092', lng: '174.7720306' })
+      console.log('getCurrentPosition', position)
+      const userCoords = { lat: position.coords.latitude, lng: position.coords.longitude }
+      this.props.createOrder(sendOrder, userCoords)
+    }, (error) => {
+        this.props.createOrder(sendOrder, { lat: '-41.2969092', lng: '174.7720306' })
     })
     hashHistory.push('/cafes')
   }
@@ -71,26 +68,26 @@ class UserForm extends Component {
           type="text"
           onChange={this.handleProp('userName')}
           placeholder="Your name"
-          value={this.props.customer.name}
+          value={this.state.userName}
         />
         <input
           className="iteminput"
           type="text"
           onChange={this.handleProp('userNumber')}
           placeholder="Your phone number"
-          value={this.props.customer.phone}
+          value={this.state.userNumber}
         />
         <input
           className="iteminput"
           type="text"
           onChange={this.handleProp('comment')}
           placeholder="Notes"
-          value={this.props.customer.comment}
+          value={this.state.comment}
         />
         <select
           className="iteminput"
           onChange={this.handleProp('readyTime')}
-          value={this.props.customer.ready_time}
+          value={this.state.readyTime}
         >
           <option value="ASAP" defaultValue>Pick up asap...</option>
           <option value="in 15 minutes">Pick up in 15 mins</option>
