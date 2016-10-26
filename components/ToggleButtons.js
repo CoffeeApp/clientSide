@@ -34,11 +34,11 @@ class ToggleButtons extends React.Component {
             text={'Distance'}
           />
         </div>
-        <div onClick={() => this.handleProp('Alphabetically')}>
+        <div onClick={() => this.handleProp('Name')}>
           <Toggle
-            toggle={ this.state.group === 'Alphabetically' ? true : false }
+            toggle={ this.state.group === 'Name' ? true : false }
             fill={'#3f0000'}
-            text={'Alphabetically'}
+            text={'Name'}
           />
         </div>
       </div>
