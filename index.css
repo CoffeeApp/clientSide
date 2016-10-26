@@ -286,7 +286,8 @@ body {
 
 .notificationstatustext {
   position: absolute;
-  margin-top: 30px;
+  padding-right: 10px;
+  padding-left: 10px;
   font-size: 18px;
   font-weight: 700;
   text-align: center;
@@ -362,17 +363,29 @@ body {
 
 .spinner {
   position: absolute;
-  left: -18px;
-  top: -8px;
+  width: 120px;
+  height: 120px;
 }
 
 .notificationstatus {
   position: relative;
-  display: block;
-  width: 90px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  overflow: scroll;
+  width: 120px;
   height: 120px;
   margin-right: auto;
   margin-left: auto;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
 }
 
 .navimageright {
@@ -414,8 +427,7 @@ body {
     margin-top: 95px;
   }
   .itemdescription {
-    font-size: 12px;
-    line-height: 13px;
+    line-height: 16px;
     font-weight: 300;
   }
   .itemform {
