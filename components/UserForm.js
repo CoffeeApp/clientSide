@@ -47,6 +47,7 @@ class UserForm extends Component {
     //   if (error.code == error.PERMISSION_DENIED)
     //       console.log("you denied me :-(");
     // });
+
     navigator.geolocation.getCurrentPosition((position, error) => {
       console.log('getCurrentPosition', position);
       var userCoords = { lat: position.coords.latitude, lng: position.coords.longitude }
@@ -59,6 +60,7 @@ class UserForm extends Component {
   }
 
   render () {
+    const disabled = (this.state.userName === '' || this.state.userNumber === '')
     return (
       <form
         className="itemform"
@@ -91,7 +93,7 @@ class UserForm extends Component {
         </select>
         <button
           className="button"
-          type="submit">
+          type="submit" disabled={disabled}>
           Next
         </button>
       </form>
