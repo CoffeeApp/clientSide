@@ -27,8 +27,8 @@ class CartItemCounter extends Component {
             <option value="Soy milk">Soy milk</option>
         </select>
         <select className="iteminput" onChange={this.handleProp('sugar')} value={coffee.sugar}>
-            <option value="Add sugar...">Add sugar...</option>
-            <option value="No sugar">None</option>
+            <option value="0">Add sugar...</option>
+            <option value="0">None</option>
             <option value="1">1 sugar</option>
             <option value="2">2 sugars</option>
             <option value="3">3 sugars</option>
