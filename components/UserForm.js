@@ -57,7 +57,8 @@ class UserForm extends Component {
   }
 
   render () {
-    const disabled = (this.state.userName === '' || this.state.userNumber === '')
+     console.log(this.state.userName, this.state.userNumber);
+    const disabled = !(this.state.userName && this.state.userNumber)
     return (
       <form
         className="itemform"
