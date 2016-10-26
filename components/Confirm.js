@@ -28,7 +28,6 @@ class Confirm extends React.Component {
       </div>
     )
   }
-
 }
 
 export default Confirm
@@ -59,7 +58,7 @@ function generateOrderString (coffees) {
     const orderLength = Object.keys(coffees).length
     const quantity = (coffees[key].quantity === 1) ? 'a' : coffees[key].quantity
     const sugar = coffees[key].sugar
-    const milkString = (coffees[key].milk === '') ? 'No milk' : coffees[key].milk.toLowerCase()
+    const milkString = (coffees[key].milk === '') ? 'no milk' : coffees[key].milk.toLowerCase()
     return `${quantity} ${coffees[key].type} with ${milkString} and ${generateSugarString(sugar)}${generateSuffix(orderLength, index)}`
   })
 
