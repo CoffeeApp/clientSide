@@ -34,6 +34,7 @@ export default Confirm
 
 function generateSugarString(amount) {
   switch (amount) {
+    case '': return `No sugar`
     case '1': return `1 sugar`
     default: return `${amount} sugars`
   }
