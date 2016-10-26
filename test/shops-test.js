@@ -2,7 +2,7 @@ const test = require('tape')
 const initialState = require('../state')
 const shops = require('../reducers/shops').default
 
-test.only('testing that shops will be received with geolocation distance information', function (t) {
+test('testing that shops will be received with geolocation distance information', function (t) {
   const initial =   [
     {
       lat: "-41.291544",
