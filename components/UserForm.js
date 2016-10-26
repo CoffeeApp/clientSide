@@ -47,17 +47,18 @@ class UserForm extends Component {
       orderCoffees
     }
     navigator.geolocation.getCurrentPosition((position, error) => {
-      console.log('getCurrentPosition', position);
-      var userCoords = { lat: position.coords.latitude, lng: position.coords.longitude }
+      console.log('getCurrentPosition', position)
+      const userCoords = { lat: position.coords.latitude, lng: position.coords.longitude }
       this.props.createOrder(sendOrder, userCoords)
-    },(error) => {
-        console.log("you denied me :-(");
+    }, (error) => {
         this.props.createOrder(sendOrder, { lat: '-41.2969092', lng: '174.7720306' })
     })
     hashHistory.push('/cafes')
   }
 
   render () {
+     console.log(this.state.userName, this.state.userNumber);
+    const disabled = !(this.state.userName && this.state.userNumber)
     return (
       <form
         className="itemform"
@@ -97,7 +98,7 @@ class UserForm extends Component {
         </select>
         <button
           className="button"
-          type="submit">
+          type="submit" disabled={disabled}>
           Next
         </button>
       </form>
