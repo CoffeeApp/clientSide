@@ -60,6 +60,5 @@ function generateOrderString (coffees) {
     const milkString = (coffees[key].milk === 'Select milk...') ? 'no milk' : coffees[key].milk.toLowerCase()
     return `${quantity} ${coffees[key].type}${plural} with ${milkString} and ${generateSugarString(sugar)}${generateSuffix(orderLength, index)}`
   })
-
   return orderString
 }

@@ -1,4 +1,5 @@
 import React from 'react'
+import { hashHistory } from 'react-router'
 
 class LinkBack extends React.Component {
 
@@ -9,6 +10,7 @@ class LinkBack extends React.Component {
 
   handleClick() {
     this.props.updateScreen('coffees')
+    hashHistory.push('/coffees')
   }
 
   render() {
