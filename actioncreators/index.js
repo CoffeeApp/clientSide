@@ -124,10 +124,10 @@ export function updateOrderStatus() {
     api.service('orders')
       .on('patched', (orderData) => {
         dispatch({ type: 'UPDATE_ORDER_STATUS', payload: {
-          status: (orderData.order)[0].status,
+          processStatus: (orderData.order)[0].status,
           order_id: (orderData.order)[0].order_id
         } })
-      })
+      }) 
   }
 }
 
